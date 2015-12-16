@@ -31,6 +31,7 @@ h2 { font-size:   1.5em;    }
 h3 { font-size:   1.25em;   }
 p  { font-size:   1.0em;    }
 
+
 // Generic
 /////////////////////////////////////////
 
@@ -52,6 +53,7 @@ footer {
   color: white;
   text-align: center;
   border-top: 1px solid $dark-blue;
+  clear: both;
 }
 
 .button {
@@ -222,45 +224,77 @@ a#skipnav {
 
     text-align: center;
     color: white;
-    padding-top: 40px;
+    padding: 40px 0 60px 0;
 
     h2 {
       font-size: $base-font-size * 7;
       font-weight: 300;
     }
     h3 {
+      display: inline-block;
       font-size: $base-font-size * 2;
       font-weight: 100;
       padding-top: 15px;
+      width: 550px;
+    }
+  }
+
+  #wrapper {
+    @include clearfix();
+
+    background: #fff;
+    clear: both;
+    color: #000;
+
+    h4 {
+      font-size: 2em;
+    }
+    p {
+      padding: 15px 0;
     }
   }
 
   #results {
-    @include span-columns(8);
-    @include shift(2);
+    @include span-columns(10);
+    @include shift(1);
 
-    padding: 40px 0;
+    clear: both;
+    padding: 40px 55px;
 
     .https, .dap {
-      @include span-columns(4 of 8);
-      @media (max-width: 970px) {
-        width: 100%
-      }
-
-      @include display(flex);
-      @include flex-direction(column);
-      @include align-items(center);
-      @include justify-content(center);
-
       margin-bottom: 40px;
-      text-align: center;
 
       .total-value {
-        font-size: 5em;
+        font-size: 3em;
+      }
+      .total-desc {
+        font-size: 0.8em;
       }
 
+      .https_chart, .dap_chart {
+        display: inline-block;
+        width: 200px;
+      }
+      .https_desc, .dap_desc {
+        display: inline-block;
+        vertical-align: top;
+        max-width: 600px;
+        padding: 50px 0 0 0;
+      }
+      .https_desc {
+        padding-left: 25px;
+      }
     }
   }
+
+  #explore {
+    @include span-columns(10);
+    @include shift(1);
+
+    clear: both;
+    padding: 40px 0;
+  }
+
 }
 
 // Generic layout for:

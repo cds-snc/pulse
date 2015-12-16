@@ -13,11 +13,11 @@
     var radius = Math.min(width, height) / 2;
 
     var color = d3.scale.ordinal()
-        .range(["#7ED321", "#FFFFFF"]);
+        .range(["#7ED321", "#e5e5e5"]);
 
     var arc = d3.svg.arc()
         .outerRadius(radius)
-        .innerRadius(radius - 40);
+        .innerRadius(radius - 25);
 
     var pie = d3.layout.pie()
         .value(function (d) {
@@ -61,7 +61,7 @@
             .attr("text-anchor", "middle")
             .attr("class", "total-value")
             .attr("dy", "0.2em")
-            .attr("fill", "white")
+            .attr("fill", "#000")
             .text(function(d){
                 return "" + data[0].value + "%";
         });
@@ -70,7 +70,7 @@
             .attr("text-anchor", "middle")
             .attr("class", "total-desc")
             .attr("dy", "2.5em")
-            .attr("fill", "white")
+            .attr("fill", "#000")
             .text(function(d) {
                 return "USE HTTPS";
         });
