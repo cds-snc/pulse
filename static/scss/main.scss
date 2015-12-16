@@ -249,9 +249,6 @@ a#skipnav {
     h4 {
       font-size: 2em;
     }
-    p {
-      padding: 15px 0;
-    }
   }
 
   #results {
@@ -284,6 +281,9 @@ a#skipnav {
       .https_desc {
         padding-left: 25px;
       }
+      p {
+        padding: 15px 0;
+      }
     }
   }
 
@@ -293,8 +293,50 @@ a#skipnav {
 
     clear: both;
     padding: 40px 0;
-  }
 
+    .dataTables_wrapper {
+      padding-top: 40px;
+
+      .dataTables_length {
+        padding-left: 0;
+      }
+    }
+
+    #main-content {
+      .tab-menu {
+        width: 100%;
+        margin-top: 40px;
+        .tab {
+          width: 33.33%;
+          margin: 0;
+          float: left;
+          text-align: center;
+          padding: 30px 0;
+          font-size: 1.5em;
+        }
+        a.tab {
+          background-color: $medium-blue;
+          color: white;
+          &:hover, &:focus {
+            background-color: lighten($medium-blue, 10%);
+            color: white;
+          }
+        }
+      }
+
+      &.white-bkg {
+        background-color: white;
+        a {
+          color: $light-blue;
+          font-weight: 900;
+          &:hover, &:focus {
+            color: $light-blue;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
 }
 
 // Generic layout for:

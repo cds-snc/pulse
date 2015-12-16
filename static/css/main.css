@@ -417,8 +417,6 @@ a#skipnav {
     clear: both; }
   #home #wrapper h4 {
     font-size: 2em; }
-  #home #wrapper p {
-    padding: 15px 0; }
 #home #results {
   float: left;
   display: block;
@@ -445,6 +443,8 @@ a#skipnav {
       padding: 50px 0 0 0; }
     #home #results .https .https_desc, #home #results .dap .https_desc {
       padding-left: 25px; }
+    #home #results .https p, #home #results .dap p {
+      padding: 15px 0; }
 #home #explore {
   float: left;
   display: block;
@@ -455,6 +455,34 @@ a#skipnav {
   padding: 40px 0; }
   #home #explore:last-child {
     margin-right: 0; }
+  #home #explore .dataTables_wrapper {
+    padding-top: 40px; }
+    #home #explore .dataTables_wrapper .dataTables_length {
+      padding-left: 0; }
+  #home #explore #main-content .tab-menu {
+    width: 100%;
+    margin-top: 40px; }
+    #home #explore #main-content .tab-menu .tab {
+      width: 33.33%;
+      margin: 0;
+      float: left;
+      text-align: center;
+      padding: 30px 0;
+      font-size: 1.5em; }
+    #home #explore #main-content .tab-menu a.tab {
+      background-color: #0059b3;
+      color: white; }
+      #home #explore #main-content .tab-menu a.tab:hover, #home #explore #main-content .tab-menu a.tab:focus {
+        background-color: #0073e6;
+        color: white; }
+  #home #explore #main-content.white-bkg {
+    background-color: white; }
+    #home #explore #main-content.white-bkg a {
+      color: #0066CC;
+      font-weight: 900; }
+      #home #explore #main-content.white-bkg a:hover, #home #explore #main-content.white-bkg a:focus {
+        color: #0066CC;
+        text-decoration: underline; }
 
 #analytics #content > header, #https #content > header, #about #content > header, #domain #content > header, #agency #content > header {
   max-width: 68em;
