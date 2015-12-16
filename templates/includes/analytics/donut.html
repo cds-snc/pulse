@@ -13,11 +13,11 @@
     var radius = Math.min(width, height) / 2;
 
     var color = d3.scale.ordinal()
-        .range(["#7ED321", "#e5e5e5"]);
+        .range(["#7ED321", "#FFFFFF"]);
 
     var arc = d3.svg.arc()
         .outerRadius(radius)
-        .innerRadius(radius - 25);
+        .innerRadius(radius - 40);
 
     var pie = d3.layout.pie()
         .value(function (d) {
@@ -60,7 +60,7 @@
         g.append("text")
             .attr("text-anchor", "middle")
             .attr("class", "total-value")
-            .attr("fill", "#000")
+            .attr("fill", "white")
             .text(function (d) {
                 return "" + data[0].value + "%";
         });
@@ -68,7 +68,7 @@
         g.append("text")
             .attr("text-anchor", "middle")
             .attr("class", "total-desc")
-            .attr("fill", "#000")
+            .attr("fill", "white")
             .attr("dy", "1.9em")
             .text(function (d) {
             return "PARTICIPATE IN THE";
@@ -77,7 +77,7 @@
         g.append("text")
             .attr("text-anchor", "middle")
             .attr("class", "total-desc")
-            .attr("fill", "#000")
+            .attr("fill", "white")
             .attr("dy", "3em")
             .text(function (d) {
             return "DIGITAL ANALYTICS";
@@ -86,7 +86,7 @@
         g.append("text")
             .attr("text-anchor", "middle")
             .attr("class", "total-desc")
-            .attr("fill", "#000")
+            .attr("fill", "white")
             .attr("dy", "4em")
             .text(function (d) {
             return "PROGRAM";
