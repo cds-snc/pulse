@@ -430,7 +430,7 @@ a#skipnav {
   #home #results:last-child {
     margin-right: 0; }
   #home #results .https, #home #results .dap {
-    margin-bottom: 40px; }
+    margin-bottom: 10px; }
     #home #results .https .total-value, #home #results .dap .total-value {
       font-size: 3em; }
     #home #results .https .total-desc, #home #results .dap .total-desc {
