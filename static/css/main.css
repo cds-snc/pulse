@@ -435,8 +435,8 @@ a#skipnav {
     #home #results .https .https_desc,
     #home #results .https .dap_desc, #home #results .dap .https_desc,
     #home #results .dap .dap_desc {
-      vertical-align: top;
-      padding: 27px 0 0; }
+      padding: 27px 0 0;
+      vertical-align: top; }
     #home #results .https p, #home #results .dap p {
       padding: 15px 0; }
 #home #explore {
