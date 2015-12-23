@@ -418,15 +418,10 @@ a#skipnav {
   #home #wrapper h4 {
     font-size: 2em; }
 #home #results {
-  float: left;
-  display: block;
-  margin-right: 2.35765%;
-  width: 82.94039%;
-  margin-left: 8.5298%;
   clear: both;
-  padding: 40px 55px; }
-  #home #results:last-child {
-    margin-right: 0; }
+  margin: 0 auto;
+  max-width: 840px;
+  padding: 40px 40px; }
   #home #results .https, #home #results .dap {
     margin-bottom: 10px; }
     #home #results .https .total-value, #home #results .dap .total-value {
@@ -434,15 +429,19 @@ a#skipnav {
     #home #results .https .total-desc, #home #results .dap .total-desc {
       font-size: 0.8em; }
     #home #results .https .https_chart, #home #results .https .dap_chart, #home #results .dap .https_chart, #home #results .dap .dap_chart {
-      display: inline-block;
-      width: 200px; }
+      width: 200px;
+      display: inline-block; }
     #home #results .https .https_desc, #home #results .https .dap_desc, #home #results .dap .https_desc, #home #results .dap .dap_desc {
       display: inline-block;
       vertical-align: top;
-      max-width: 600px;
-      padding: 50px 0 0 0; }
+      padding: 27px 0 0 0; }
+      @media (min-width: 600px) {
+        #home #results .https .https_desc, #home #results .https .dap_desc, #home #results .dap .https_desc, #home #results .dap .dap_desc {
+          width: 73%; } }
     #home #results .https .https_desc, #home #results .dap .https_desc {
       padding-left: 25px; }
+    #home #results .https .dap_desc, #home #results .dap .dap_desc {
+      padding-right: 25px; }
     #home #results .https p, #home #results .dap p {
       padding: 15px 0; }
 #home #explore {

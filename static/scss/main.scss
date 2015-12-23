@@ -252,11 +252,10 @@ a#skipnav {
   }
 
   #results {
-    @include span-columns(10);
-    @include shift(1);
-
     clear: both;
-    padding: 40px 55px;
+    margin: 0 auto;
+    max-width: 840px;
+    padding: 40px 40px;
 
     .https, .dap {
       margin-bottom: 10px;
@@ -269,18 +268,27 @@ a#skipnav {
       }
 
       .https_chart, .dap_chart {
-        display: inline-block;
         width: 200px;
+        display: inline-block;
       }
+
       .https_desc, .dap_desc {
         display: inline-block;
         vertical-align: top;
-        max-width: 600px;
-        padding: 50px 0 0 0;
+        padding: 27px 0 0 0;
+
+        @media (min-width: 600px) {
+          width: 73%;
+        }
       }
       .https_desc {
         padding-left: 25px;
       }
+
+      .dap_desc {
+        padding-right: 25px;
+      }
+
       p {
         padding: 15px 0;
       }
