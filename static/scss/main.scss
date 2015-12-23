@@ -265,29 +265,27 @@ a#skipnav {
       }
 
       .https_chart, .dap_chart {
+        margin: 0 auto;
         width: 200px;
-        display: inline-block;
+      }
+
+      .https_chart {
+        @media (min-width: 600px) {
+          float: left;
+          margin-right: 25px;
+        }
+      }
+
+      .dap_chart {
+        @media (min-width: 600px) {
+          float: right;
+          margin-left: 25px;
+        }
       }
 
       .https_desc, .dap_desc {
-        display: inline-block;
         vertical-align: top;
         padding: 27px 0 0 0;
-
-        @media (min-width: 600px) {
-          width: 73%;
-        }
-      }
-      .https_desc {
-        @media (min-width: 600px) {
-          padding-left: 25px;
-        }
-      }
-
-      .dap_desc {
-        @media (min-width: 600px) {
-          padding-right: 25px;
-        }
       }
 
       p {

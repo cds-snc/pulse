@@ -422,21 +422,19 @@ a#skipnav {
     #home #results .https .total-desc, #home #results .dap .total-desc {
       font-size: 0.8em; }
     #home #results .https .https_chart, #home #results .https .dap_chart, #home #results .dap .https_chart, #home #results .dap .dap_chart {
-      width: 200px;
-      display: inline-block; }
+      margin: 0 auto;
+      width: 200px; }
+    @media (min-width: 600px) {
+      #home #results .https .https_chart, #home #results .dap .https_chart {
+        float: left;
+        margin-right: 25px; } }
+    @media (min-width: 600px) {
+      #home #results .https .dap_chart, #home #results .dap .dap_chart {
+        float: right;
+        margin-left: 25px; } }
     #home #results .https .https_desc, #home #results .https .dap_desc, #home #results .dap .https_desc, #home #results .dap .dap_desc {
-      display: inline-block;
       vertical-align: top;
       padding: 27px 0 0 0; }
-      @media (min-width: 600px) {
-        #home #results .https .https_desc, #home #results .https .dap_desc, #home #results .dap .https_desc, #home #results .dap .dap_desc {
-          width: 73%; } }
-    @media (min-width: 600px) {
-      #home #results .https .https_desc, #home #results .dap .https_desc {
-        padding-left: 25px; } }
-    @media (min-width: 600px) {
-      #home #results .https .dap_desc, #home #results .dap .dap_desc {
-        padding-right: 25px; } }
     #home #results .https p, #home #results .dap p {
       padding: 15px 0; }
 #home #explore {
