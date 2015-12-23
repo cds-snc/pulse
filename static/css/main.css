@@ -388,16 +388,9 @@ a#skipnav {
     visibility: visible; }
 
 #home .hero {
-  float: left;
-  display: block;
-  margin-right: 2.35765%;
-  width: 65.88078%;
-  margin-left: 17.05961%;
   text-align: center;
   color: white;
   padding: 40px 0 60px 0; }
-  #home .hero:last-child {
-    margin-right: 0; }
   #home .hero h2 {
     font-size: 6.125em;
     font-weight: 300; }
@@ -406,7 +399,7 @@ a#skipnav {
     font-size: 1.75em;
     font-weight: 100;
     padding-top: 15px;
-    width: 550px; }
+    max-width: 550px; }
 #home #wrapper {
   background: #fff;
   clear: both;

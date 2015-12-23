@@ -219,9 +219,6 @@ a#skipnav {
 
 #home {
   .hero {
-    @include span-columns(8);
-    @include shift(2);
-
     text-align: center;
     color: white;
     padding: 40px 0 60px 0;
@@ -235,7 +232,7 @@ a#skipnav {
       font-size: $base-font-size * 2;
       font-weight: 100;
       padding-top: 15px;
-      width: 550px;
+      max-width: 550px;
     }
   }
 
