@@ -390,7 +390,7 @@ a#skipnav {
 #home .hero {
   text-align: center;
   color: white;
-  padding: 40px 0 60px 0; }
+  padding: 40px 0 60px; }
   #home .hero h2 {
     font-size: 6.125em;
     font-weight: 300; }
@@ -414,7 +414,7 @@ a#skipnav {
   clear: both;
   margin: 0 auto;
   max-width: 840px;
-  padding: 40px 40px; }
+  padding: 40px; }
   #home #results .https, #home #results .dap {
     margin-bottom: 10px; }
     #home #results .https .total-value, #home #results .dap .total-value {
@@ -432,9 +432,11 @@ a#skipnav {
       #home #results .https .dap_chart, #home #results .dap .dap_chart {
         float: right;
         margin-left: 25px; } }
-    #home #results .https .https_desc, #home #results .https .dap_desc, #home #results .dap .https_desc, #home #results .dap .dap_desc {
+    #home #results .https .https_desc,
+    #home #results .https .dap_desc, #home #results .dap .https_desc,
+    #home #results .dap .dap_desc {
       vertical-align: top;
-      padding: 27px 0 0 0; }
+      padding: 27px 0 0; }
     #home #results .https p, #home #results .dap p {
       padding: 15px 0; }
 #home #explore {
@@ -452,15 +454,15 @@ a#skipnav {
     #home #explore .dataTables_wrapper .dataTables_length {
       padding-left: 0; }
   #home #explore #main-content .tab-menu {
-    width: 100%;
-    margin-top: 40px; }
+    margin-top: 40px;
+    width: 100%; }
     #home #explore #main-content .tab-menu .tab {
-      width: 33.33%;
-      margin: 0;
       float: left;
-      text-align: center;
+      font-size: 1.5em;
+      margin: 0;
       padding: 30px 0;
-      font-size: 1.5em; }
+      text-align: center;
+      width: 33.33%; }
     #home #explore #main-content .tab-menu a.tab {
       background-color: #0059b3;
       color: white; }

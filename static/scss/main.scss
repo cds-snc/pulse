@@ -221,7 +221,7 @@ a#skipnav {
   .hero {
     text-align: center;
     color: white;
-    padding: 40px 0 60px 0;
+    padding: 40px 0 60px;
 
     h2 {
       font-size: $base-font-size * 7;
@@ -252,7 +252,7 @@ a#skipnav {
     clear: both;
     margin: 0 auto;
     max-width: 840px;
-    padding: 40px 40px;
+    padding: 40px;
 
     .https, .dap {
       margin-bottom: 10px;
@@ -283,9 +283,10 @@ a#skipnav {
         }
       }
 
-      .https_desc, .dap_desc {
+      .https_desc, 
+      .dap_desc {
         vertical-align: top;
-        padding: 27px 0 0 0;
+        padding: 27px 0 0;
       }
 
       p {
@@ -311,15 +312,15 @@ a#skipnav {
 
     #main-content {
       .tab-menu {
-        width: 100%;
         margin-top: 40px;
+        width: 100%;
         .tab {
-          width: 33.33%;
-          margin: 0;
           float: left;
-          text-align: center;
-          padding: 30px 0;
           font-size: 1.5em;
+          margin: 0;
+          padding: 30px 0;
+          text-align: center;
+          width: 33.33%;
         }
         a.tab {
           background-color: $medium-blue;
