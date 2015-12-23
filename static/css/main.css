@@ -431,10 +431,12 @@ a#skipnav {
       @media (min-width: 600px) {
         #home #results .https .https_desc, #home #results .https .dap_desc, #home #results .dap .https_desc, #home #results .dap .dap_desc {
           width: 73%; } }
-    #home #results .https .https_desc, #home #results .dap .https_desc {
-      padding-left: 25px; }
-    #home #results .https .dap_desc, #home #results .dap .dap_desc {
-      padding-right: 25px; }
+    @media (min-width: 600px) {
+      #home #results .https .https_desc, #home #results .dap .https_desc {
+        padding-left: 25px; } }
+    @media (min-width: 600px) {
+      #home #results .https .dap_desc, #home #results .dap .dap_desc {
+        padding-right: 25px; } }
     #home #results .https p, #home #results .dap p {
       padding: 15px 0; }
 #home #explore {
