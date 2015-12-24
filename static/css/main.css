@@ -409,7 +409,8 @@ a#skipnav {
     display: table;
     clear: both; }
   #home #wrapper h4 {
-    font-size: 2em; }
+    font-size: 2em;
+    margin-bottom: 0.5em; }
 #home #results {
   clear: both;
   margin: 0 auto;
@@ -423,6 +424,7 @@ a#skipnav {
       font-size: 0.8em; }
     #home #results .https .https_chart, #home #results .https .dap_chart, #home #results .dap .https_chart, #home #results .dap .dap_chart {
       margin: 0 auto;
+      padding-bottom: 40px;
       width: 200px; }
     @media (min-width: 600px) {
       #home #results .https .https_chart, #home #results .dap .https_chart {
@@ -438,7 +440,7 @@ a#skipnav {
       padding: 27px 0 0;
       vertical-align: top; }
     #home #results .https p, #home #results .dap p {
-      padding: 15px 0; }
+      padding-bottom: 1em; }
 #home #explore {
   float: left;
   display: block;
@@ -477,6 +479,15 @@ a#skipnav {
       #home #explore #main-content.white-bkg a:hover, #home #explore #main-content.white-bkg a:focus {
         color: #0066CC;
         text-decoration: underline; }
+
+.results-link {
+  color: #0066CC;
+  border: 1px solid #0066CC;
+  margin-top: 3px;
+  padding: 8px 16px;
+  display: inline-block; }
+  .results-link:hover {
+    color: #0066CC; }
 
 #analytics #content > header, #https #content > header, #about #content > header, #domain #content > header, #agency #content > header {
   max-width: 68em;

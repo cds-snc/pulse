@@ -245,6 +245,7 @@ a#skipnav {
 
     h4 {
       font-size: 2em;
+      margin-bottom: 0.5em;
     }
   }
 
@@ -266,6 +267,7 @@ a#skipnav {
 
       .https_chart, .dap_chart {
         margin: 0 auto;
+        padding-bottom: 40px;
         width: 200px;
       }
 
@@ -290,7 +292,7 @@ a#skipnav {
       }
 
       p {
-        padding: 15px 0;
+        padding-bottom: 1em;
       }
     }
   }
@@ -344,6 +346,18 @@ a#skipnav {
         }
       }
     }
+  }
+}
+
+.results-link {
+  color: $light-blue;
+  border: 1px solid $light-blue;
+  margin-top: 3px;
+  padding: 8px 16px;
+  display: inline-block;
+
+  &:hover {
+    color: $light-blue;
   }
 }
 
