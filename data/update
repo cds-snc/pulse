@@ -297,18 +297,27 @@ def process_domains():
 
 
     if https_total > 0:
+
+      if analytics_total > 0:
+        dap_number = percent(analytics_stats['dap'], analytics_total)
+      else:
+        dap_number = 0
+
+
       row = {
         'Agency': agency,
         'Number of Domains': https_total,
         LABELS['https']: percent(https_stats['https'], https_total),
         LABELS['https_forced']: percent(https_stats['https_forced'], https_total),
         LABELS['hsts']: percent(https_stats['hsts'], https_total),
-        LABELS['grade_agencies']: percent(https_stats['grade'], https_total)
+        LABELS['grade_agencies']: percent(https_stats['grade'], https_total),
+        LABELS['dap']: dap_number
       }
       https_agencies.append(row)
       agency_map[slugify.slugify(agency)]['https'] = row
     else:
       agency_map[slugify.slugify(agency)]['https'] = None
+
 
     if analytics_total > 0:
       row = {
@@ -538,6 +547,8 @@ def process_stats():
 
   total = len(https_domains)
   enabled = 0
+  enforced = 0
+  hsts = 0
   for row in https_domains:
     # HTTPS needs to be enabled.
     # It's okay if it has a bad chain.
@@ -547,6 +558,18 @@ def process_stats():
       (row[LABELS['https_forced']] >= 1)
     ):
       enabled += 1
+
+    # Needs to be Default or Strict to be 'Yes'
+    if row[LABELS['https_forced']] >= 2:
+      enforced += 1
+
+    # Needs to be at least partially present
+    if row[LABELS['hsts']] >= 1:
+      hsts += 1
+
+  print("Uses HTTPS: %i%%" % percent(enabled, total))
+  print("Enforces HTTPS: %i%%" % percent(enforced, total))
+  print("Uses HSTS: %i%%" % percent(hsts, total))
 
   pct = percent(enabled, total)
 

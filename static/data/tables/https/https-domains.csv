@@ -7,13 +7,13 @@ Domain,Branch,Agency,Redirect,Uses HTTPS,Enforces HTTPS,Strict Transport Securit
 aapi.gov,executive,Department of Education,Yes,No,,,
 abandonedmines.gov,executive,Department of the Interior,No,No,,,
 abilityone.gov,executive,Comm for People Who Are Blind/Severly Disabled,No,No,,,
-abmc.gov,executive,American Battle Monuments Commission,No,Yes,No,No,
+abmc.gov,executive,American Battle Monuments Commission,No,Yes,No,No,A
 access-board.gov,executive,U. S. Access Board,No,Yes,No,No,A-
 acf.gov,executive,Department of Health And Human Services,Yes,No,,,
 achp.gov,executive,Advisory Council on Historic Preservation,No,No,,,
 acl.gov,executive,Department of Health And Human Services,No,No,,,
-acquisition.gov,executive,General Services Administration,No,Yes,Yes,No,C
-acus.gov,executive,Administrative Conference of the United States,No,Yes,Yes,"Yes, and preloaded",
+acquisition.gov,executive,General Services Administration,No,Yes,Yes,No,B
+acus.gov,executive,Administrative Conference of the United States,No,Yes,Yes,"Yes, and preloaded",A-
 acwi.gov,executive,Department of the Interior,No,No,,,
 ada.gov,executive,Department of Justice,No,No,,,
 adf.gov,executive,African Development Foundation,No,No,,,
@@ -23,18 +23,18 @@ adr.gov,executive,Department of Justice,No,No,,,
 advantage.gov,executive,General Services Administration,No,No,,,
 afadvantage.gov,executive,General Services Administration,No,Yes,Yes,No,C
 aff.gov,executive,Department of Agriculture,No,Yes,No,No,A
-afrh.gov,executive,Armed Forces Retirement Home,No,Yes,Yes,No,
+afrh.gov,executive,Armed Forces Retirement Home,No,Yes,Yes,No,C
 africanamericanhistorymonth.gov,legislative,Library of Congress,No,No,,,
 afterschool.gov,executive,Department of Health And Human Services,Yes,No,,,
 aging.gov,executive,Department of Health And Human Services,Yes,Yes,No,No,B
 agingstats.gov,executive,Department of Health And Human Services,No,No,,,
 ahcpr.gov,executive,Department of Health And Human Services,Yes,No,,,
 ahrq.gov,executive,Department of Health And Human Services,No,No,,,
-aidrefugees.gov,executive,Executive Office of the President,Yes,Yes,Yes,No,A
+aidrefugees.gov,executive,Executive Office of the President,Yes,Yes,Yes,Yes,A+
 aids.gov,executive,Department of Health And Human Services,No,Yes,Yes,No,A
 airnow.gov,executive,Environmental Protection Agency,No,No,,,
 alaskacenters.gov,executive,Department of the Interior,No,No,,,
-alertaenlinea.gov,executive,Federal Trade Commission,No,Yes,No,No,A
+alertaenlinea.gov,executive,Federal Trade Commission,No,Yes,No,No,
 altusandc.gov,executive,Department of Defense,No,No,,,
 alzheimers.gov,executive,Department of Health And Human Services,No,No,,,
 ama.gov,executive,Department of the Treasury,No,Yes,Yes,No,A
@@ -54,9 +54,8 @@ americorps.gov,executive,Corporation for National & Community Service,Yes,No,,,
 americorpsconnect.gov,executive,Corporation for National & Community Service,Yes,No,,,
 americorpsweek.gov,executive,Corporation for National & Community Service,No,No,,,
 ameslab.gov,executive,Department of Energy,No,Yes,Yes,No,A
-amtrakoig.gov,executive,AMTRAK,No,Yes,Yes,No,
-anchorit.gov,executive,Consumer Product Safety Commission,No,Yes,No,No,
-anl.gov,executive,Department of Energy,No,No,,,
+amtrakoig.gov,executive,AMTRAK,No,Yes,Yes,No,C
+anchorit.gov,executive,Consumer Product Safety Commission,No,Yes,No,No,B
 annualcreditreport.gov,executive,Federal Trade Commission,Yes,No,,,
 anstaskforce.gov,executive,Department of the Interior,No,No,,,
 aoa.gov,executive,Department of Health And Human Services,No,No,,,
@@ -67,11 +66,10 @@ arc.gov,executive,Appalachian Regional Commission,No,No,,,
 archives.gov,executive,National Archives and Records Administration,No,No,,,
 arctic.gov,executive,National Science Foundation,No,Yes,Yes,No,C
 arcticgas.gov,executive,National Science Foundation,No,No,,,
-arm.gov,executive,Department of Energy,No,Yes,No,No,A
 ars-grin.gov,executive,Department of Agriculture,No,No,,,
 arts.gov,executive,National Endowment for the Arts,No,Yes,Yes,No,A
 asap.gov,executive,Department of the Treasury,No,Yes,Yes,No,B
-asc.gov,executive,Appraisal Subcommittee,No,Yes,Yes,No,C
+asc.gov,executive,Appraisal Subcommittee,No,Yes,Yes,No,A
 asianpacificheritage.gov,legislative,Library of Congress,No,No,,,
 askkaren.gov,executive,Department of Agriculture,Yes,No,,,
 astrongmiddleclass.gov,executive,Executive Office of the President,Yes,Yes,No,No,A
@@ -80,7 +78,7 @@ atvsafety.gov,executive,Consumer Product Safety Commission,Yes,No,,,
 autocommunities.gov,executive,Department of Labor,No,No,,,
 aviationweather.gov,executive,Department of Commerce,No,Yes,No,No,B
 ayudaconmibanco.gov,executive,Department of the Treasury,No,No,,,
-bam.gov,executive,Department of Health And Human Services,Yes,No,,,
+bam.gov,executive,Department of Health And Human Services,No,No,,,
 bankanswers.gov,executive,Department of the Treasury,No,No,,,
 bankcustomer.gov,executive,Department of the Treasury,No,No,,,
 bankcustomerassistance.gov,executive,Department of the Treasury,No,No,,,
@@ -110,7 +108,6 @@ bldrdoc.gov,executive,Department of Commerce,No,No,,,
 blm.gov,executive,Department of the Interior,No,No,,,
 blmntl.gov,executive,Department of the Interior,Yes,No,,,
 bls.gov,executive,Department of Labor,No,No,,,
-bnl.gov,executive,Department of Energy,No,Yes,Yes,No,C
 boem.gov,executive,Department of the Interior,No,No,,,
 boemre.gov,executive,Department of the Interior,No,No,,,
 bondpro.gov,executive,Department of the Treasury,No,No,,,
@@ -128,15 +125,13 @@ budget.gov,executive,Executive Office of the President,Yes,Yes,No,No,A
 buildingamerica.gov,executive,Department of Energy,Yes,No,,,
 business.gov,executive,Small Business Administration,Yes,No,,,
 businessusa.gov,executive,General Services Administration,Yes,Yes,No,No,A
-buyaccessible.gov,executive,General Services Administration,No,Yes,No,No,F
 buyusa.gov,executive,Department of Commerce,No,No,,,
 cancer.gov,executive,Department of Health And Human Services,No,No,,,
 cancernet.gov,executive,Department of Health And Human Services,Yes,No,,,
 cao.gov,executive,General Services Administration,No,Yes,Yes,"Yes, and preloaded",
 capitol.gov,legislative,The Legislative Branch (Congress),No,Yes,No,No,C
 capitolhill.gov,legislative,Library of Congress,Yes,No,,,
-capnhq.gov,executive,Civil Air Patrol,No,Yes,Yes,No,
-casl.gov,executive,Department of Energy,No,No,,,
+capnhq.gov,executive,Civil Air Patrol,No,Yes,Yes,No,B
 cbca.gov,executive,General Services Administration,No,No,,,
 cbo.gov,legislative,The Legislative Branch (Congress),No,Yes,Yes,No,A
 cbonews.gov,legislative,The Legislative Branch (Congress),No,No,,,
@@ -146,12 +141,11 @@ ccr.gov,executive,General Services Administration,No,No,,,
 cdc.gov,executive,Department of Health And Human Services,No,No,,,
 cdco.gov,executive,Department of Veterans Affairs,Yes,No,,,
 cdfifund.gov,executive,Department of the Treasury,No,Yes,Yes,No,B
-cebaf.gov,executive,Department of Energy,Yes,No,,,
 cecc.gov,legislative,The Legislative Branch (Congress),No,No,,,
 cendi.gov,executive,Department of Energy,No,No,,,
 census.gov,executive,Department of Commerce,No,No,,,
-cfa.gov,executive,U.S. Commission of Fine Arts,No,Yes,No,Yes,A+
-cfda.gov,executive,General Services Administration,No,Yes,Yes,No,B
+cfa.gov,executive,U.S. Commission of Fine Arts,No,Yes,Yes,"Yes, and preloaded",A+
+cfda.gov,executive,General Services Administration,No,Yes,Yes,No,
 cflhd.gov,executive,Department of Transportation,No,No,,,
 cfo.gov,executive,General Services Administration,No,Yes,Yes,"Yes, and preloaded",
 cfoc.gov,executive,General Services Administration,Yes,No,,,
@@ -167,10 +161,10 @@ childreninadversity.gov,executive,U.S. Agency for International Development,No,N
 childwelfare.gov,executive,Department of Health And Human Services,No,Yes,Yes,No,A
 chinacommission.gov,legislative,The Legislative Branch (Congress),No,Yes,No,No,C
 choosemyplate.gov,executive,Department of Agriculture,No,No,,,
-christophercolumbusfoundation.gov,executive,Christopher Columbus Fellowship Foundation,No,Yes,No,No,
+christophercolumbusfoundation.gov,executive,Christopher Columbus Fellowship Foundation,No,Yes,No,No,C
 cia.gov,executive,Central Intelligence Agency,No,Yes,Yes,No,A
 cio.gov,executive,General Services Administration,No,Yes,Yes,"Yes, and preloaded",
-citizencorps.gov,executive,Department of Homeland Security,Yes,Yes,No,No,A-
+citizencorps.gov,executive,Department of Homeland Security,Yes,Yes,No,No,A
 civilrightsusa.gov,executive,Department of Commerce,No,No,,,
 climate.gov,executive,Department of Commerce,No,Yes,Yes,Yes,A+
 clinicaltrial.gov,executive,Department of Health And Human Services,No,No,,,
@@ -196,10 +190,10 @@ comptrollerofthecurrency.gov,executive,Department of the Treasury,No,No,,,
 computers4learning.gov,executive,General Services Administration,Yes,No,,,
 computersforlearning.gov,executive,General Services Administration,No,Yes,No,No,B
 congress.gov,legislative,Library of Congress,No,Yes,Yes,No,B
-congressionaldirectory.gov,legislative,Government Printing Office,Yes,No,,,
-congressionalrecord.gov,legislative,Government Printing Office,Yes,No,,,
+congressionaldirectory.gov,legislative,Government Printing Office,Yes,Yes,Yes,No,B
+congressionalrecord.gov,legislative,Government Printing Office,Yes,Yes,Yes,No,B
 connect.gov,executive,General Services Administration,No,Yes,No,No,C
-consumer.gov,executive,Federal Trade Commission,No,Yes,No,No,A
+consumer.gov,executive,Federal Trade Commission,No,Yes,No,No,
 consumeraction.gov,executive,General Services Administration,Yes,No,,,
 consumerbureau.gov,executive,Consumer Financial Protection Bureau,Yes,No,,,
 consumerfinance.gov,executive,Consumer Financial Protection Bureau,No,No,,,
@@ -208,15 +202,15 @@ consumerfinancialprotectionbureau.gov,executive,Consumer Financial Protection Bu
 consumerprotection.gov,executive,Consumer Financial Protection Bureau,Yes,No,,,
 consumerprotectionbureau.gov,executive,Consumer Financial Protection Bureau,Yes,No,,,
 consumersentinel.gov,executive,Federal Trade Commission,No,Yes,Yes,"Yes, and preloaded",A-
-consumidor.gov,executive,Federal Trade Commission,No,Yes,No,No,A
+consumidor.gov,executive,Federal Trade Commission,No,Yes,No,No,
 continentalshelf.gov,executive,Department of State,No,No,,,
-contractdirectory.gov,executive,General Services Administration,No,Yes,Yes,No,F
+contractdirectory.gov,executive,General Services Administration,No,Yes,Yes,No,A-
 coop-uspto.gov,executive,Department of Commerce,Yes,No,,,
 copyright.gov,legislative,Library of Congress,No,No,,,
 coralreef.gov,executive,Department of the Interior,No,No,,,
 cpars.gov,executive,General Services Administration,No,Yes,Yes,No,C
 cpnireporting.gov,executive,Department of Homeland Security,No,Yes,Yes,No,C
-cpsc.gov,executive,Consumer Product Safety Commission,No,Yes,No,No,
+cpsc.gov,executive,Consumer Product Safety Commission,No,Yes,No,No,B
 crimesolutions.gov,executive,Department of Justice,No,No,,,
 crimevictims.gov,executive,Department of Justice,No,No,,,
 crt2014-2024review.gov,executive,Department of Energy,No,No,,,
@@ -246,7 +240,6 @@ dietaryguidelines.gov,executive,Department of Agriculture,Yes,No,,,
 digitalgov.gov,executive,General Services Administration,No,Yes,No,No,C
 digitalliteracy.gov,executive,Department of Commerce,No,No,,,
 digitalpreservation.gov,legislative,Library of Congress,No,No,,,
-digitalstewardship.gov,legislative,Library of Congress,Yes,No,,,
 digitizationguidelines.gov,legislative,Library of Congress,No,No,,,
 directoasucuenta.gov,executive,Department of the Treasury,No,Yes,Yes,No,A-
 disability.gov,executive,Department of Labor,No,Yes,Yes,No,A-
@@ -261,14 +254,14 @@ dnsops.gov,executive,Department of Commerce,No,No,,,
 doc.gov,executive,Department of Commerce,Yes,No,,,
 docline.gov,executive,Department of Health And Human Services,No,No,,,
 dod.gov,executive,Department of Defense,No,No,,,
-doe.gov,executive,Department of Energy,Yes,No,,,
+doe.gov,executive,Department of Energy,No,No,,,
 doi.gov,executive,Department of the Interior,No,Yes,Yes,No,A
 doioig.gov,executive,Department of the Interior,No,Yes,Yes,No,A
 dol-esa.gov,executive,Department of Labor,No,No,,,
 dol.gov,executive,Department of Labor,No,Yes,No,No,B
-doleta.gov,executive,Department of Labor,No,Yes,No,No,
+doleta.gov,executive,Department of Labor,No,Yes,Yes,No,A-
 donaciondeorganos.gov,executive,Department of Health And Human Services,No,No,,,
-donotcall.gov,executive,Federal Trade Commission,No,Yes,Yes,"Yes, and preloaded",A
+donotcall.gov,executive,Federal Trade Commission,No,Yes,Yes,"Yes, and preloaded",A+
 dontserveteens.gov,executive,Federal Trade Commission,Yes,No,,,
 dot.gov,executive,Department of Transportation,Yes,Yes,Yes,No,A
 dotgov.gov,executive,General Services Administration,No,Yes,Yes,No,B
@@ -296,11 +289,11 @@ edpubs.gov,executive,Department of Education,No,Yes,Yes,"Yes, and preloaded",A
 education.gov,executive,Department of Education,No,No,,,
 educationjobsfund.gov,executive,Recovery Accountability and Transparency Board,No,No,,,
 eeoc.gov,executive,Equal Employment Opportunity Commission,No,No,,,
-eftps.gov,executive,Department of the Treasury,No,Yes,Yes,No,C
+eftps.gov,executive,Department of the Treasury,No,Yes,Yes,No,A-
 egov.gov,executive,Executive Office of the President,Yes,Yes,No,No,A
 eia.gov,executive,Department of Energy,No,Yes,No,No,B
 eisenhowermemorial.gov,executive,General Services Administration,No,No,,,
-eldercare.gov,executive,Department of Health And Human Services,No,Yes,No,No,
+eldercare.gov,executive,Department of Health And Human Services,No,Yes,No,No,T
 emergency-federal-register.gov,executive,National Archives and Records Administration,Yes,No,,,
 employeeexpress.gov,executive,Office of Personnel Management,No,Yes,Yes,No,A
 empowhr.gov,executive,Department of Agriculture,No,Yes,Yes,No,
@@ -320,7 +313,7 @@ esa.gov,executive,Department of Commerce,No,No,,,
 esc.gov,executive,Department of Transportation,No,Yes,No,No,B
 eseclab.gov,legislative,The Legislative Branch (Congress),Yes,No,,,
 espanolforlawenforcement.gov,executive,Department of Justice,Yes,No,,,
-esrs.gov,executive,General Services Administration,No,Yes,Yes,No,B
+esrs.gov,executive,General Services Administration,No,Yes,Yes,No,
 eta-find.gov,executive,Department of the Treasury,No,Yes,Yes,No,A-
 ethics.gov,executive,Executive Office of the President,Yes,Yes,No,No,A
 ethicsburg.gov,executive,Department of the Treasury,No,No,,,
@@ -346,8 +339,8 @@ fasab.gov,legislative,The Legislative Branch (Congress),No,No,,,
 fatherhood.gov,executive,Department of Health And Human Services,No,Yes,Yes,"Yes, and preloaded",A+
 fbi.gov,executive,Department of Justice,No,Yes,Yes,No,A
 fbiic.gov,executive,Federal Reserve System,No,Yes,No,No,B
-fbijobs.gov,executive,Department of Justice,No,Yes,Yes,No,F
-fbo.gov,executive,General Services Administration,No,Yes,Yes,No,B
+fbijobs.gov,executive,Department of Justice,No,Yes,Yes,No,A-
+fbo.gov,executive,General Services Administration,No,Yes,Yes,No,
 fca.gov,executive,Farm Credit Administration,No,Yes,No,No,B
 fcc.gov,executive,Federal Communications Commission,No,Yes,Yes,No,A
 fccuniversity.gov,executive,Federal Communications Commission,Yes,No,,,
@@ -358,16 +351,16 @@ fda.gov,executive,Department of Health And Human Services,No,No,,,
 fdic.gov,executive,Federal Deposit Insurance Corporation,No,Yes,Yes,Yes,A-
 fdicbets.gov,executive,Federal Deposit Insurance Corporation,No,No,,,
 fdicconnect.gov,executive,Federal Deposit Insurance Corporation,Yes,No,,,
-fdicig.gov,executive,Federal Deposit Insurance Corporation,No,Yes,Yes,No,F
+fdicig.gov,executive,Federal Deposit Insurance Corporation,No,Yes,Yes,No,B
 fdicoig.gov,executive,Federal Deposit Insurance Corporation,Yes,No,,,
 fdicseguro.gov,executive,Federal Deposit Insurance Corporation,No,No,,,
 fdlp.gov,legislative,Government Printing Office,No,No,,,
 fdms.gov,executive,Environmental Protection Agency,No,No,,,
-fdsys.gov,legislative,Government Printing Office,Yes,No,,,
+fdsys.gov,legislative,Government Printing Office,Yes,Yes,Yes,No,B
 fea.gov,executive,Denali Commission,No,No,,,
 feb.gov,executive,Office of Personnel Management,No,Yes,No,No,A
 fec.gov,executive,Federal Elections Commission,No,No,,,
-fedbizopps.gov,executive,General Services Administration,Yes,Yes,Yes,No,B
+fedbizopps.gov,executive,General Services Administration,Yes,Yes,Yes,No,
 fedcenter.gov,executive,Environmental Protection Agency,No,Yes,Yes,No,A-
 federalcourts.gov,judicial,The Judicial Branch (Courts),Yes,No,,,
 federalinvestments.gov,executive,Department of the Treasury,No,No,,,
@@ -384,7 +377,6 @@ fedjobs.gov,executive,Office of Personnel Management,Yes,No,,,
 fedpartnership.gov,executive,Federal Reserve System,No,Yes,Yes,No,B
 fedramp.gov,executive,General Services Administration,No,Yes,No,No,A
 fedreg.gov,legislative,Government Printing Office,No,Yes,No,No,F
-fedrooms.gov,executive,General Services Administration,No,No,,,
 fedshirevets.gov,executive,Office of Personnel Management,No,No,,,
 fedspending.gov,executive,Department of the Treasury,Yes,Yes,No,No,B
 feedthefuture.gov,executive,U.S. Agency for International Development,No,No,,,
@@ -401,7 +393,7 @@ fhfaoig.gov,executive,Federal Housing Finance Agency Office of Inspector General
 fido.gov,executive,General Services Administration,No,No,,,
 financialresearch.gov,executive,Department of the Treasury,No,Yes,No,No,A-
 financialstability.gov,executive,Department of the Treasury,Yes,No,,,
-fincen.gov,executive,Department of the Treasury,No,Yes,Yes,No,C
+fincen.gov,executive,Department of the Treasury,No,Yes,Yes,No,B
 findyouthinfo.gov,executive,Department of Health And Human Services,Yes,No,,,
 firecode.gov,executive,Department of the Interior,No,Yes,No,No,C
 fireleadership.gov,executive,Department of the Interior,No,No,,,
@@ -418,15 +410,14 @@ fitness.gov,executive,Department of Health And Human Services,No,No,,,
 fjc.gov,judicial,The Judicial Branch (Courts),No,No,,,
 fleta.gov,executive,Department of Homeland Security,No,Yes,Yes,No,A
 fletc.gov,executive,Department of Homeland Security,No,Yes,Yes,No,A
-flightschoolcandidates.gov,executive,Department of Homeland Security,No,Yes,Yes,No,C
+flightschoolcandidates.gov,executive,Department of Homeland Security,No,Yes,Yes,No,B
 floodsmart.gov,executive,Department of Homeland Security,No,No,,,
 flra.gov,executive,Federal Labor Relations Authority,No,Yes,Yes,"Yes, and preloaded",C
 flu.gov,executive,Department of Health And Human Services,No,No,,,
 fmc.gov,executive,Federal Maritime Commission,No,No,,,
 fmcs.gov,executive,Federal Mediation and Conciliation Service,No,Yes,Yes,No,A
-fmi.gov,executive,General Services Administration,No,Yes,No,No,F
 fmshrc.gov,legislative,Government Printing Office,No,Yes,No,No,C
-fnal.gov,executive,Department of Energy,No,Yes,No,No,C
+fnal.gov,executive,Department of Energy,No,Yes,No,No,A
 foia.gov,executive,Department of Justice,No,No,,,
 foodsafety.gov,executive,Department of Health And Human Services,No,No,,,
 foodsafetyjobs.gov,executive,Department of Agriculture,Yes,No,,,
@@ -436,10 +427,10 @@ foreignassistance.gov,executive,Department of State,No,No,,,
 forestsandrangelands.gov,executive,Department of Agriculture,No,No,,,
 forfeiture.gov,executive,Department of Justice,No,No,,,
 forms.gov,executive,General Services Administration,Yes,No,,,
-fpds.gov,executive,General Services Administration,No,Yes,No,No,F
+fpds.gov,executive,General Services Administration,No,No,,,
 freecreditreport.gov,executive,Federal Trade Commission,Yes,No,,,
 freshempire.gov,executive,Department of Health And Human Services,Yes,Yes,Yes,No,B
-frtib.gov,executive,Federal Retirement Thrift Investment Board,No,No,,,
+frtib.gov,executive,Federal Retirement Thrift Investment Board,No,Yes,Yes,Yes,A+
 frtr.gov,executive,Environmental Protection Agency,No,Yes,Yes,"Yes, and preloaded",B
 fruitsandveggiesmatter.gov,executive,Department of Health And Human Services,Yes,No,,,
 fs.fed.us,executive,Department of Agriculture,No,No,,,
@@ -448,13 +439,12 @@ fsapubs.gov,executive,Department of Education,No,Yes,Yes,"Yes, and preloaded",A
 fsd.gov,executive,General Services Administration,No,Yes,Yes,No,F
 fsgb.gov,executive,Department of State,No,Yes,No,No,B
 fsoc.gov,executive,Department of the Treasury,Yes,No,,,
-fsrs.gov,executive,General Services Administration,No,Yes,Yes,No,B
+fsrs.gov,executive,General Services Administration,No,Yes,Yes,No,
 ftc.gov,executive,Federal Trade Commission,No,Yes,Yes,No,A
 ftccomplaintassistant.gov,executive,Federal Trade Commission,No,Yes,Yes,"Yes, and preloaded",A+
-ftcefile.gov,executive,Federal Trade Commission,No,Yes,Yes,Yes,A
+ftcefile.gov,executive,Federal Trade Commission,No,Yes,Yes,Yes,
 fttesttwai.gov,executive,Department of the Treasury,No,Yes,Yes,No,T
-fueleconomy.gov,executive,Department of Energy,No,No,,,
-fvap.gov,executive,Department of Defense,No,No,,,
+fvap.gov,executive,Department of Defense,No,Yes,Yes,No,A
 fws.gov,executive,Department of the Interior,No,Yes,No,No,A-
 g5.gov,executive,Department of Education,No,Yes,Yes,No,A-
 gao.gov,legislative,The Legislative Branch (Congress),No,No,,,
@@ -462,7 +452,7 @@ gaonet.gov,legislative,The Legislative Branch (Congress),No,No,,,
 gcdamp.gov,executive,Department of the Interior,No,No,,,
 gcmrc.gov,executive,Department of the Interior,No,No,,,
 genbank.gov,executive,Department of Health And Human Services,Yes,No,,,
-genome.gov,executive,Department of Health And Human Services,No,No,,,
+genome.gov,executive,Department of Health And Human Services,No,Yes,No,No,A
 geocommunicator.gov,executive,Department of the Interior,No,No,,,
 geomac.gov,executive,Department of the Interior,No,No,,,
 geoplatform.gov,executive,Department of the Interior,No,No,,,
@@ -488,7 +478,7 @@ govbenefits.gov,executive,Department of Labor,Yes,No,,,
 governmentjobs.gov,executive,Office of Personnel Management,Yes,No,,,
 govloans.gov,executive,Department of Labor,No,No,,,
 govsales.gov,executive,General Services Administration,No,No,,,
-gpo.gov,legislative,Government Printing Office,No,No,,,
+gpo.gov,legislative,Government Printing Office,No,Yes,Yes,No,B
 gps.gov,executive,Department of Commerce,No,No,,,
 grants.gov,executive,Department of Health And Human Services,No,No,,,
 grantsolutions.gov,executive,Department of Health And Human Services,No,Yes,Yes,No,A
@@ -498,7 +488,7 @@ gsa.gov,executive,General Services Administration,No,No,,,
 gsaadvantage.gov,executive,General Services Administration,No,Yes,Yes,No,C
 gsaauctions.gov,executive,General Services Administration,No,No,,,
 gsadvantage.gov,executive,General Services Administration,No,No,,,
-gsaig.gov,executive,General Services Administration,No,Yes,Yes,No,B
+gsaig.gov,executive,General Services Administration,No,Yes,Yes,Yes,A+
 gsaxcess.gov,executive,General Services Administration,No,Yes,No,No,B
 guideline.gov,executive,Department of Health And Human Services,No,Yes,No,No,F
 guidelines.gov,executive,Department of Health And Human Services,Yes,No,,,
@@ -514,7 +504,7 @@ healthfinder.gov,executive,Department of Health And Human Services,No,Yes,No,No,
 healthindicators.gov,executive,Department of Health And Human Services,No,No,,,
 healthit.gov,executive,Department of Health And Human Services,No,Yes,Yes,No,A
 healthreform.gov,executive,Department of Health And Human Services,Yes,No,,,
-healthypeople.gov,executive,Department of Health And Human Services,No,Yes,No,No,
+healthypeople.gov,executive,Department of Health And Human Services,No,Yes,No,No,B
 hearttruth.gov,executive,Department of Health And Human Services,Yes,No,,,
 helpingamericasyouth.gov,executive,Department of Justice,Yes,No,,,
 helpwithmybank.gov,executive,Department of the Treasury,No,No,,,
@@ -534,7 +524,7 @@ homeenergyscore.gov,executive,Department of Energy,Yes,No,,,
 homelandsecurity.gov,executive,Department of Homeland Security,Yes,No,,,
 homesales.gov,executive,Department of Housing And Urban Development,No,No,,,
 house.gov,legislative,The Legislative Branch (Congress),No,Yes,No,No,F
-housecalendar.gov,legislative,Government Printing Office,Yes,No,,,
+housecalendar.gov,legislative,Government Printing Office,Yes,Yes,Yes,No,B
 housecommunications.gov,legislative,The Legislative Branch (Congress),Yes,No,,,
 housedemocrats.gov,legislative,The Legislative Branch (Congress),Yes,No,,,
 housedems.gov,legislative,The Legislative Branch (Congress),Yes,No,,,
@@ -543,7 +533,7 @@ howto.gov,executive,General Services Administration,Yes,Yes,No,No,T
 hrsa.gov,executive,Department of Health And Human Services,No,No,,,
 hru.gov,executive,Office of Personnel Management,No,Yes,Yes,No,B
 hsa.gov,executive,Small Business Administration,No,No,,,
-hsr.gov,executive,Federal Trade Commission,No,Yes,Yes,"Yes, and preloaded",A+
+hsr.gov,executive,Federal Trade Commission,No,Yes,Yes,"Yes, and preloaded",
 hud.gov,executive,Department of Housing And Urban Development,No,No,,,
 hudoig.gov,executive,Department of Housing And Urban Development,No,Yes,Yes,No,A
 huduser.gov,executive,Department of Housing And Urban Development,No,Yes,No,No,B
@@ -562,16 +552,16 @@ ibwc.gov,executive,Department of State,No,No,,,
 ic3.gov,executive,Department of Justice,No,Yes,No,No,C
 icass.gov,executive,Department of State,No,Yes,Yes,No,A
 icbemp.gov,executive,Department of Agriculture,No,No,,,
-ice.gov,executive,Department of Homeland Security,No,Yes,Yes,No,A
+ice.gov,executive,Department of Homeland Security,No,Yes,Yes,Yes,A
 ich.gov,executive,US Interagency Council on Homelessness,No,No,,,
 idealab.gov,executive,Department of Health And Human Services,Yes,No,,,
-identitytheft.gov,executive,Federal Trade Commission,No,Yes,Yes,No,A
-idmanagement.gov,executive,General Services Administration,No,No,,,
-idtheft.gov,executive,Federal Trade Commission,Yes,Yes,No,No,A
+identitytheft.gov,executive,Federal Trade Commission,No,Yes,Yes,No,
+idmanagement.gov,executive,General Services Administration,No,Yes,Yes,No,B
+idtheft.gov,executive,Federal Trade Commission,No,Yes,No,No,
 iedison.gov,executive,Department of Health And Human Services,Yes,No,,,
 ignet.gov,executive,Council of Inspector General on Integrity and Efficiency,No,Yes,Yes,No,B
 ihs.gov,executive,Department of Health And Human Services,No,Yes,No,No,B
-iiog.gov,executive,Department of Agriculture,No,Yes,No,No,
+iiog.gov,executive,Department of Agriculture,No,No,,,
 imls.gov,executive,Institute of Museum and Library Services,No,Yes,Yes,No,C
 indianaffairs.gov,executive,Department of the Interior,No,No,,,
 inel.gov,executive,Department of Energy,Yes,Yes,Yes,No,F
@@ -586,7 +576,7 @@ interior.gov,executive,Department of the Interior,Yes,No,,,
 interpol.gov,executive,Department of Justice,Yes,No,,,
 invasivespecies.gov,executive,Department of the Interior,No,No,,,
 invasivespeciesinfo.gov,executive,Department of Agriculture,No,No,,,
-investor.gov,executive,Securities and Exchange Commission,No,Yes,No,No,A
+investor.gov,executive,Securities and Exchange Commission,No,Yes,Yes,No,A
 ioss.gov,executive,Department of Defense,No,Yes,Yes,No,T
 ipac.gov,executive,Department of the Treasury,No,Yes,Yes,No,B
 ipcc-wg2.gov,executive,United Stated Global Change Research Program,No,Yes,No,No,C
@@ -599,8 +589,6 @@ irssales.gov,executive,Department of the Treasury,Yes,No,,,
 irsvideos.gov,executive,Department of the Treasury,No,No,,,
 ise.gov,executive,Director of National Intelligence,No,Yes,Yes,No,A
 isitdoneyet.gov,executive,Department of Agriculture,Yes,No,,,
-isotope.gov,executive,Department of Energy,No,Yes,Yes,No,B
-isotopes.gov,executive,Department of Energy,No,Yes,Yes,No,B
 italladdsup.gov,executive,Department of Transportation,Yes,No,,,
 itap.gov,executive,Department of Agriculture,No,Yes,No,No,B
 itdashboard.gov,executive,Executive Office of the President,No,Yes,Yes,"Yes, and preloaded",
@@ -610,7 +598,7 @@ itrd.gov,executive,Networking Information Technology Research and Development (N
 its.gov,executive,Department of the Treasury,No,Yes,Yes,No,B
 jamesmadison.gov,executive,James Madison Memorial Fellowship Foundation,No,No,,,
 jccs.gov,executive,Department of Defense,No,Yes,No,No,T
-jct.gov,legislative,The Legislative Branch (Congress),No,Yes,Yes,No,A
+jct.gov,legislative,The Legislative Branch (Congress),Yes,No,,,
 jem.gov,executive,Department of the Interior,No,Yes,No,No,A-
 jewishheritage.gov,legislative,Library of Congress,No,No,,,
 jewishheritagemonth.gov,legislative,Library of Congress,No,No,,,
@@ -623,7 +611,6 @@ justice.gov,executive,Department of Justice,No,No,,,
 justthinktwice.gov,executive,Department of Justice,Yes,No,,,
 juvenilecouncil.gov,executive,Department of Justice,No,No,,,
 jwod.gov,executive,Comm for People Who Are Blind/Severly Disabled,No,No,,,
-kids.gov,executive,General Services Administration,Yes,No,,,
 klamathrestoration.gov,executive,Department of the Interior,No,No,,,
 knowthefactsfirst.gov,executive,Department of Health And Human Services,Yes,No,,,
 labor.gov,executive,Department of Labor,Yes,No,,,
@@ -650,7 +637,7 @@ lifeline.gov,executive,Federal Communications Commission,Yes,No,,,
 lis.gov,legislative,Library of Congress,Yes,No,,,
 listo.gov,executive,Department of Homeland Security,No,No,,,
 literacy.gov,legislative,Library of Congress,Yes,No,,,
-llis.gov,executive,Department of Homeland Security,Yes,Yes,No,No,A-
+llis.gov,executive,Department of Homeland Security,Yes,Yes,No,No,A
 llnl.gov,executive,Department of Energy,No,Yes,Yes,Yes,A+
 lmrcouncil.gov,executive,Office of Personnel Management,No,No,,,
 lmvsci.gov,executive,Department of the Interior,No,No,,,
@@ -677,9 +664,11 @@ marinecadastre.gov,executive,Department of Commerce,No,No,,,
 max.gov,executive,Executive Office of the President,No,Yes,Yes,"Yes, and preloaded",
 mbda.gov,executive,Department of Commerce,No,No,,,
 mcc.gov,executive,Millennium Challenge Corporation,No,Yes,Yes,No,A
+mcrmc.gov,executive,Department of Defense,No,No,,,
 mda.gov,executive,Department of Transportation,No,No,,,
 medalofvalor.gov,executive,Department of Justice,No,Yes,Yes,No,F
-medicaid.gov,executive,Department of Health And Human Services,No,No,,,
+medicaid.gov,executive,Department of Health And Human Services,No,Yes,Yes,Yes,A+
+medicalcountermeasures.gov,executive,Department of Health And Human Services,No,Yes,No,No,C
 medicalreservecorps.gov,executive,Department of Health And Human Services,No,Yes,Yes,No,A
 medicare.gov,executive,Department of Health And Human Services,No,Yes,Yes,No,A
 medline.gov,executive,Department of Health And Human Services,Yes,No,,,
@@ -694,7 +683,7 @@ mitigationcommission.gov,executive,Department of the Interior,No,No,,,
 mlkday.gov,executive,Corporation for National & Community Service,Yes,No,,,
 mmc.gov,executive,Marine Mammal Commission,No,No,,,
 mms.gov,executive,Department of the Interior,No,No,,,
-mojavedata.gov,executive,Department of Defense,No,Yes,Yes,No,
+mojavedata.gov,executive,Department of Defense,No,Yes,Yes,No,B
 moneyfactory.gov,executive,Department of the Treasury,No,No,,,
 moneyfactorystore.gov,executive,Department of the Treasury,No,No,,,
 mrgo.gov,executive,Department of the Interior,Yes,No,,,
@@ -722,34 +711,30 @@ nationalbank.gov,executive,Department of the Treasury,Yes,No,,,
 nationalbankhelp.gov,executive,Department of the Treasury,No,No,,,
 nationalbanknet.gov,executive,Department of the Treasury,Yes,No,,,
 nationalchildrensstudy.gov,executive,Department of Health And Human Services,Yes,Yes,No,No,C
-nationalgangcenter.gov,executive,Department of Justice,No,Yes,Yes,No,
+nationalgangcenter.gov,executive,Department of Justice,No,Yes,Yes,No,A-
 nationalhousing.gov,executive,Department of Housing And Urban Development,No,No,,,
 nationalhousinglocator.gov,executive,Department of Housing And Urban Development,No,No,,,
 nationalmap.gov,executive,Department of the Interior,No,No,,,
 nationalresourcedirectory.gov,executive,Department of Veterans Affairs,Yes,Yes,Yes,No,A-
 nationalservice.gov,executive,Corporation for National & Community Service,No,No,,,
-nationalserviceresources.gov,executive,Corporation for National & Community Service,Yes,Yes,Yes,No,A-
+nationalserviceresources.gov,executive,Corporation for National & Community Service,No,Yes,Yes,No,T
 nationsreportcard.gov,executive,Department of Education,No,No,,,
 nativeamericanheritagemonth.gov,legislative,Library of Congress,No,No,,,
 nativeonestop.gov,executive,Department of the Interior,No,No,,,
 navycash.gov,executive,Department of the Treasury,No,No,,,
 nbc.gov,executive,Department of the Interior,No,Yes,Yes,No,C
 nbm.gov,executive,Federal Communications Commission,Yes,No,,,
-nccrc.gov,executive,Department of Energy,No,No,,,
-nccs.gov,executive,Department of Energy,Yes,No,,,
 ncd.gov,executive,National Council on Disability,No,No,,,
 ncifcrf.gov,executive,Department of Health And Human Services,Yes,Yes,No,No,B
 ncirc.gov,executive,Department of Justice,No,Yes,Yes,No,A
 ncix.gov,executive,Director of National Intelligence,No,No,,,
 ncjrs.gov,executive,Department of Justice,No,Yes,Yes,No,C
 ncpc.gov,executive,National Capital Planning Commission,No,Yes,No,No,A
-ncpw.gov,executive,Federal Trade Commission,No,Yes,No,No,A
-ncrc.gov,executive,Department of Energy,No,Yes,No,No,C
+ncpw.gov,executive,Federal Trade Commission,No,Yes,No,No,
 nctc.gov,executive,Central Intelligence Agency,No,No,,,
-ncua.gov,executive,National Credit Union Administration,No,Yes,Yes,No,C
+ncua.gov,executive,National Credit Union Administration,No,No,,,
 ndep.gov,executive,Department of the Interior,No,No,,,
 ndop.gov,executive,Department of the Interior,No,No,,,
-ndsa.gov,legislative,Library of Congress,Yes,No,,,
 nea.gov,executive,National Endowment for the Arts,Yes,No,,,
 neglecteddiseases.gov,executive,U.S. Agency for International Development,No,No,,,
 neh.gov,executive,National Endowment for the Humanities,No,No,,,
@@ -759,7 +744,7 @@ nemi.gov,executive,Department of the Interior,No,Yes,No,No,A-
 neup.gov,executive,Department of Energy,Yes,No,,,
 newmoney.gov,executive,Federal Reserve System,Yes,No,,,
 nfpors.gov,executive,Department of the Interior,No,Yes,Yes,No,C
-nga.gov,executive,National Gallery of Art,No,Yes,No,No,B
+nga.gov,executive,National Gallery of Art,No,Yes,No,No,
 ngc.gov,executive,Department of Health And Human Services,Yes,No,,,
 nhl.gov,executive,Department of Housing And Urban Development,No,No,,,
 nhtsa.gov,executive,Department of Transportation,No,No,,,
@@ -801,8 +786,6 @@ nstic.gov,executive,Executive Office of the President,Yes,No,,,
 nswp.gov,executive,National Aeronautics and Space Administration,No,No,,,
 ntdprogram.gov,executive,Department of Transportation,No,Yes,No,No,A-
 ntis.gov,executive,Department of Commerce,No,Yes,No,No,A
-ntrc.gov,executive,Department of Energy,Yes,No,,,
-ntsb.gov,executive,National Transportation Safety Board,No,No,,,
 nutrition.gov,executive,Department of Agriculture,No,Yes,No,No,B
 nutritionevidencelibrary.gov,executive,Department of Agriculture,Yes,No,,,
 nvtc.gov,executive,Department of Justice,Yes,No,,,
@@ -811,7 +794,7 @@ nwcg.gov,executive,Department of Agriculture,No,No,,,
 occ.gov,executive,Department of the Treasury,No,No,,,
 occhelps.gov,executive,Department of the Treasury,No,No,,,
 odni.gov,executive,Director of National Intelligence,No,No,,,
-oea.gov,executive,Department of Defense,No,No,,,
+oea.gov,executive,Department of Defense,No,Yes,No,No,T
 ofcm.gov,executive,Department of Commerce,No,No,,,
 ofda.gov,executive,U.S. Agency for International Development,No,Yes,Yes,No,F
 ofee.gov,executive,Environmental Protection Agency,No,No,,,
@@ -829,7 +812,7 @@ onlineonguard.gov,executive,Federal Trade Commission,Yes,No,,,
 onlinewbc.gov,executive,Small Business Administration,No,No,,,
 onrr.gov,executive,Department of the Interior,No,No,,,
 openinternet.gov,executive,Federal Communications Commission,Yes,No,,,
-opensource.gov,executive,Central Intelligence Agency,No,Yes,Yes,No,
+opensource.gov,executive,Central Intelligence Agency,No,Yes,Yes,No,A-
 openworld.gov,legislative,Government Printing Office,No,No,,,
 opic.gov,executive,Overseas Private Investment Corporation,No,Yes,Yes,Yes,A+
 opm.gov,executive,Office of Personnel Management,No,Yes,Yes,No,A
@@ -844,7 +827,6 @@ osha.gov,executive,Department of Labor,No,Yes,Yes,No,F
 oshrc.gov,executive,Occupational Safety & Health Review Commission,No,No,,,
 osm.gov,executive,Department of the Interior,Yes,No,,,
 osmre.gov,executive,Department of the Interior,No,No,,,
-osti.gov,executive,Department of Energy,No,No,,,
 ostp.gov,executive,Executive Office of the President,Yes,Yes,No,No,A
 ots.gov,executive,Department of the Treasury,No,No,,,
 ourdocuments.gov,executive,National Archives and Records Administration,No,No,,,
@@ -859,17 +841,13 @@ pay.gov,executive,Department of the Treasury,No,Yes,Yes,No,B
 paymentaccuracy.gov,executive,Executive Office of the President,No,Yes,Yes,"Yes, and preloaded",
 pbgc.gov,executive,Pension Benefit Guaranty Corporation,No,Yes,No,No,C
 pcah.gov,executive,National Endowment for the Humanities,No,No,,,
-pcip.gov,executive,Department of Health And Human Services,Yes,No,,,
 pclob.gov,executive,General Services Administration,No,Yes,Yes,"Yes, and preloaded",A
 pdbcecc.gov,legislative,The Legislative Branch (Congress),Yes,No,,,
-peacecore.gov,executive,U. S. Peace Corps,Yes,No,,,
-peacecorp.gov,executive,U. S. Peace Corps,No,No,,,
 peacecorps.gov,executive,U. S. Peace Corps,No,No,,,
 pentagon.gov,executive,Department of Defense,Yes,No,,,
 pepfar.gov,executive,Department of State,No,No,,,
 performance.gov,executive,General Services Administration,No,No,,,
 phe.gov,executive,Department of Health And Human Services,No,No,,,
-pic.gov,executive,General Services Administration,No,Yes,No,"Yes, and preload-ready",F
 piedrasblancas.gov,executive,Department of the Interior,Yes,No,,,
 pif.gov,executive,General Services Administration,Yes,No,,,
 plainlanguage.gov,executive,Department of Transportation,No,No,,,
@@ -886,15 +864,16 @@ pracomment.gov,executive,Department of the Treasury,Yes,No,,,
 prc.gov,executive,Postal Rate Commission,No,No,,,
 pregunteleakaren.gov,executive,Department of Agriculture,Yes,No,,,
 preserveamerica.gov,executive,Advisory Council on Historic Preservation,No,No,,,
-presidentialdocuments.gov,legislative,Government Printing Office,Yes,No,,,
+presidentialdocuments.gov,legislative,Government Printing Office,Yes,Yes,Yes,No,B
 presidentialinnovationfellows.gov,executive,General Services Administration,No,Yes,Yes,No,A
 presidentialserviceawards.gov,executive,Corporation for National & Community Service,No,No,,,
 presidio.gov,executive,Executive Office of the President,No,No,,,
+presidiotrust.gov,executive,Executive Office of the President,Yes,No,,,
 pretrialservices.gov,executive,Court Services and Offender Supervision,No,Yes,No,No,A
 primarysources.gov,legislative,Library of Congress,Yes,No,,,
 projectsafechildhood.gov,executive,Department of Justice,Yes,No,,,
 projectsafeneighborhoods.gov,executive,Department of Justice,Yes,No,,,
-protecciondelconsumidor.gov,executive,Federal Trade Commission,No,Yes,No,No,A
+protecciondelconsumidor.gov,executive,Federal Trade Commission,No,Yes,No,No,
 protectyourmove.gov,executive,Department of Transportation,Yes,Yes,Yes,No,C
 psa.gov,executive,Court Services and Offender Supervision,No,Yes,No,No,A
 psc.gov,executive,Department of Health And Human Services,No,Yes,No,No,C
@@ -903,6 +882,7 @@ psob.gov,executive,Department of Justice,No,Yes,Yes,No,F
 ptf.gov,executive,The Intelligence Community,Yes,No,,,
 pubmed.gov,executive,Department of Health And Human Services,Yes,Yes,No,No,A
 pubmedcentral.gov,executive,Department of Health And Human Services,Yes,No,,,
+qart.gov,executive,Director of National Intelligence,No,Yes,No,No,B
 qatesttwai.gov,executive,Department of the Treasury,No,Yes,Yes,No,T
 quic.gov,executive,Department of Health And Human Services,Yes,No,,,
 quick.gov,executive,Department of Health And Human Services,Yes,No,,,
@@ -913,7 +893,7 @@ ready.gov,executive,Department of Homeland Security,No,No,,,
 readybusiness.gov,executive,Department of Homeland Security,No,No,,,
 reaganlibrary.gov,executive,National Archives and Records Administration,No,No,,,
 realestatesales.gov,executive,General Services Administration,No,Yes,No,No,B
-realpropertyprofile.gov,executive,General Services Administration,No,Yes,Yes,No,
+realpropertyprofile.gov,executive,General Services Administration,No,Yes,Yes,No,B
 recalls.gov,executive,Consumer Product Safety Commission,No,Yes,Yes,No,B
 recovery.gov,executive,Recovery Accountability and Transparency Board,No,No,,,
 recoverymonth.gov,executive,Department of Health And Human Services,No,No,,,
@@ -928,7 +908,7 @@ reportband.gov,executive,Department of the Interior,Yes,No,,,
 research.gov,executive,National Science Foundation,No,Yes,No,No,B
 restorethegulf.gov,executive,Gulf Coast Ecosystem Restoration Council (GCERC),No,Yes,Yes,No,A-
 rivers.gov,executive,Department of the Interior,No,No,,,
-robodeidentidad.gov,executive,Federal Trade Commission,No,Yes,Yes,No,A
+robodeidentidad.gov,executive,Federal Trade Commission,No,Yes,Yes,No,
 rocis.gov,executive,General Services Administration,No,No,,,
 rrb.gov,executive,Railroad Retirement Board,No,No,,,
 sac.gov,executive,National Science Foundation,No,Yes,Yes,No,B
@@ -936,7 +916,7 @@ safecom.gov,executive,Department of the Interior,No,Yes,Yes,No,C
 safecomprogram.gov,executive,Department of Homeland Security,Yes,Yes,No,No,A-
 safercar.gov,executive,Department of Transportation,No,No,,,
 saferproduct.gov,executive,Consumer Product Safety Commission,Yes,No,,,
-saferproducts.gov,executive,Consumer Product Safety Commission,No,No,,,
+saferproducts.gov,executive,Consumer Product Safety Commission,No,Yes,No,No,B
 safertruck.gov,executive,Department of Transportation,No,No,,,
 safetyact.gov,executive,Department of Homeland Security,No,Yes,Yes,No,C
 safetyvideos.gov,executive,U.S. Chemical Safety and Hazard Investigation Board,Yes,No,,,
@@ -953,8 +933,6 @@ savingsbondwizard.gov,executive,Department of the Treasury,No,No,,,
 sba.gov,executive,Small Business Administration,No,Yes,Yes,No,A
 sbir.gov,executive,National Science Foundation,No,Yes,Yes,No,A
 sbst.gov,executive,General Services Administration,No,Yes,Yes,No,A
-scidac.gov,executive,Department of Energy,No,No,,,
-science.gov,executive,Department of Energy,No,Yes,No,No,F
 science360.gov,executive,National Science Foundation,No,No,,,
 sciencebase.gov,executive,Department of the Interior,No,Yes,Yes,No,A-
 scijinks.gov,executive,National Aeronautics and Space Administration,Yes,No,,,
@@ -963,13 +941,12 @@ sdr.gov,executive,Department of Commerce,No,No,,,
 sec.gov,executive,Securities and Exchange Commission,No,Yes,No,No,B
 secretservice.gov,executive,Department of Homeland Security,No,No,,,
 section108.gov,legislative,Library of Congress,No,No,,,
-section508.gov,executive,General Services Administration,No,No,,,
 seguridadconsumidor.gov,executive,Consumer Product Safety Commission,Yes,No,,,
 segurosocial.gov,executive,Social Security Administration,No,Yes,Yes,Yes,A+
 selectagents.gov,executive,Department of Health And Human Services,No,No,,,
 selectusa.gov,executive,Department of Commerce,Yes,No,,,
 senate.gov,legislative,The Legislative Branch (Congress),No,Yes,No,No,A
-senatecalendar.gov,legislative,Government Printing Office,Yes,No,,,
+senatecalendar.gov,legislative,Government Printing Office,Yes,Yes,Yes,No,B
 seniorcorps.gov,executive,Corporation for National & Community Service,Yes,No,,,
 sentinel.gov,executive,Federal Trade Commission,Yes,Yes,No,No,A
 serve.gov,executive,Corporation for National & Community Service,No,No,,,
@@ -985,9 +962,8 @@ slgs.gov,executive,Department of the Treasury,No,Yes,No,No,A
 smart.gov,executive,Department of Justice,No,No,,,
 smartcheck.gov,executive,Commodity Futures Trading Commission,No,No,,,
 smartgrid.gov,executive,Department of Energy,No,Yes,Yes,No,B
-smokefree.gov,executive,Department of Health And Human Services,No,No,,,
+smokefree.gov,executive,Department of Health And Human Services,No,Yes,No,No,B
 snap.gov,executive,Department of the Interior,No,No,,,
-sns.gov,executive,Department of Energy,No,No,,,
 socialsecurity.gov,executive,Social Security Administration,No,Yes,Yes,Yes,A+
 solardecathlon.gov,executive,Department of Energy,No,No,,,
 spaceweather.gov,executive,Department of Commerce,Yes,No,,,
@@ -1010,9 +986,9 @@ stopmedicarefraud.gov,executive,Department of Health And Human Services,No,Yes,Y
 strategicsourcing.gov,executive,General Services Administration,No,Yes,Yes,No,C
 strongmiddleclass.gov,executive,Executive Office of the President,Yes,Yes,No,No,A
 strongports.gov,executive,Department of Transportation,Yes,No,,,
-studentaid.gov,executive,Department of Education,Yes,Yes,No,No,
-studentloans.gov,executive,Department of Education,No,No,,,
-supportthevoter.gov,executive,General Services Administration,No,No,,,
+studentaid.gov,executive,Department of Education,Yes,Yes,No,No,B
+studentloans.gov,executive,Department of Education,No,Yes,Yes,"Yes, and preload-ready",A-
+supportthevoter.gov,executive,General Services Administration,No,Yes,No,No,C
 supremecourt.gov,judicial,The Judicial Branch (Courts),No,No,,,
 supremecourtus.gov,judicial,The Judicial Branch (Courts),Yes,No,,,
 surgeongeneral.gov,executive,Department of Health And Human Services,No,No,,,
@@ -1048,9 +1024,9 @@ treasuryhunt.gov,executive,Department of the Treasury,No,Yes,No,No,A
 treasuryscams.gov,executive,Department of the Treasury,No,No,,,
 tribaljusticeandsafety.gov,executive,Department of Justice,Yes,No,,,
 truman.gov,executive,Harry S. Truman Scholarship Foundation,No,Yes,No,No,A
-tsa.gov,executive,Department of Homeland Security,No,Yes,No,No,A
+tsa.gov,executive,Department of Homeland Security,No,Yes,Yes,No,A
 tsc.gov,executive,Terrorist Screening Center,Yes,No,,,
-tsp.gov,executive,Federal Retirement Thrift Investment Board,No,Yes,Yes,No,F
+tsp.gov,executive,Federal Retirement Thrift Investment Board,No,Yes,Yes,Yes,A+
 tsunami.gov,executive,Department of Commerce,No,No,,,
 tswg.gov,executive,Department of Defense,No,No,,,
 ttb.gov,executive,Department of the Treasury,No,No,,,
@@ -1091,7 +1067,7 @@ uscc.gov,legislative,Government Printing Office,No,No,,,
 usccr.gov,legislative,Government Printing Office,No,No,,,
 uscirf.gov,executive,General Services Administration,No,No,,,
 uscis.gov,executive,Department of Homeland Security,No,No,,,
-uscode.gov,legislative,Government Printing Office,Yes,No,,,
+uscode.gov,legislative,Government Printing Office,Yes,Yes,Yes,No,B
 uscongress.gov,legislative,Library of Congress,Yes,No,,,
 usconsulate.gov,executive,Department of State,Yes,No,,,
 uscourts.gov,judicial,The Judicial Branch (Courts),No,No,,,
@@ -1109,11 +1085,11 @@ usgovernment.gov,executive,General Services Administration,Yes,No,,,
 usgovernmentmanual.gov,legislative,Government Printing Office,No,No,,,
 usgs.gov,executive,Department of the Interior,No,Yes,No,No,A-
 ushmm.gov,executive,U. S. Holocaust Memorial Museum,Yes,No,,,
-usich.gov,executive,US Interagency Council on Homelessness,No,No,,,
+usich.gov,executive,US Interagency Council on Homelessness,No,Yes,Yes,No,B
 usicn.gov,executive,Federal Trade Commission,No,No,,,
-usint.gov,executive,Department of State,No,No,,,
+usint.gov,executive,Department of State,Yes,No,,,
 usip.gov,executive,General Services Administration,Yes,No,,,
-usitc.gov,executive,U. S. International Trade Commission,No,No,,,
+usitc.gov,executive,U. S. International Trade Commission,No,Yes,Yes,No,F
 usmarshals.gov,executive,Department of Justice,No,No,,,
 usmint.gov,executive,Department of the Treasury,No,Yes,No,No,C
 usmission.gov,executive,Department of State,Yes,No,,,
@@ -1139,14 +1115,15 @@ vehiclehistory.gov,executive,Department of Justice,No,No,,,
 vetbiz.gov,executive,Department of Veterans Affairs,No,No,,,
 veterans.gov,executive,Department of Labor,No,No,,,
 vets.gov,executive,Department of Veterans Affairs,No,Yes,Yes,No,A
-visitthecapital.gov,legislative,The Legislative Branch (Congress),No,No,,,
+visitthecapital.gov,legislative,The Legislative Branch (Congress),Yes,No,,,
 visitthecapitol.gov,legislative,The Legislative Branch (Congress),No,Yes,Yes,No,C
 vista.gov,executive,Corporation for National & Community Service,Yes,No,,,
 vistacampus.gov,executive,Corporation for National & Community Service,No,No,,,
 voa.gov,executive,International Broadcasting Bureau,Yes,No,,,
+volcano.gov,executive,Department of the Interior,No,No,,,
 volunteer.gov,executive,Department of the Interior,No,Yes,Yes,No,C
-volunteeringinamerica.gov,executive,Corporation for National & Community Service,No,Yes,No,No,B
-wapa.gov,executive,Department of Energy,No,Yes,Yes,No,
+volunteeringinamerica.gov,executive,Corporation for National & Community Service,No,Yes,Yes,No,B
+wapa.gov,executive,Department of Energy,No,Yes,Yes,No,C
 wartimecontracting.gov,executive,National Archives and Records Administration,Yes,No,,,
 watermonitor.gov,executive,Department of the Interior,No,No,,,
 wdl.gov,legislative,Library of Congress,Yes,No,,,
@@ -1169,8 +1146,7 @@ womenbiz.gov,executive,Small Business Administration,Yes,No,,,
 womenfarmerclaims.gov,executive,Department of Agriculture,No,Yes,Yes,No,F
 womenshealth.gov,executive,Department of Health And Human Services,No,No,,,
 womenshistorymonth.gov,legislative,Library of Congress,No,No,,,
-workplace.gov,executive,Department of the Treasury,No,Yes,No,No,
-worlddigitallibrary.gov,legislative,Library of Congress,Yes,No,,,
+workplace.gov,executive,Department of the Treasury,No,Yes,No,No,B
 worldwar1centennial.gov,executive,The United States World War One Centennial Commission,No,No,,,
 wrp.gov,executive,Department of Labor,No,Yes,Yes,No,A-
 ymp.gov,executive,Department of Energy,No,No,,,
