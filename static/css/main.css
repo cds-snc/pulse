@@ -394,6 +394,11 @@ a#skipnav {
   padding: 10px 22px; }
 #home #branding a {
   font-size: 31px; }
+#home .usa-search {
+  margin: 0 auto;
+  max-width: 300px; }
+  #home .usa-search button {
+    background-color: #003366; }
 #home .hero {
   text-align: center;
   color: white;

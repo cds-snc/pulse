@@ -228,6 +228,13 @@ a#skipnav {
   #branding a {
     font-size: 31px;
   }
+  .usa-search {
+    margin: 0 auto;
+    max-width: 300px;
+    button {
+      background-color: $dark-blue;
+    }
+  }
   .hero {
     text-align: center;
     color: white;
