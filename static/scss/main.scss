@@ -102,7 +102,7 @@ a#skipnav {
 
   .disclaimer {
     background-color: $dark-blue;
-    padding: 10px 40px;
+    padding: 8px 40px;
     color: white;
     text-align: center;
     @include media($small) {
@@ -155,7 +155,7 @@ a#skipnav {
           display: inline;
 
           a {
-            padding: 17px 24px;
+            padding: 17px 19px;
             &:hover {
               color: $medium-blue;
               background-color: white;
@@ -218,6 +218,16 @@ a#skipnav {
 /////////////////////////////////////////
 
 #home {
+  .site-header > nav {
+    border-bottom: none;
+  }
+  .site-header > nav #main-nav {
+    max-width: 100%;
+    padding: 10px 22px;
+  }
+  #branding a {
+    font-size: 31px;
+  }
   .hero {
     text-align: center;
     color: white;
@@ -229,10 +239,10 @@ a#skipnav {
     }
     h3 {
       display: inline-block;
-      font-size: $base-font-size * 2;
-      font-weight: 100;
-      padding-top: 15px;
-      max-width: 550px;
+      font-size: 36px;
+//      font-weight: 100;
+      padding-top: 75px;
+      max-width: 620px;
     }
   }
 

@@ -262,7 +262,7 @@ a#skipnav {
 
 .site-header .disclaimer {
   background-color: #003366;
-  padding: 10px 40px;
+  padding: 8px 40px;
   color: white;
   text-align: center; }
   @media screen and (max-width: 480px) {
@@ -322,7 +322,7 @@ a#skipnav {
       .site-header > nav #main-nav ul li {
         display: inline; }
         .site-header > nav #main-nav ul li a {
-          padding: 17px 24px; }
+          padding: 17px 19px; }
           .site-header > nav #main-nav ul li a:hover {
             color: #0059b3;
             background-color: white; }
@@ -387,6 +387,13 @@ a#skipnav {
   .site-header .overlay.is-visible {
     visibility: visible; }
 
+#home .site-header > nav {
+  border-bottom: none; }
+#home .site-header > nav #main-nav {
+  max-width: 100%;
+  padding: 10px 22px; }
+#home #branding a {
+  font-size: 31px; }
 #home .hero {
   text-align: center;
   color: white;
@@ -396,10 +403,9 @@ a#skipnav {
     font-weight: 300; }
   #home .hero h3 {
     display: inline-block;
-    font-size: 1.75em;
-    font-weight: 100;
-    padding-top: 15px;
-    max-width: 550px; }
+    font-size: 36px;
+    padding-top: 75px;
+    max-width: 620px; }
 #home #wrapper {
   background: #fff;
   clear: both;
