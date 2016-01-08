@@ -218,12 +218,15 @@ a#skipnav {
 /////////////////////////////////////////
 
 #home {
-  .site-header > nav {
-    border-bottom: none;
-  }
-  .site-header > nav #main-nav {
-    max-width: 100%;
-    padding: 10px 22px;
+  .site-header {
+    > nav {
+      border-bottom: none;
+
+      #main-nav {
+        max-width: 100%;
+        padding: 10px 22px;
+      }
+    }
   }
   #branding a {
     font-size: 31px;
@@ -247,9 +250,8 @@ a#skipnav {
     h3 {
       display: inline-block;
       font-size: 36px;
-//      font-weight: 100;
-      padding-top: 75px;
       max-width: 620px;
+      padding-top: 75px;
     }
   }
 
