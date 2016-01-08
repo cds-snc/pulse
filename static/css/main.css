@@ -397,7 +397,7 @@ a#skipnav {
 #home .usa-search {
   margin: 0 auto;
   max-width: 800px;
-  padding-bottom: 25px; }
+  padding-bottom: 30px; }
   #home .usa-search label {
     font-size: 20px;
     padding-top: 6px;
@@ -423,16 +423,23 @@ a#skipnav {
 #home .hero {
   text-align: center;
   color: white;
-  padding: 40px 20px 60px; }
+  padding: 40px 20px 90px; }
+  @media (min-width: 600px) {
+    #home .hero {
+      padding-bottom: 60px; } }
   #home .hero h2 {
     font-size: 6.125em;
     font-weight: 300; }
   #home .hero h3 {
     display: inline-block;
-    font-size: 36px;
+    font-size: 24px;
     max-width: 620px;
-    padding-bottom: 30px;
-    padding-top: 75px; }
+    padding-bottom: 8px; }
+    @media (min-width: 600px) {
+      #home .hero h3 {
+        font-size: 36px;
+        padding-bottom: 50px;
+        padding-top: 75px; } }
 #home #wrapper {
   background: #fff;
   clear: both;

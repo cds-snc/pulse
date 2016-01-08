@@ -234,7 +234,7 @@ a#skipnav {
   .usa-search {
     margin: 0 auto;
     max-width: 800px;
-    padding-bottom: 25px;
+    padding-bottom: 30px;
 
     label {
       font-size: 20px;
@@ -269,7 +269,11 @@ a#skipnav {
   .hero {
     text-align: center;
     color: white;
-    padding: 40px 20px 60px;
+    padding: 40px 20px 90px;
+
+    @media (min-width: 600px) {
+      padding-bottom: 60px;
+    }
 
     h2 {
       font-size: $base-font-size * 7;
@@ -277,10 +281,15 @@ a#skipnav {
     }
     h3 {
       display: inline-block;
-      font-size: 36px;
+      font-size: 24px;
       max-width: 620px;
-      padding-bottom: 30px;
-      padding-top: 75px;
+      padding-bottom: 8px;
+
+      @media (min-width: 600px) {
+        font-size: 36px;
+        padding-bottom: 50px;
+        padding-top: 75px;
+      }      
     }
   }
 
