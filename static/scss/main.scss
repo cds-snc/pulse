@@ -233,7 +233,7 @@ a#skipnav {
   }
   .usa-search {
     margin: 0 auto;
-    max-width: 800px;
+    max-width: 710px;
     padding-bottom: 30px;
 
     label {
@@ -244,11 +244,12 @@ a#skipnav {
     }
 
     input[type="search"] {
-      border-bottom-right-radius: 0;
-      border-top-right-radius: 0;
+      border-radius: 0;
+      color: #000;
       float: left;
+      font-size: 1.3em;
       height: 44px;
-      width: 50%;
+      width: 45%;
     }
 
     button {

@@ -396,7 +396,7 @@ a#skipnav {
   font-size: 31px; }
 #home .usa-search {
   margin: 0 auto;
-  max-width: 800px;
+  max-width: 710px;
   padding-bottom: 30px; }
   #home .usa-search label {
     font-size: 20px;
@@ -404,11 +404,12 @@ a#skipnav {
     padding-right: 2%;
     float: left; }
   #home .usa-search input[type="search"] {
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
+    border-radius: 0;
+    color: #000;
     float: left;
+    font-size: 1.3em;
     height: 44px;
-    width: 50%; }
+    width: 45%; }
   #home .usa-search button {
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
