@@ -396,9 +396,30 @@ a#skipnav {
   font-size: 31px; }
 #home .usa-search {
   margin: 0 auto;
-  max-width: 300px; }
+  max-width: 800px;
+  padding-bottom: 25px; }
+  #home .usa-search label {
+    font-size: 20px;
+    padding-top: 6px;
+    padding-right: 2%;
+    float: left; }
+  #home .usa-search input[type="search"] {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    float: left;
+    height: 44px;
+    width: 50%; }
   #home .usa-search button {
-    background-color: #003366; }
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    background-color: #003366;
+    float: left;
+    font-size: 18px;
+    height: 44px;
+    width: 116px; }
+    #home .usa-search button:hover {
+      background-color: #02bfe7;
+      color: #000; }
 #home .hero {
   text-align: center;
   color: white;
@@ -410,6 +431,7 @@ a#skipnav {
     display: inline-block;
     font-size: 36px;
     max-width: 620px;
+    padding-bottom: 30px;
     padding-top: 75px; }
 #home #wrapper {
   background: #fff;
