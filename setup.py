@@ -1,5 +1,9 @@
 import setuptools
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> initial effort to refactor data CLI
 setuptools.setup(
     name='pulse',
     version='0.0.1',
@@ -16,4 +20,8 @@ setuptools.setup(
         'Natural Language :: English',
         'Programming Language :: Python :: 3',
     ],
+    entry_points='''
+        [console_scripts]
+        data=data.cli:main
+    '''
 )

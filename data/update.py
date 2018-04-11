@@ -17,6 +17,12 @@ from data.env import *
 # Import processing just for the function call.
 import data.processing
 
+from data import logger
+
+
+LOGGER = logger.get_logger(__name__)
+
+
 # Orchestrate the overall regular Pulse update process.
 #
 # Steps:
@@ -37,97 +43,42 @@ import data.processing
 #    - TODO: Consider moving from aws CLI to Python library.
 
 
-
 # Options:
-# --date: override date, defaults to contents of meta.json
-# --scan=[skip,download,here]
+# scan_mode=[skip,download,here]
 #     skip: skip all scanning, assume CSVs are locally cached
 #     download: download scan data from S3
 #     here: run the default full scan
-# --upload: upload scan data and resulting db.json anything to S3
-# --gather=[skip,here]
+# gather_mode=[skip,here]
 #     skip: skip gathering, assume CSVs are locally cached
 #     here: run the default full gather
+# options
+#     otions to pass along to scanner
 
-def run(options):
-  # If this is just being used to download production data, do that.
-  if options.get("just-download", False):
-    download_s3()
-    return
-
-  # Definitive scan date for the run.
-  today = datetime.datetime.strftime(datetime.datetime.now(), "%Y-%m-%d")
-
-  # 1. Download scan data, do a new scan, or skip altogether.
-  scan_mode = options.get("scan", "skip")
-
-  # Whether to gather domains (defaults to doing so).
-  gather_mode = options.get("gather", "here")
-
+def update(scan_mode, gather_mode, options):
   if scan_mode == "here":
     # 1a. Gather .gov federal subdomains.
     if gather_mode == "here":
-      print("Gathering subdomains.")
-      print()
+      LOGGER.info("Gathering subdomains.")
       gather_subdomains(options)
-      print()
-      print("Subdomain gathering complete.")
-      print()
+      LOGGER.info("Subdomain gathering complete.")
     elif gather_mode == "skip":
-      print("Skipping subdomain gathering.")
-      print()
+      LOGGER.info("Skipping subdomain gathering.")
 
     # 1b. Scan subdomains for some types of things.
-    print("Scanning subdomains.")
-    print()
+    LOGGER.info("Scanning subdomains.")
     scan_subdomains(options)
-    print()
-    print("Subdomain scanning complete")
-    print()
+    LOGGER.info("Subdomain scanning complete")
 
     # 1c. Scan parent domains for all types of things.
-    print("Scanning parent domains.")
-    print()
+    LOGGER.info("Scanning parent domains.")
     scan_parents(options)
-    print()
-    print("Scan of parent domains complete.")
+    LOGGER.info("Scan of parent domains complete.")
   elif scan_mode == "download":
-    print("Downloading latest production scan data from S3.")
-    print()
+    LOGGER.info("Downloading latest production scan data from S3.")
     download_s3()
-    print()
-    print("Download complete.")
+    LOGGER.info("Download complete.")
 
-  # Sanity check to make sure we have what we need.
-  if not os.path.exists(os.path.join(PARENTS_RESULTS, "meta.json")):
-    print("No scan metadata downloaded, aborting.")
-    exit()
-
-  # Date can be overridden if need be, but defaults to meta.json.
-  if options.get("date", None) is not None:
-    the_date = options.get("date")
-  else:
-    # depends on YYYY-MM-DD coming first in meta.json time format
-    scan_meta = ujson.load(open("data/output/parents/results/meta.json"))
-    the_date = scan_meta['start_time'][0:10]
-
-
-  # 2. Process and load data into Pulse's database.
-  print("[%s] Loading data into Pulse." % the_date)
-  print()
-  data.processing.run(the_date, options)
-  print()
-  print("[%s] Data now loaded into Pulse." % the_date)
-
-  # 3. Upload data to S3 (if requested).
-  if options.get("upload", False):
-    print("[%s] Syncing scan data and database to S3." % the_date)
-    print()
-    upload_s3(the_date)
-    print()
-    print("[%s] Scan data and database now in S3." % the_date)
-
-  print("[%s] All done." % the_date)
+  LOGGER.info("All done.")
 
 
 # Upload the scan + processed data to /live/ and /archive/ locations by date.
@@ -238,7 +189,7 @@ def scan_parents(options):
 
 # Use domain-scan to gather .gov domains from public sources.
 def gather_subdomains(options):
-  print("[gather] Gathering subdomains.")
+  LOGGER.info("[gather] Gathering subdomains.")
 
   full_command = [GATHER_COMMAND]
 
@@ -255,7 +206,6 @@ def gather_subdomains(options):
     "--sort",
     "--debug" # always capture full output
   ]
-
   # Allow some options passed to python -m data.update to go
   # through to domain-scan.
   for flag in ["cache"]:
@@ -267,7 +217,7 @@ def gather_subdomains(options):
 
 # Run pshtt on each gathered set of subdomains.
 def scan_subdomains(options):
-  print("[scan] Scanning subdomains.")
+  LOGGER.info("[scan] Scanning subdomains.")
 
   subdomains = os.path.join(SUBDOMAIN_DATA_GATHERED, "results", "gathered.csv")
 
@@ -303,23 +253,15 @@ def scan_subdomains(options):
   shell_out(full_command)
 
 
-
 ## Utils function for shelling out.
-
 def shell_out(command, env=None):
     try:
-        print("[cmd] %s" % str.join(" ", command))
+        LOGGER.info("[cmd] %s" % str.join(" ", command))
         response = subprocess.check_output(command, shell=False, env=env)
         output = str(response, encoding='UTF-8')
-        print(output)
+        LOGGER.info(output)
         return output
     except subprocess.CalledProcessError:
         logging.warn("Error running %s." % (str(command)))
         exit(1)
         return None
-
-
-### Run when executed.
-
-if __name__ == '__main__':
-    run(options())
