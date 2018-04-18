@@ -13,6 +13,7 @@ SCAN_COMMAND = os.environ.get("DOMAIN_SCAN_PATH", None)
 GATHER_COMMAND = os.environ.get("DOMAIN_GATHER_PATH", None)
 
 
+
 # post-processing and uploading information
 PARENTS_DATA = os.path.join(DATA_DIR, "./output/parents")
 PARENTS_RESULTS = os.path.join(DATA_DIR, "./output/parents/results")
