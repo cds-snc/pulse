@@ -1,9 +1,6 @@
 import setuptools
 
-<<<<<<< HEAD
-=======
 
->>>>>>> initial effort to refactor data CLI
 setuptools.setup(
     name='pulse',
     version='0.0.1',
