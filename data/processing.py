@@ -34,7 +34,7 @@ from data import logger
 from statistics import mean
 
 
-LOGGER = logger.get_loggeR(__name__)
+LOGGER = logger.get_logger(__name__)
 
 this_dir = os.path.dirname(__file__)
 
