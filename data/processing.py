@@ -133,7 +133,7 @@ def run(date, options):
     if pshtt is None:
       # generally means scan was on different domains.csv, but
       # invalid domains can hit this.
-      LOGGER.info("[%s][WARNING] No pshtt data for domain!" % domain_name)
+      LOGGER.warning("[%s] No pshtt data for domain!" % domain_name)
 
       # Remove the domain from further consideration.
       # Destructive, so have this done last.
@@ -205,7 +205,7 @@ def load_domain_data():
     shell_out(["wget", DOMAINS, "-O", PARENT_DOMAINS_CSV])
 
   if not os.path.exists(PARENT_DOMAINS_CSV):
-    LOGGER.info("Couldn't download domains.csv")
+    LOGGER.critical("Couldn't download domains.csv")
     exit(1)
 
   with open(PARENT_DOMAINS_CSV, newline='') as csvfile:
@@ -1114,7 +1114,7 @@ def shell_out(command, env=None):
     LOGGER.info(output)
     return output
   except subprocess.CalledProcessError:
-    logging.warn("Error running %s." % (str(command)))
+    logging.critical("Error running %s." % (str(command)))
     exit(1)
     return None
 

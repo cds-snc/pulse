@@ -303,7 +303,7 @@ def shell_out(command, env=None):
         LOGGER.info(output)
         return output
     except subprocess.CalledProcessError:
-        logging.warn("Error running %s." % (str(command)))
+        LOGGER.critical("Error running %s." % (str(command)))
         exit(1)
         return None
 
