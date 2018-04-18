@@ -4,7 +4,8 @@ setuptools.setup(
     name='pulse',
     version='0.0.1',
     long_description='',
-    author='CDS-SNC',
+    author='GSA 18F, CDS-SNC',
+    author_email='pulse@cio.gov, cds-snc@tbs-sct.gc.ca',
     url='https://github.com/cds-snc/pulse',
     packages=[
         'data',
