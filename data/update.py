@@ -85,10 +85,8 @@ def run(options):
         upload_s3(the_date)
         LOGGER.info("[%s] Scan data and database now in S3." % the_date)
 
-    if options.get('upload', False):
-        upload_s3(options)
-
     LOGGER.info("[%s] All done." % the_date)
+
 
 def update(options):
   # 1. Download scan data, do a new scan, or skip altogether.
