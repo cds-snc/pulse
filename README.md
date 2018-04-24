@@ -23,11 +23,6 @@ Pulse is a [Flask](http://flask.pocoo.org/) app written for **Python 3.5 and up*
 pip install -r requirements.txt
 ```
 
-* Install the data processing package
-```bash
-pip install .
-```
-
 * If developing Pulse, you will also need the development requirements
 ```bash
 pip install .[development]
