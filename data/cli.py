@@ -31,7 +31,12 @@ def get_cached_date(directory: str) -> str:
     return scan_meta['start_time'][0:10]
 
 
-def get_date(ctx, param, value) -> str: # pylint: disable=unused-argument
+def get_date(
+        ctx: click.core.Context, # pylint: disable=unused-argument
+        param: click.core.Option, # pylint: disable=unused-argument
+        value: typing.Optional[str]
+    ) -> str:
+
     # Date can be overridden if need be, but defaults to meta.json.
     directory, _ = os.path.split(__file__)
 
@@ -64,12 +69,19 @@ def main() -> None:
 @click.option('--gather', type=click.Choice(['skip', 'here']), default='here')
 @click.option('--upload-results', is_flag=True, default=False)
 @click.argument('scan_args', nargs=-1, type=click.UNPROCESSED)
-def run(date, scan, gather, upload_results, scan_args) -> None:
+def run(
+        date: typing.Optional[str],
+        scan: str,
+        gather: str,
+        upload_results: bool,
+        scan_args: typing.List[str]
+    ) -> None:
+
     update.callback(scan, gather, scan_args)
-    date = get_date(None, 'date', date)
-    process.callback(date)
+    the_date = get_date(None, 'date', date)
+    process.callback(the_date)
     if upload_results:
-        upload.callback(date)
+        upload.callback(the_date)
 
 
 @main.command(
@@ -81,26 +93,27 @@ def run(date, scan, gather, upload_results, scan_args) -> None:
 @click.option('--scan', type=click.Choice(['skip', 'download', 'here']), default='skip')
 @click.option('--gather', type=click.Choice(['skip', 'here']), default='here')
 @click.argument('scan_args', nargs=-1, type=click.UNPROCESSED)
-def update(scan, gather, scan_args) -> None:
+def update(
+        scan: str,
+        gather: str,
+        scan_args: typing.List[str]
+    ) -> None:
+
     LOGGER.info('Starting update')
     data_update.update(scan, gather, transform_args(scan_args))
     LOGGER.info('Finished update')
 
 
-@main.command(
-    help='Download scan results from s3',
-)
+@main.command(help='Download scan results from s3')
 def download() -> None:
     LOGGER.info('Downloading production data')
     data_update.download_s3()
     LOGGER.info('Finished downloading production data')
 
 
-@main.command(
-    help='Upload scan results to s3',
-)
+@main.command(help='Upload scan results to s3')
 @click.option('--date', type=DATE, callback=get_date)
-def upload(date) -> None:
+def upload(date: str) -> None:
     # Sanity check to make sure we have what we need.
     if not os.path.exists(os.path.join(PARENTS_RESULTS, "meta.json")):
         LOGGER.info("No scan metadata downloaded, aborting.")
@@ -115,7 +128,8 @@ def upload(date) -> None:
     help='Process scan data',
 )
 @click.option('--date', type=DATE, callback=get_date)
-def process(date) -> None:
+def process(date: str) -> None:
+
     # Sanity check to make sure we have what we need.
     if not os.path.exists(os.path.join(PARENTS_RESULTS, "meta.json")):
         LOGGER.info("No scan metadata downloaded, aborting.")
