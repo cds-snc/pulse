@@ -1071,9 +1071,3 @@ def branch_for(agency):
 
   else:
     return "executive"
-
-### Run when executed.
-
-
-if __name__ == '__main__':
-    run(None, options())
