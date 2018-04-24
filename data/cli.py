@@ -1,11 +1,9 @@
 import os
 import typing
-import itertools
 import datetime
 import click
 import ujson
-from dateutil import parser
-from data.env import *
+from data.env import PARENTS_RESULTS
 from data import update as data_update
 from data import processing
 from data import logger
@@ -33,7 +31,7 @@ def get_cached_date(directory: str) -> str:
     return scan_meta['start_time'][0:10]
 
 
-def get_date(ctx, param, value) -> str:
+def get_date(ctx, param, value) -> str: # pylint: disable=unused-argument
     # Date can be overridden if need be, but defaults to meta.json.
     directory, _ = os.path.split(__file__)
 
@@ -124,5 +122,5 @@ def process(date) -> None:
         return
 
     LOGGER.info(f"[{date}] Loading data into Pulse.")
-    result = processing.run(date)
+    processing.run(date)
     LOGGER.info(f"[{date}] Data now loaded into Pulse.")
