@@ -61,7 +61,7 @@ def main() -> None:
     ),
     help='Coposition of `update`, `process`, and `upload` commands',
 )
-@click.option('--date', type=DATE, callback=get_date)
+@click.option('--date', type=DATE)
 @click.option('--scan', type=click.Choice(['skip', 'download', 'here']), default='skip')
 @click.option('--gather', type=click.Choice(['skip', 'here']), default='here')
 @click.option('--upload-results', is_flag=True, default=False)
