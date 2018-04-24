@@ -124,9 +124,7 @@ def upload(date: str) -> None:
     LOGGER.info(f"[{date}] Scan data and database now in S3.")
 
 
-@main.command(
-    help='Process scan data',
-)
+@main.command(help='Process scan data')
 @click.option('--date', type=DATE, callback=get_date)
 def process(date: str) -> None:
 
