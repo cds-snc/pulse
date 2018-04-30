@@ -26,6 +26,7 @@ import glob
 import slugify
 import datetime
 import subprocess
+from shutil import copyfile
 
 # Import all the constants from data/env.py.
 from data.env import *
@@ -202,7 +203,10 @@ def load_domain_data():
   if not os.path.exists(PARENT_DOMAINS_CSV):
     LOGGER.info("Downloading domains.csv...")
     mkdir_p(PARENT_CACHE)
-    shell_out(["wget", DOMAINS, "-O", PARENT_DOMAINS_CSV])
+    if DOMAINS.startswith("http:") or DOMAINS.startswith("https:"):
+      shell_out(["wget", DOMAINS, "-O", PARENT_DOMAINS_CSV])
+    else:
+      copyfile(DOMAINS, PARENT_DOMAINS_CSV)
 
   if not os.path.exists(PARENT_DOMAINS_CSV):
     LOGGER.critical("Couldn't download domains.csv")
@@ -219,26 +223,7 @@ def load_domain_data():
       agency_slug = slugify.slugify(agency_name)
       branch = branch_for(agency_name)
 
-      # Exclude cities, counties, tribes, etc.
-      if domain_type != "Federal Agency":
-        continue
-
-      # There are a few erroneously marked non-federal domains.
-      if branch == "non-federal":
-        continue
-
-      # Exclude non-federal branches. (Sigh.)
-      if branch != "executive":
-        continue
-
-      # One-off exclusion for "fed.us", which is improperly included
-      # in current-federal.csv, despite being a public suffix and not
-      # a registerable domain.
-      if domain_name == "fed.us":
-        continue
-
       if domain_name not in domain_map:
-
         # By assuming the domain name is the base domain if it appears
         # in current-federal.csv, we automatically treat fed.us domains
         # as base domains, without explicitly incorporating the Public
@@ -284,7 +269,6 @@ def load_domain_data():
             sources.append(source)
 
         gathered_subdomain_map[subdomain_name] = sources
-
 
   return domain_map, agency_map, gathered_subdomain_map
 

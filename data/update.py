@@ -10,6 +10,7 @@ import datetime
 import os
 import ujson
 import logging
+import requests
 
 # Import all the constants from data/env.py.
 from data.env import *
@@ -60,7 +61,7 @@ def run(options):
         download_s3()
         return
 
-    update(options)
+    # update(options)
     # Sanity check to make sure we have what we need.
     if not os.path.exists(os.path.join(PARENTS_RESULTS, "meta.json")):
         LOGGER.info("No scan metadata downloaded, aborting.")
@@ -227,6 +228,7 @@ def scan_parents(options):
 
 # Use domain-scan to gather .gov domains from public sources.
 def gather_subdomains(options):
+
   LOGGER.info("[gather] Gathering subdomains.")
 
   full_command = [GATHER_COMMAND]
@@ -297,7 +299,7 @@ def scan_subdomains(options):
 
 def shell_out(command, env=None):
     try:
-        LOGGER.info("[cmd] %s" % str.join(" ", command))
+        print("[cmd] %s" % str.join(" ", command))
         response = subprocess.check_output(command, shell=False, env=env)
         output = str(response, encoding='UTF-8')
         LOGGER.info(output)
