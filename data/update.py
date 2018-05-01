@@ -10,7 +10,6 @@ import datetime
 import os
 import ujson
 import logging
-import requests
 
 # Import all the constants from data/env.py.
 from data.env import *
