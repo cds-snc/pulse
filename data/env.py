@@ -36,7 +36,7 @@ A11Y_REDIRECTS = META["a11y"]["redirects"]
 scanner_string = os.environ.get("SCANNERS", "pshtt,sslyze,analytics")
 SCANNERS = scanner_string.split(",")
 
-GATHER_SUFFIXES = os.environ.get("GATHER_SUFFIXES", ".ca")
+GATHER_SUFFIXES = os.environ.get("GATHER_SUFFIXES", ".ca,.gov.ca,.com")
 
 # names and options must be in corresponding order
 GATHERER_NAMES = [

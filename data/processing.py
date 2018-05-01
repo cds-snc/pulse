@@ -234,7 +234,7 @@ def load_domain_data():
           'base_domain': domain_name,
           'agency_name': agency_name,
           'agency_slug': agency_slug,
-          'sources': ['dotgov'],
+          'sources': ['canada-gov'],
           'branch': branch,
           'is_parent': True,
           'exclude': {}
