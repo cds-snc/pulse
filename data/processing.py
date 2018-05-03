@@ -164,7 +164,7 @@ def run(date):
   # Overwrites `domains` and `subdomains` in-place.
   process_domains(domains, agencies, subdomains, parent_scan_data, subdomain_scan_data)
 
-  _app = create_app()
+  _app = create_app('production')
 
   # Reset the database.
   LOGGER.info("Clearing the database.")

@@ -8,7 +8,7 @@ from pulse import create_app
 if __name__ == "__main__":
   port = int(os.getenv("PORT", 5000))
   environment = os.getenv("PULSE_ENV", "development")
-  app = create_app()
+  app = create_app(environment)
 
   # Configure newrelic
   env = AppEnv()
