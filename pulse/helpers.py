@@ -1,7 +1,7 @@
 import yaml
 import datetime
-from app import models
-from app.data import FIELD_MAPPING
+from pulse import models
+from pulse.data import FIELD_MAPPING
 
 # For use in templates.
 def register(app):
@@ -10,7 +10,11 @@ def register(app):
   # Context processors and filters.
 
   def scan_date():
-    return models.Report.report_time(models.Report.latest()['report_date'])
+    latest = models.Report.latest()
+    if latest:
+      return models.Report.report_time(latest['report_date'])
+    else:
+      return models.Report.report_time('2018-05-02')
 
   # Make site metadata available everywhere.
   meta = yaml.safe_load(open("meta.yml"))

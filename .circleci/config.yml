@@ -2,6 +2,7 @@ jobs:
   data:
     docker:
       - image: "circleci/python:3.6.1"
+      - image: "mongo:3.6.2"
     steps:
       - checkout:
           path: ~/repo

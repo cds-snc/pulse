@@ -1,7 +1,6 @@
-
 from flask import render_template, Response
-from app import models
-from app.data import FIELD_MAPPING
+from pulse import models
+from pulse.data import FIELD_MAPPING
 import os
 import ujson
 
@@ -21,7 +20,6 @@ def register(app):
 
     ##
     # Data endpoints.
-
     # High-level %'s, used to power the donuts.
     @app.route("/data/reports/<report_name>.json")
     def report(report_name):
