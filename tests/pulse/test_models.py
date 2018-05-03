@@ -3,11 +3,12 @@ import copy
 import datetime
 import io
 import typing
+import flask
 import pytest
+from flask_pymongo import PyMongo
 from pulse import models
 
 
-@pytest.fixture()
 def app_setup(app) -> typing.Iterator[None]:
     with app.app_context():
         yield
@@ -220,7 +221,6 @@ class TestDomain():
                 'SSLv3': 'No',
                 'Preloaded': 'No'
             }
-
 
 class TestAgencies():
 
