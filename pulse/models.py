@@ -31,14 +31,14 @@ class Report:
 
     # Initialize a report with a given date.
     def create(data):
-        db.db.pulse.reports.insert_one(data.copy())
+        db.db.reports.insert_one(data.copy())
 
     def report_time(report_date):
         return datetime.datetime.strptime(report_date, "%Y-%m-%d")
 
     # There's only ever one.
     def latest():
-        return db.db.pulse.reports.find_one({}, {'_id': False})
+        return db.db.reports.find_one({}, {'_id': False})
 
 
 class Domain:
@@ -66,50 +66,50 @@ class Domain:
     #
 
     def create(data):
-        return db.db.pulse.domains.insert_one(data)
+        return db.db.domains.insert_one(data.copy())
 
     def create_all(iterable: typing.List[typing.Dict]):
-        return db.db.pulse.domains.insert_many(iterable)
+        return db.db.domains.insert_many(iterable)
 
     def update(domain_name, data):
-        return db.db.pulse.domains.update_one(
+        return db.db.domains.update_one(
             {'domain': domain_name},
             {'$set': data},
         )
 
     def add_report(domain_name, report_name, report):
-        return db.db.pulse.domains.update_one(
+        return db.db.domains.update_one(
             {'domain': domain_name},
             {'$set': {report_name: report}}
         )
 
     def find(domain_name):
-        return db.db.pulse.domains.find_one({'domain': domain_name}, {'_id': False})
+        return db.db.domains.find_one({'domain': domain_name}, {'_id': False})
 
     # Useful when you want to pull in all domain entries as peers,
     # such as reports which only look at parent domains, or
     # a flat CSV of all hostnames that match a report.
     def eligible(report_name):
-        return db.db.pulse.domains.find(
+        return db.db.domains.find(
             {f'{report_name}.eligible': True}, {'_id': False}
         )
 
     # Useful when you have mixed parent/subdomain reporting,
     # used for HTTPS but not yet others.
     def eligible_parents(report_name):
-        return db.db.pulse.domains.find(
+        return db.db.domains.find(
             {f'{report_name}.eligible_zone': True, 'is_parent': True}, {'_id': False}
         )
 
     # Useful when you want to pull down subdomains of a particular
     # parent domain. Used for HTTPS expanded reports.
     def eligible_for_domain(domain, report_name):
-        return db.db.pulse.domains.find(
+        return db.db.domains.find(
             {f'{report_name}.eligible': True, 'base_domain': domain}, {'_id': False}
         )
 
     def all():
-        return db.db.pulse.domains.find({}, {'_id': False})
+        return db.db.domains.find({}, {'_id': False})
 
     def to_csv(domains, report_type):
         output = io.StringIO()
@@ -185,24 +185,24 @@ class Agency:
 
     # An agency which had at least 1 eligible domain.
     def eligible(report_name):
-        return db.db.pulse.agencies.find({f'{report_name}.eligible': {'$gt': 0}}, {'_id': False})
+        return db.db.agencies.find({f'{report_name}.eligible': {'$gt': 0}}, {'_id': False})
 
     # Create a new Agency record with a given name, slug, and total domain count.
     def create(data):
-        return db.db.pulse.agencies.insert_one(data)
+        return db.db.agencies.insert_one(data.copy()) # Copy dictionary to prevent mutation side effect
 
     def create_all(iterable):
-        return db.db.pulse.agencies.insert_many(iterable)
+        return db.db.agencies.insert_many(iterable)
 
     # For a given agency, add a report.
     def add_report(slug, report_name, report):
-        return db.db.pulse.agencies.update_one(
-            {'slug', slug},
+        return db.db.agencies.update_one(
+            {'slug': slug},
             {'$set': {report_name: report}}
         )
 
     def find(slug):
-        return db.db.pulse.agencies.find_one({'slug': slug}, {'_id': False})
+        return db.db.agencies.find_one({'slug': slug}, {'_id': False})
 
     def all():
-        return db.db.pulse.agencies.find({}, {'_id': False})
+        return db.db.agencies.find({}, {'_id': False})
