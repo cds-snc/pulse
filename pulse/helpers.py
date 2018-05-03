@@ -14,7 +14,7 @@ def register(app):
     if latest:
       return models.Report.report_time(latest['report_date'])
     else:
-      return datetime.datetime.new()
+      return datetime.datetime.now()
 
   # Make site metadata available everywhere.
   meta = yaml.safe_load(open("meta.yml"))
