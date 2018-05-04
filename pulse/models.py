@@ -27,19 +27,19 @@ class Report:
     # analytics.participates (number)
 
     # Initialize a report with a given date.
-    @classmethod
-    def create(cls, data: typing.Dict, copy: bool = True) -> None:
+    @staticmethod
+    def create(data: typing.Dict, copy: bool = True) -> None:
         if copy:
             return db.db.reports.insert_one(data.copy())
         return db.db.reports.insert_one(data)
 
-    @classmethod
-    def report_time(cls, report_date: str) -> datetime.datetime:
+    @staticmethod
+    def report_time(report_date: str) -> datetime.datetime:
         return datetime.datetime.strptime(report_date, "%Y-%m-%d")
 
-    @classmethod
+    @staticmethod
     # There's only ever one.
-    def latest(cls) -> typing.Dict:
+    def latest() -> typing.Dict:
         return db.db.reports.find_one({}, {'_id': False})
 
 
@@ -67,68 +67,68 @@ class Domain:
     # analytics: { ... }
     #
 
-    @classmethod
-    def create(cls, data: typing.Dict, copy: bool = True) -> None:
+    @staticmethod
+    def create(data: typing.Dict, copy: bool = True) -> None:
         if copy:
             return db.db.domains.insert_one(data.copy())
         return db.db.domains.insert_one(data)
 
     # Warning - This will add an _id element to all the documents inserted via this method
-    @classmethod
-    def create_all(cls, iterable: typing.Iterable[typing.Dict], copy: bool = False) -> None:
+    @staticmethod
+    def create_all(iterable: typing.Iterable[typing.Dict], copy: bool = False) -> None:
         if copy:
             return db.db.domains.insert_many(document.copy() for document in iterable)
         return db.db.domains.insert_many(iterable)
 
-    @classmethod
-    def update(cls, domain_name: str, data: typing.Dict) -> None:
+    @staticmethod
+    def update(domain_name: str, data: typing.Dict) -> None:
         return db.db.domains.update_one(
             {'domain': domain_name},
             {'$set': data},
         )
 
-    @classmethod
-    def add_report(cls, domain_name: str, report_name: str, report: typing.Dict) -> None:
+    @staticmethod
+    def add_report(domain_name: str, report_name: str, report: typing.Dict) -> None:
         return db.db.domains.update_one(
             {'domain': domain_name},
             {'$set': {report_name: report}}
         )
 
-    @classmethod
-    def find(cls, domain_name: str) -> typing.Dict:
+    @staticmethod
+    def find(domain_name: str) -> typing.Dict:
         return db.db.domains.find_one({'domain': domain_name}, {'_id': False})
 
     # Useful when you want to pull in all domain entries as peers,
     # such as reports which only look at parent domains, or
     # a flat CSV of all hostnames that match a report.
-    @classmethod
-    def eligible(cls, report_name: str) -> typing.Iterable[typing.Dict]:
+    @staticmethod
+    def eligible(report_name: str) -> typing.Iterable[typing.Dict]:
         return db.db.domains.find(
             {f'{report_name}.eligible': True}, {'_id': False}
         )
 
     # Useful when you have mixed parent/subdomain reporting,
     # used for HTTPS but not yet others.
-    @classmethod
-    def eligible_parents(cls, report_name: str) -> typing.Iterable[typing.Dict]:
+    @staticmethod
+    def eligible_parents(report_name: str) -> typing.Iterable[typing.Dict]:
         return db.db.domains.find(
             {f'{report_name}.eligible_zone': True, 'is_parent': True}, {'_id': False}
         )
 
     # Useful when you want to pull down subdomains of a particular
     # parent domain. Used for HTTPS expanded reports.
-    @classmethod
-    def eligible_for_domain(cls, domain: str, report_name: str) -> typing.Iterable[typing.Dict]:
+    @staticmethod
+    def eligible_for_domain(domain: str, report_name: str) -> typing.Iterable[typing.Dict]:
         return db.db.domains.find(
             {f'{report_name}.eligible': True, 'base_domain': domain}, {'_id': False}
         )
 
-    @classmethod
-    def all(cls) -> typing.Iterable[typing.Dict]:
+    @staticmethod
+    def all() -> typing.Iterable[typing.Dict]:
         return db.db.domains.find({}, {'_id': False})
 
-    @classmethod
-    def to_csv(cls, domains: typing.Iterable[typing.Dict], report_type: str) -> str:
+    @staticmethod
+    def to_csv(domains: typing.Iterable[typing.Dict], report_type: str) -> str:
         output = io.StringIO()
         writer = csv.writer(output, quoting=csv.QUOTE_NONNUMERIC)
 
@@ -201,35 +201,35 @@ class Agency:
     #
 
     # An agency which had at least 1 eligible domain.
-    @classmethod
-    def eligible(cls, report_name: str) -> typing.Iterable[typing.Dict]:
+    @staticmethod
+    def eligible(report_name: str) -> typing.Iterable[typing.Dict]:
         return db.db.agencies.find({f'{report_name}.eligible': {'$gt': 0}}, {'_id': False})
 
     # Create a new Agency record with a given name, slug, and total domain count.
-    @classmethod
-    def create(cls, data: typing.Dict, copy: bool = True) -> None:
+    @staticmethod
+    def create(data: typing.Dict, copy: bool = True) -> None:
         if copy:
             return db.db.agencies.insert_one(data.copy()) # Copy dictionary to prevent mutation side effect
         return db.db.agencies.insert_one(data)
 
-    @classmethod
-    def create_all(cls, iterable: typing.Iterable[typing.Dict], copy: bool = False) -> None:
+    @staticmethod
+    def create_all(iterable: typing.Iterable[typing.Dict], copy: bool = False) -> None:
         if copy:
             return db.db.agencies.insert_many(iterable)
         return db.db.agencies.insert_many(document.copy() for document in iterable)
 
     # For a given agency, add a report.
-    @classmethod
-    def add_report(cls, slug: str, report_name: str, report: typing.Dict) -> None:
+    @staticmethod
+    def add_report(slug: str, report_name: str, report: typing.Dict) -> None:
         return db.db.agencies.update_one(
             {'slug': slug},
             {'$set': {report_name: report}}
         )
 
-    @classmethod
-    def find(cls, slug: str) -> typing.Dict:
+    @staticmethod
+    def find(slug: str) -> typing.Dict:
         return db.db.agencies.find_one({'slug': slug}, {'_id': False})
 
-    @classmethod
-    def all(cls) -> typing.Iterable[typing.Dict]:
+    @staticmethod
+    def all() -> typing.Iterable[typing.Dict]:
         return db.db.agencies.find({}, {'_id': False})
