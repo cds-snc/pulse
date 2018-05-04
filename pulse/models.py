@@ -68,14 +68,14 @@ class Domain:
     #
 
     @classmethod
-    def create(cls, data: typing.Dict, copy=True) -> None:
+    def create(cls, data: typing.Dict, copy: bool = True) -> None:
         if copy:
             return db.db.domains.insert_one(data.copy())
         return db.db.domains.insert_one(data)
 
     # Warning - This will add an _id element to all the documents inserted via this method
     @classmethod
-    def create_all(cls, iterable: typing.Iterable[typing.Dict], copy=False) -> None:
+    def create_all(cls, iterable: typing.Iterable[typing.Dict], copy: bool = False) -> None:
         if copy:
             return db.db.domains.insert_many(document.copy() for document in iterable)
         return db.db.domains.insert_many(iterable)
