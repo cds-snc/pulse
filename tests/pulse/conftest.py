@@ -19,7 +19,7 @@ def local_mongo_is_running() -> bool:
 
 
 @pytest.fixture()
-def app(monkeypatch) -> flask.Flask:
+def app() -> flask.Flask:
     if not local_mongo_is_running():
         pytest.skip('Local MongoDB instance is not running.')
     app = create_app('testing')
