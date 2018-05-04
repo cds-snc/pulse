@@ -163,7 +163,6 @@ def run(date: str, environment: str):
   # Calculate high-level per-domain conclusions for each report.
   # Overwrites `domains` and `subdomains` in-place.
   process_domains(domains, agencies, subdomains, parent_scan_data, subdomain_scan_data)
-  import pdb; pdb.set_trace()
 
   _app = create_app(environment)
 
