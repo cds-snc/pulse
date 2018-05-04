@@ -99,7 +99,7 @@ from pulse.data import LABELS
 #
 # This method blows away the database and rebuilds it from the given data.
 
-def run(date):
+def run(date: str, environment: str):
   if date is None:
     date = datetime.datetime.strftime(datetime.datetime.now(), "%Y-%m-%d")
 
@@ -163,8 +163,9 @@ def run(date):
   # Calculate high-level per-domain conclusions for each report.
   # Overwrites `domains` and `subdomains` in-place.
   process_domains(domains, agencies, subdomains, parent_scan_data, subdomain_scan_data)
+  import pdb; pdb.set_trace()
 
-  _app = create_app('production')
+  _app = create_app(environment)
 
   # Reset the database.
   LOGGER.info("Clearing the database.")
