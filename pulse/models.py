@@ -28,8 +28,10 @@ class Report:
 
     # Initialize a report with a given date.
     @classmethod
-    def create(cls, data: typing.Dict) -> None:
-        db.db.reports.insert_one(data.copy())
+    def create(cls, data: typing.Dict, copy: bool = True) -> None:
+        if copy:
+            return db.db.reports.insert_one(data.copy())
+        return db.db.reports.insert_one(data)
 
     @classmethod
     def report_time(cls, report_date: str) -> datetime.datetime:
@@ -66,11 +68,16 @@ class Domain:
     #
 
     @classmethod
-    def create(cls, data: typing.Dict) -> None:
-        return db.db.domains.insert_one(data.copy())
+    def create(cls, data: typing.Dict, copy=True) -> None:
+        if copy:
+            return db.db.domains.insert_one(data.copy())
+        return db.db.domains.insert_one(data)
 
+    # Warning - This will add an _id element to all the documents inserted via this method
     @classmethod
-    def create_all(cls, iterable: typing.List[typing.Dict]) -> None:
+    def create_all(cls, iterable: typing.Iterable[typing.Dict], copy=False) -> None:
+        if copy:
+            return db.db.domains.insert_many(document.copy() for document in iterable)
         return db.db.domains.insert_many(iterable)
 
     @classmethod
@@ -200,12 +207,16 @@ class Agency:
 
     # Create a new Agency record with a given name, slug, and total domain count.
     @classmethod
-    def create(cls, data: typing.Dict) -> None:
-        return db.db.agencies.insert_one(data.copy()) # Copy dictionary to prevent mutation side effect
+    def create(cls, data: typing.Dict, copy: bool = True) -> None:
+        if copy:
+            return db.db.agencies.insert_one(data.copy()) # Copy dictionary to prevent mutation side effect
+        return db.db.agencies.insert_one(data)
 
     @classmethod
-    def create_all(cls, iterable: typing.Iterable[typing.Dict]) -> None:
-        return db.db.agencies.insert_many(iterable)
+    def create_all(cls, iterable: typing.Iterable[typing.Dict], copy: bool = False) -> None:
+        if copy:
+            return db.db.agencies.insert_many(iterable)
+        return db.db.agencies.insert_many(document.copy() for document in iterable)
 
     # For a given agency, add a report.
     @classmethod
