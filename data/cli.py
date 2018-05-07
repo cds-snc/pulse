@@ -21,6 +21,8 @@ class DateType(click.ParamType):
             return value
         except ValueError:
             self.fail(f'{value} is not a valid date')
+
+
 DATE = DateType()
 
 
@@ -32,9 +34,9 @@ def get_cached_date(directory: str) -> str:
 
 
 def get_date(
-        ctx: typing.Optional[click.core.Context], # pylint: disable=unused-argument
-        param: typing.Optional[click.core.Option], # pylint: disable=unused-argument
-        value: typing.Optional[str]
+        ctx: typing.Optional[click.core.Context],  # pylint: disable=unused-argument
+        param: typing.Optional[click.core.Option],  # pylint: disable=unused-argument
+        value: typing.Optional[str],
     ) -> str:
 
     # Date can be overridden if need be, but defaults to meta.json.
@@ -59,9 +61,7 @@ def main() -> None:
 
 
 @main.command(
-    context_settings=dict(
-        ignore_unknown_options=True,
-    ),
+    context_settings=dict(ignore_unknown_options=True),
     help='Coposition of `update`, `process`, and `upload` commands',
 )
 @click.option('--date', type=DATE)
@@ -76,7 +76,7 @@ def run(
         gather: str,
         upload_results: bool,
         environment: str,
-        scan_args: typing.List[str]
+        scan_args: typing.List[str],
     ) -> None:
 
     update.callback(scan, gather, scan_args)
@@ -87,19 +87,12 @@ def run(
 
 
 @main.command(
-    context_settings=dict(
-        ignore_unknown_options=True,
-    ),
-    help='Gather and scan domains',
+    context_settings=dict(ignore_unknown_options=True), help='Gather and scan domains'
 )
 @click.option('--scan', type=click.Choice(['skip', 'download', 'here']), default='skip')
 @click.option('--gather', type=click.Choice(['skip', 'here']), default='here')
 @click.argument('scan_args', nargs=-1, type=click.UNPROCESSED)
-def update(
-        scan: str,
-        gather: str,
-        scan_args: typing.List[str]
-    ) -> None:
+def update(scan: str, gather: str, scan_args: typing.List[str]) -> None:
 
     LOGGER.info('Starting update')
     data_update.update(scan, gather, transform_args(scan_args))
@@ -117,13 +110,13 @@ def download() -> None:
 @click.option('--date', type=DATE, callback=get_date)
 def upload(date: str) -> None:
     # Sanity check to make sure we have what we need.
-    if not os.path.exists(os.path.join(PARENTS_RESULTS, "meta.json")):
-        LOGGER.info("No scan metadata downloaded, aborting.")
+    if not os.path.exists(os.path.join(PARENTS_RESULTS, 'meta.json')):
+        LOGGER.info('No scan metadata downloaded, aborting.')
         return
 
     LOGGER.info(f'[{date}] Syncing scan data and database to S3.')
     data_update.upload_s3(date)
-    LOGGER.info(f"[{date}] Scan data and database now in S3.")
+    LOGGER.info(f'[{date}] Scan data and database now in S3.')
 
 
 @main.command(help='Process scan data')
@@ -132,10 +125,10 @@ def upload(date: str) -> None:
 def process(date: str, environment: str) -> None:
 
     # Sanity check to make sure we have what we need.
-    if not os.path.exists(os.path.join(PARENTS_RESULTS, "meta.json")):
-        LOGGER.info("No scan metadata downloaded, aborting.")
+    if not os.path.exists(os.path.join(PARENTS_RESULTS, 'meta.json')):
+        LOGGER.info('No scan metadata downloaded, aborting.')
         return
 
-    LOGGER.info(f"[{date}] Loading data into Pulse.")
+    LOGGER.info(f'[{date}] Loading data into Pulse.')
     processing.run(date, environment)
-    LOGGER.info(f"[{date}] Data now loaded into Pulse.")
+    LOGGER.info(f'[{date}] Data now loaded into Pulse.')
