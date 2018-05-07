@@ -110,13 +110,13 @@ def download() -> None:
 @click.option("--date", type=DATE, callback=get_date)
 def upload(date: str) -> None:
     # Sanity check to make sure we have what we need.
-    if not os.path.exists(os.path.join(PARENTS_RESULTS, 'meta.json')):
-        LOGGER.info('No scan metadata downloaded, aborting.')
+    if not os.path.exists(os.path.join(PARENTS_RESULTS, "meta.json")):
+        LOGGER.info("No scan metadata downloaded, aborting.")
         return
 
     LOGGER.info(f"[{date}] Syncing scan data and database to S3.")
     data_update.upload_s3(date)
-    LOGGER.info(f'[{date}] Scan data and database now in S3.')
+    LOGGER.info(f"[{date}] Scan data and database now in S3.")
 
 
 @main.command(help="Process scan data")
@@ -125,10 +125,10 @@ def upload(date: str) -> None:
 def process(date: str, environment: str) -> None:
 
     # Sanity check to make sure we have what we need.
-    if not os.path.exists(os.path.join(PARENTS_RESULTS, 'meta.json')):
-        LOGGER.info('No scan metadata downloaded, aborting.')
+    if not os.path.exists(os.path.join(PARENTS_RESULTS, "meta.json")):
+        LOGGER.info("No scan metadata downloaded, aborting.")
         return
 
-    LOGGER.info(f'[{date}] Loading data into Pulse.')
+    LOGGER.info(f"[{date}] Loading data into Pulse.")
     processing.run(date, environment)
-    LOGGER.info(f'[{date}] Data now loaded into Pulse.')
+    LOGGER.info(f"[{date}] Data now loaded into Pulse.")
