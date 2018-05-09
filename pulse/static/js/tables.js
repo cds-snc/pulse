@@ -69,15 +69,6 @@ var Tables = {
   noop: function() {return ""},
 
   // common render helper for percent bars
-  // percentBar: function(data) {
-  //   return '' +
-  //     '<div class="progress-bar-indication">' +
-  //       '<span class="meter width' + data + '" style="width: ' + data + '%">' +
-  //         '<p>' + data + '%</p>' +
-  //       '</span>' +
-  //     '</div>';
-  // },
-
   percentBar: function(data) {
     return '' +
       '<div class="progress-bar-indication">' +
