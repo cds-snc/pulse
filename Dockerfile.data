@@ -19,7 +19,6 @@ RUN chmod +x /opt/scan/pulse/deploy/init_container.sh
 
 # Copy required source and package files
 COPY MANIFEST.in /opt/scan/pulse/MANIFEST.in
-COPY csv /opt/scan/pulse/csv
 COPY setup.py /opt/scan/pulse/setup.py 
 COPY pulse /opt/scan/pulse/pulse
 COPY data /opt/scan/pulse/data
