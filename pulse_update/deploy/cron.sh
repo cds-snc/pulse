@@ -21,5 +21,21 @@ region=$PULSE_AWS_REGION
 output=json
 EOF
 
+aws lambda get-function --function-name task_sslyze > /dev/null
+SSLYZE=$?
+aws lambda get-function --function-name task_pshtt > /dev/null
+PSHTT=$?
+
+LAMBDA=0
+if [[ $SSLYZE -eq 0 && $PSHTT -eq 0 ]]
+then
+    LAMBDA=1
+fi 
+
 cd $PULSE_HOME
-pulse run --scan here --lambda --lambda-profile lambda
+if [[ $LAMBDA -eq 1 ]]
+then
+    pulse run --scan here --lambda --lambda-profile lambda
+else
+    pusel run --scan here
+fi
