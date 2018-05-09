@@ -64,7 +64,7 @@ def update(scan_mode, gather_mode, options):
         elif gather_mode == "skip":
             LOGGER.info("Skipping subdomain gathering.")
 
-        # One day, these variables puled globally from env.py will be gone
+        # One day, these variables pulled globally from env.py will be gone
         # And on that day, I will rejoice.
         domain_scanners = SCANNERS
         scan_command = SCAN_COMMAND
