@@ -198,7 +198,7 @@ def gather_subdomains(options):
     shell_out(full_command)
 
 
-# Run pshtt on each gathered set of subdomains.
+# Run pshtt on each gathered set of domains.
 def scan_domains(
         options: typing.Dict[str, typing.Union[str, bool]],
         command: str,
