@@ -22,7 +22,4 @@ output=json
 EOF
 
 cd $PULSE_HOME
-. .env/bin/activate
-export
-ls -a
-pulse run --scan here 
+pulse run --scan here --lambda --lambda-profile lambda

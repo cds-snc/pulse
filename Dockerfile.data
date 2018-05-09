@@ -2,11 +2,20 @@ FROM python:3.6
 MAINTAINER David Buckley <david.buckley@cds-snc.ca>
 LABEL Description="HTTPS Everywhere Scanner Application" Vendor="Canadian Digital Service"
 
-#Install Cron
+# Install Cron
 RUN apt-get update -y && apt-get -y install cron
 
 # Pull down the domain-scan repo to /opt/scan/domain-scan
 RUN mkdir -p /opt/scan/domain-scan && wget -q -O - https://api.github.com/repos/cds-snc/domain-scan/tarball | tar xz --strip-components=1 -C /opt/scan/domain-scan
+
+# Add crontab file in the cron directory
+COPY deploy/crontab /etc/crontab
+COPY deploy/cron.sh /opt/scan/pulse/deploy/cron.sh
+COPY deploy/init_container.sh /opt/scan/pulse/deploy/init_container.sh
+
+# Give execution rights on the cron job
+RUN chmod +x /etc/crontab
+RUN chmod +x /opt/scan/pulse/deploy/init_container.sh
 
 # Copy required source and package files
 COPY MANIFEST.in /opt/scan/pulse/MANIFEST.in
@@ -20,14 +29,5 @@ RUN pip install /opt/scan/pulse/.
 RUN pip install -r /opt/scan/domain-scan/requirements.txt
 RUN pip install -r /opt/scan/domain-scan/requirements-scanners.txt
 
-# Add crontab file in the cron directory
-COPY deploy/crontab /etc/crontab
-COPY deploy/cron.sh /opt/scan/pulse/deploy/cron.sh
-COPY deploy/init_container.sh /opt/scan/pulse/deploy/init_container.sh
-
-# Give execution rights on the cron job
-RUN chmod +x /etc/crontab
-RUN chmod +x /opt/scan/pulse/deploy/init_container.sh
-
-# Run the command on container startup
+# Set entrypoint
 CMD /opt/scan/pulse/deploy/init_container.sh
