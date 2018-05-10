@@ -69,6 +69,7 @@ def main(ctx: click.core.Context, connection: str) -> None:
 @click.option("--date", type=DATE)
 @click.option("--scan", type=click.Choice(["skip", "download", "here"]), default="skip")
 @click.option("--gather", type=click.Choice(["skip", "here"]), default="here")
+@click.option("--pull-domains", is_flag=True, default=False)
 @click.option("--upload-results", is_flag=True, default=False)
 @click.argument("scan_args", nargs=-1, type=click.UNPROCESSED)
 @click.pass_context
@@ -77,9 +78,13 @@ def run(
         date: typing.Optional[str],
         scan: str,
         gather: str,
+        pull_domains: bool,
         upload_results: bool,
         scan_args: typing.List[str],
     ) -> None:
+
+    if pull_domains:
+        preprocess.callback()
 
     update.callback(scan, gather, scan_args)
     the_date = get_date(None, "date", date)
