@@ -22,6 +22,7 @@ setuptools.setup(
         'pymongo==3.6.1',
         'ujson==1.35',
         'click==6.7',
+        'python-slugify==1.2.1',
     ],
     extras_require={
         'development': [
