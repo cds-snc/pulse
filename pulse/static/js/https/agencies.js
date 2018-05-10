@@ -44,7 +44,11 @@ $(document).ready(function () {
     var services = row.https.eligible;
     var domains = row.total_domains;
     var name = row.name;
+    var services_text = "service";
     if (type == "sort") return name;
+
+    if(services > 1) 
+      services_text = "services"
 
     var link = function(text) {
       return "" +
@@ -54,7 +58,7 @@ $(document).ready(function () {
         "</a>";
     }
 
-    return "<div class=\"mb-2\">" + name + "</div>" + link("Show " + services + " services");
+    return "<div class=\"mb-2\">" + name + "</div>" + link("Show " + services + " " + services_text);
 
   };
 
