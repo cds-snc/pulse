@@ -7,14 +7,17 @@ $(document).ready(function () {
 
       columns: [
         {
-          cellType: "th",
-          createdCell: function (td) {td.scope = "row";},
-          data: "name"
+          className: 'control',
+          orderable: false,
+          data: "",
+          render: Tables.noop,
+          visible: false
         },
         {
-          data: "https.eligible", // sort on this, but
+          data: "name",
+          cellType: "td",
           render: eligibleHttps,
-          type: "num"
+          createdCell: function (td) {td.scope = "row";}
         },
         {
           data: "https.enforces",
@@ -31,7 +34,7 @@ $(document).ready(function () {
         {
           data: "preloading.preloaded",
           render: Tables.percent("preloading", "preloaded")
-        }
+        },
       ]
 
     });
@@ -40,17 +43,19 @@ $(document).ready(function () {
   var eligibleHttps = function(data, type, row) {
     var services = row.https.eligible;
     var domains = row.total_domains;
-    if (type == "sort") return services;
+    var name = row.name;
+    if (type == "sort") return name;
 
     var link = function(text) {
       return "" +
-        "<a href=\"/https/domains/#" +
+        "<a href=\"/domains/#" +
           QueryString.stringify({q: row["name"]}) + "\">" +
            text +
         "</a>";
     }
 
-    return link("" + services);
+    return "<div class=\"mb-2\">" + name + "</div>" + link("Show " + services + " services");
+
   };
 
 

@@ -47,7 +47,7 @@ var Tables = {
     if (!options.dom) options.dom = 'Cftri';
 
     // Order by 2nd column (number of services) by default.
-    if (!options.order) options.order = [[1, "desc"]];
+    //if (!options.order) options.order = [[1, "desc"]];
 
     return Tables.init(data, options);
   },
