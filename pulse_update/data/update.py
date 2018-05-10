@@ -18,6 +18,7 @@ from data.env import *
 # Import processing just for the function call.
 import data.processing
 from data import logger
+from data import models
 
 LOGGER = logger.get_logger(__name__)
 
@@ -52,7 +53,6 @@ LOGGER = logger.get_logger(__name__)
 #     here: run the default full gather
 # options
 #     options to pass along to scan and gather operations
-
 
 def update(scan_mode, gather_mode, options):
     if scan_mode == "here":
