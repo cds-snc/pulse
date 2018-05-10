@@ -17,12 +17,6 @@ $(document).ready(function () {
           type: "num"
         },
         {
-          data: "https.compliant",
-          render: Tables.percent("https", "compliant"),
-          className: "compliant",
-          width: "100px"
-        },
-        {
           data: "https.enforces",
           render: Tables.percent("https", "enforces")
         },
