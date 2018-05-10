@@ -52,7 +52,7 @@ jobs:
               . .env/bin/activate
               # pylint src tests -- Major overhaul needed to not fail linting, not including linting in tests for now
               # mypy src tests
-              pytest --cov=data tests
+              pytest --cov=pulse tests
           name: "Running tests"
     working_directory: ~/repo/pulse_update
 
