@@ -16,6 +16,10 @@ bin
 include
 lib
 
+# Linting
+.mypy_cache/
+.pytest_cache
+
 /deploy/node_modules
 
 # Mac specific
