@@ -18,6 +18,6 @@ EOF
 printf "Created aws configuration\n"
 
 printenv | grep -e "^PULSE" -e "^DOMAIN" -e "^PATH" | cat - /etc/crontab > /tmp/crontab && mv /tmp/crontab /etc/crontab 
-printf "Loaded env variables into crontab file"
+printf "Loaded env variables into crontab file\n"
 
 cron -f
