@@ -33,6 +33,7 @@ then
 fi 
 
 cd $PULSE_HOME
+pulse preprocess
 if [[ $LAMBDA -eq 1 ]]
 then
     pulse run --scan here --lambda --lambda-profile lambda
