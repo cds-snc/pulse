@@ -18,7 +18,6 @@ from data.env import *
 # Import processing just for the function call.
 import data.processing
 from data import logger
-from data import models
 
 LOGGER = logger.get_logger(__name__)
 
