@@ -67,6 +67,15 @@ function generate_chart(chart_class) {
     });
 };
 
+function calculate_width() {
+    window_width = $(window).width();
+
+    if(window_width < 500)
+        return 250;
+    else
+        return 287;
+}
+
 generate_chart(".https_chart")
 
 generate_chart(".hsts_chart")
