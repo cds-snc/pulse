@@ -216,7 +216,7 @@ table caption {
       background: transparent !important; }
 
 #menu-content {
-  background: #fff;
+  background: #F8FAFC;
   overflow-y: auto;
   z-index: 999999;
   -webkit-overflow-scrolling: touch;
@@ -227,20 +227,14 @@ table caption {
   left: 0;
   height: 100%;
   width: 220px;
-  -webkit-transform: translateX(-220px);
-  -moz-transform: translateX(-220px);
-  -ms-transform: translateX(-220px);
-  -o-transform: translateX(-220px);
-  transform: translateX(-220px);
+  -webkit-transform: translateX(-230px);
+  -moz-transform: translateX(-230px);
+  -ms-transform: translateX(-230px);
+  -o-transform: translateX(-230px);
+  transform: translateX(-230px);
   -webkit-transition: all 0.25s linear;
   -moz-transition: all 0.25s linear;
   transition: all 0.25s linear; }
-  #menu-content a {
-    color: #4A4A4A; }
-  #menu-content ul {
-    font-weight: 300;
-    line-height: 1.8em;
-    padding: 14px; }
   #menu-content.is-visible {
     -webkit-transform: translateX(0);
     -moz-transform: translateX(0);
