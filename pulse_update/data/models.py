@@ -51,7 +51,7 @@ class _Collection():
         return _find(self._client, self._name, {}, self._db)
 
     def clear(self) -> None:
-        _clear_collection(self._client, self._name)
+        _clear_collection(self._client, self._name, self._db)
 
 
 class Connection():
