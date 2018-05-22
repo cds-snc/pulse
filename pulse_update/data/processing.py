@@ -799,7 +799,7 @@ def total_preloading_report(eligible):
 def print_report(report):
 
     for report_type in report.keys():
-        if report_type == "report_date" or report_try == "_id":
+        if report_type == "report_date" or report_type == "_id":
             continue
 
         LOGGER.info("[%s]" % report_type)
