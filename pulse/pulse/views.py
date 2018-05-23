@@ -29,6 +29,11 @@ def register(app):
     def feedback():
         return render_template("en/feedback.html")
 
+    # French routes
+    @app.route("/fr/organizations")
+    def index_fr():
+        return render_template("fr/index.html")
+
     ##
     # Data endpoints.
 
