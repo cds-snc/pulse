@@ -139,7 +139,7 @@ class TestDomain():
     def test_update(self, clean_model, domain) -> None: # pylint: disable=no-self-use
         clean_model.Domain.create(domain)
         clean_model.Domain.update('test.gc.ca', {'organization_name_en': 'Department of NotTest'})
-        assert clean_model.Domain.find('test.gc.ca')['organization_name'] == 'Department of NotTest'
+        assert clean_model.Domain.find('test.gc.ca')['organization_name_en'] == 'Department of NotTest'
 
     def test_add_report(self, clean_model, domain) -> None: # pylint: disable=no-self-use
         clean_model.Domain.create(domain)
