@@ -6,7 +6,7 @@ LABELS = {
         "domain": "Domain",
         "canonical": "URL",
         "organization_name_en": "English Organization",
-        "organization_name_fr": "English Organization",
+        "organization_name_fr": "French Organization",
         "base_domain": "Base Domain",
         "sources": "Sources",
         "total_domains": "Number of Domains",
