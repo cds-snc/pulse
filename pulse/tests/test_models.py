@@ -79,7 +79,8 @@ class TestDomain():
     @pytest.fixture()
     def domain(self) -> typing.Dict[str, typing.Any]: # pylint: disable=no-self-use
         return {
-            'organization_name': 'Department of Test',
+            'organization_name_en': 'Department of Test',
+            'organization_name_fr': 'Department of French Test',
             'organization_slug': 'department-of-test',
             'analytics': {'eligible': True, 'participating': False},
             'base_domain': 'test.gc.ca',
@@ -129,7 +130,7 @@ class TestDomain():
     def test_create(self, clean_model, domain) -> None: # pylint: disable=no-self-use
         clean_model.Domain.create(domain)
         assert clean_model.db.db.domains.count() == 1
-        assert clean_model.Domain.find('test.gc.ca')['organization_name'] == 'Department of Test'
+        assert clean_model.Domain.find('test.gc.ca')['organization_name_en'] == 'Department of Test'
 
     def test_create_all(self, clean_model, domain) -> None: # pylint: disable=no-self-use
         clean_model.Domain.create_all([domain.copy(), domain.copy(), domain.copy()])
@@ -137,7 +138,7 @@ class TestDomain():
 
     def test_update(self, clean_model, domain) -> None: # pylint: disable=no-self-use
         clean_model.Domain.create(domain)
-        clean_model.Domain.update('test.gc.ca', {'organization_name': 'Department of NotTest'})
+        clean_model.Domain.update('test.gc.ca', {'organization_name_en': 'Department of NotTest'})
         assert clean_model.Domain.find('test.gc.ca')['organization_name'] == 'Department of NotTest'
 
     def test_add_report(self, clean_model, domain) -> None: # pylint: disable=no-self-use
@@ -192,7 +193,8 @@ class TestDomain():
                 'Domain',
                 'Base Domain',
                 'URL',
-                'Organization',
+                'English Organization',
+                'French Organization',
                 'Sources',
                 'Enforces HTTPS',
                 'Strict Transport Security (HSTS)',
@@ -207,7 +209,8 @@ class TestDomain():
                 'Domain': 'test.gc.ca',
                 'Base Domain': 'test.gc.ca',
                 'URL': 'http://test.gc.ca',
-                'Organization': 'Department of Test',
+                'English Organization': 'Department of Test',
+                'French Organization': 'Department of French Test',
                 'Sources': 'canada-gov',
                 'Enforces HTTPS': 'No',
                 'Strict Transport Security (HSTS)': 'No',
@@ -220,12 +223,13 @@ class TestDomain():
             }
 
 
-class TestAgencies():
+class TestOrganizations():
 
     @pytest.fixture()
     def organization(self) -> typing.Dict[str, typing.Any]: # pylint: disable=no-self-use
         return {
-            "name" : "Test Organization",
+            "name_en": "Test Organization",
+            "name_fr": "Test French Organization",
             "slug" : "test-organization",
             "branch" : "executive",
             "total_domains" : 3,
@@ -259,7 +263,7 @@ class TestAgencies():
     def test_create(self, clean_model, organization) -> None: # pylint: disable=no-self-use
         clean_model.Organization.create(organization)
         assert clean_model.db.db.organizations.count() == 1
-        assert clean_model.db.db.organizations.find_one()['name'] == 'Test Organization'
+        assert clean_model.db.db.organizations.find_one()['name_en'] == 'Test Organization'
 
 
     def test_create_all(self, clean_model, organization) -> None: # pylint: disable=no-self-use
