@@ -30,7 +30,7 @@ def register(app):
 
     def generate_path(prefix, page_id):
         if(prefix == 'en' or prefix == 'fr'):
-            return prefix + "/" + page_id + ".html"
+            return os.path.join(prefix, f'{page_id}.html')
         else:
             abort(404)
 
