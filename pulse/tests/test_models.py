@@ -74,8 +74,9 @@ class TestDomain():
     @pytest.fixture()
     def domain(self) -> typing.Dict[str, typing.Any]: # pylint: disable=no-self-use
         return {
-            'agency_name': 'Department of Test',
-            'agency_slug': 'department-of-test',
+            'organization_name_en': 'Department of Test',
+            'organization_name_fr': 'Department of French Test',
+            'organization_slug': 'department-of-test',
             'analytics': {'eligible': True, 'participating': False},
             'base_domain': 'test.gc.ca',
             'branch': 'executive',
@@ -124,7 +125,7 @@ class TestDomain():
     def test_create(self, clean_model, domain) -> None: # pylint: disable=no-self-use
         clean_model.Domain.create(domain)
         assert len([document for document in clean_model.Domain.all()]) == 1
-        assert clean_model.Domain.find('test.gc.ca')['agency_name'] == 'Department of Test'
+        assert clean_model.Domain.find('test.gc.ca')['organization_name_en'] == 'Department of Test'
 
     def test_create_all(self, clean_model, domain) -> None: # pylint: disable=no-self-use
         clean_model.Domain.create_all([domain.copy(), domain.copy(), domain.copy()])
@@ -132,8 +133,8 @@ class TestDomain():
 
     def test_update(self, clean_model, domain) -> None: # pylint: disable=no-self-use
         clean_model.Domain.create(domain)
-        clean_model.Domain.update('test.gc.ca', {'agency_name': 'Department of NotTest'})
-        assert clean_model.Domain.find('test.gc.ca')['agency_name'] == 'Department of NotTest'
+        clean_model.Domain.update('test.gc.ca', {'organization_name_en': 'Department of NotTest'})
+        assert clean_model.Domain.find('test.gc.ca')['organization_name_en'] == 'Department of NotTest'
 
     def test_add_report(self, clean_model, domain) -> None: # pylint: disable=no-self-use
         clean_model.Domain.create(domain)
@@ -187,7 +188,8 @@ class TestDomain():
                 'Domain',
                 'Base Domain',
                 'URL',
-                'Agency',
+                'English Organization',
+                'French Organization',
                 'Sources',
                 'Enforces HTTPS',
                 'Strict Transport Security (HSTS)',
@@ -202,7 +204,8 @@ class TestDomain():
                 'Domain': 'test.gc.ca',
                 'Base Domain': 'test.gc.ca',
                 'URL': 'http://test.gc.ca',
-                'Agency': 'Department of Test',
+                'English Organization': 'Department of Test',
+                'French Organization': 'Department of French Test',
                 'Sources': 'canada-gov',
                 'Enforces HTTPS': 'No',
                 'Strict Transport Security (HSTS)': 'No',
@@ -215,12 +218,13 @@ class TestDomain():
             }
 
 
-class TestAgencies():
+class TestOrganizations():
 
     @pytest.fixture()
-    def agency(self) -> typing.Dict[str, typing.Any]: # pylint: disable=no-self-use
+    def organization(self) -> typing.Dict[str, typing.Any]: # pylint: disable=no-self-use
         return {
-            "name" : "Test Organization",
+            "name_en": "Test Organization",
+            "name_fr": "Test French Organization",
             "slug" : "test-organization",
             "branch" : "executive",
             "total_domains" : 3,
@@ -251,46 +255,46 @@ class TestAgencies():
             }
         }
 
-    def test_create(self, clean_model, agency) -> None: # pylint: disable=no-self-use
-        clean_model.Agency.create(agency)
-        assert len([document for document in clean_model.Agency.all()]) == 1
-        assert clean_model.Agency.find('test-organization')['name'] == 'Test Organization'
+    def test_create(self, clean_model, organization) -> None: # pylint: disable=no-self-use
+        clean_model.Organization.create(organization)
+        assert len([document for document in clean_model.Organization.all()]) == 1
+        assert clean_model.Organization.find('test-organization')['name_en'] == 'Test Organization'
 
 
-    def test_create_all(self, clean_model, agency) -> None: # pylint: disable=no-self-use
-        clean_model.Agency.create_all([agency.copy(), agency.copy(), agency.copy()])
-        assert len([document for document in clean_model.Agency.all()]) == 3
+    def test_create_all(self, clean_model, organization) -> None: # pylint: disable=no-self-use
+        clean_model.Organization.create_all([organization.copy(), organization.copy(), organization.copy()])
+        assert len([document for document in clean_model.Organization.all()]) == 3
 
 
-    def test_eligible(self, clean_model, agency) -> None: # pylint: disable=no-self-use
-        clean_model.Agency.create(agency)
-        clean_model.Agency.create(agency)
+    def test_eligible(self, clean_model, organization) -> None: # pylint: disable=no-self-use
+        clean_model.Organization.create(organization)
+        clean_model.Organization.create(organization)
 
-        eligible = [agency for agency in clean_model.Agency.eligible('https')]
+        eligible = [organization for organization in clean_model.Organization.eligible('https')]
         assert len(eligible) == 2
 
-    def test_not_eligible(self, clean_model, agency) -> None: # pylint: disable=no-self-use
-        not_eligible = copy.deepcopy(agency)
+    def test_not_eligible(self, clean_model, organization) -> None: # pylint: disable=no-self-use
+        not_eligible = copy.deepcopy(organization)
         not_eligible['https']['eligible'] = 0
-        clean_model.Agency.create_all([agency, not_eligible])
+        clean_model.Organization.create_all([organization, not_eligible])
 
-        eligible = [agency for agency in clean_model.Agency.eligible('https')]
+        eligible = [organization for organization in clean_model.Organization.eligible('https')]
         assert len(eligible) == 1
 
-    def test_add_report(self, clean_model, agency) -> None: # pylint: disable=no-self-use
-        clean_model.Agency.create(agency)
-        clean_model.Agency.add_report('test-organization', 'test_report', {'key': 'value'})
-        assert clean_model.Agency.find('test-organization').get('test_report') == {'key': 'value'}
+    def test_add_report(self, clean_model, organization) -> None: # pylint: disable=no-self-use
+        clean_model.Organization.create(organization)
+        clean_model.Organization.add_report('test-organization', 'test_report', {'key': 'value'})
+        assert clean_model.Organization.find('test-organization').get('test_report') == {'key': 'value'}
 
-    def test_find(self, clean_model, agency) -> None: # pylint: disable=no-self-use
-        clean_model.Agency.create(agency)
-        different = agency.copy()
+    def test_find(self, clean_model, organization) -> None: # pylint: disable=no-self-use
+        clean_model.Organization.create(organization)
+        different = organization.copy()
         different['slug'] = 'test-organization2'
-        clean_model.Agency.create(different)
-        assert clean_model.Agency.find('test-organization')['slug'] == 'test-organization'
+        clean_model.Organization.create(different)
+        assert clean_model.Organization.find('test-organization')['slug'] == 'test-organization'
 
-    def test_all(self, clean_model, agency) -> None: # pylint: disable=no-self-use
-        clean_model.Agency.create(agency)
-        clean_model.Agency.create(agency)
-        all_agencies = [agency for agency in clean_model.Agency.all()]
-        assert len(all_agencies) == 2
+    def test_all(self, clean_model, organization) -> None: # pylint: disable=no-self-use
+        clean_model.Organization.create(organization)
+        clean_model.Organization.create(organization)
+        all_organizations = [organization for organization in clean_model.Organization.all()]
+        assert len(all_organizations) == 2

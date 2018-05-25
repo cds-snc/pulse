@@ -1,14 +1,14 @@
-{% extends "en/layout-en.html" %}
+{% extends "fr/layout-fr.html" %}
 
-{% block title %}HTTPS Everywhere{% endblock %}
+{% block title %}HTTPS Partout{% endblock %}
 
 {% block content %}
 <header class="bg-grey-lighter py-6">
 
-	{% include 'includes/https/en/header.html' %}
+	{% include 'includes/https/fr/header.html' %}
 
 	<div class="text-center mt-8 font-bold">
-		<p class="uppercase">by organization <a href="/en/domains/" class="ml-8 text-blue hover:text-blue-darker">by domain</a></p>
+		<p class="uppercase">par organization <a href="/fr/domains/" class="ml-8 text-blue hover:text-blue-darker">par domain</a></p>
 	</div>
 
 </header>
@@ -17,8 +17,8 @@
 
 	<div id="tab-panel" class="container mx-auto" role="tabpanel" aria-hidden="false">
 	    
-	    <table class="organization responsive https">
-	      <caption>HTTPS by organization. Table is sortable via first row table headers. Each row contains an organization and related attributes.</caption>
+	    <table class="agency responsive https">
+	      <caption>HTTPS by agency. Table is sortable via first row table headers. Each row contains an agency and related attributes.</caption>
 	      <thead>
 	        <tr>
 	          <th class="never"></th>
@@ -35,5 +35,5 @@
 
 </section>
 
-<script src="/static/js/https/organizations.js?{{ now() | date("%Y%m%j%H%M%S") }}"></script>
+<script src="/static/js/https/agencies.js?{{ now() | date("%Y%m%j%H%M%S") }}"></script>
 {% endblock %}

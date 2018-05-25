@@ -41,10 +41,11 @@ class Report:
 
 class Domain:
     # domain (string)
-    # agency_slug (string)
+    # organization_slug (string)
     # is_parent (boolean)
     #
-    # agency_name (string)
+    # organization_name_en (string)
+    # organization_name_fr (string)
     #
     # parent_domain (string)
     # sources (array of strings)
@@ -169,9 +170,9 @@ class Domain:
         return output.getvalue()
 
 
-class Agency:
-    # agency_slug (string)
-    # agency_name (string)
+class Organization:
+    # organization_slug (string)
+    # organization_name (string)
     # total_domains (number)
     #
     # https {
@@ -184,12 +185,12 @@ class Agency:
     # }
     #
 
-    # An agency which had at least 1 eligible domain.
+    # An organization which had at least 1 eligible domain.
     @staticmethod
     def eligible(report_name: str) -> typing.Iterable[typing.Dict]:
         return db.db.meta.find({'_collection': 'organizations', f'{report_name}.eligible': {'$gt': 0}}, {'_id': False, '_collection': False})
 
-    # Create a new Agency record with a given name, slug, and total domain count.
+    # Create a new Organization record with a given name, slug, and total domain count.
     @staticmethod
     def create(data: typing.Dict) -> None:
         return db.db.meta.insert_one({'_collection': 'organizations', **data})
@@ -198,7 +199,7 @@ class Agency:
     def create_all(iterable: typing.Iterable[typing.Dict]) -> None:
         return db.db.meta.insert_many({'_collection': 'organizations', **document} for document in iterable)
 
-    # For a given agency, add a report.
+    # For a given organization, add a report.
     @staticmethod
     def add_report(slug: str, report_name: str, report: typing.Dict) -> None:
         return db.db.meta.update_one(
