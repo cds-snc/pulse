@@ -6,7 +6,7 @@ $(document).ready(function () {
 
       csv: "/data/hosts/https.csv",
 
-      prefix: getLanguage(),
+      prefix: language,
 
       columns: [
         {
@@ -17,7 +17,7 @@ $(document).ready(function () {
           visible: false
         },
         {
-          data: "name_" + getLanguage(),
+          data: "name_" + language,
           cellType: "td",
           render: eligibleHttps,
           createdCell: function (td) {td.scope = "row";}
@@ -43,16 +43,12 @@ $(document).ready(function () {
     });
   });
 
-  var getLanguage = function() {
-    var prefix = $( "#data_table" ).attr("language");
-    if(prefix == 'en' || prefix == 'fr') return prefix;
-    else return 'en';
-  }
+  //get table language
+  var language = $( "#data-table" ).attr("language");
 
   var eligibleHttps = function(data, type, row) {
     var services = row.https.eligible;
     var domains = row.total_domains;
-    var language = getLanguage();
 
     if(language == 'en') {
       var name = row.name_en;

@@ -18,6 +18,8 @@ $(function () {
 
       initComplete: initExpansions,
 
+      prefix: language,
+
       columns: [
         {
           className: 'control',
@@ -36,7 +38,7 @@ $(function () {
             td.scope = "row";
           }
         },
-        {data: "organization_name_en"}, // here for filtering/sorting
+        {data: "organization_name_" + language}, // here for filtering/sorting
         {
           data: "totals.https.enforces",
           render: Tables.percentTotals("https", "enforces")
@@ -60,6 +62,9 @@ $(function () {
       ]
     });
   });
+
+  //get table language
+  var language = $( "#data-table" ).attr("language");
 
   /**
   * I don't like this at all, but to keep the presentation synced
