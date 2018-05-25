@@ -76,6 +76,27 @@ $(function () {
   * a cleaner way to DRY (don't repeat yourself) this mess up.
   */
 
+  // todo: add french names
+
+  var text = {
+
+    show: {
+      en: "Show",
+      fr: "Montrer les"
+    } , 
+
+    hide: {
+      en: "Hide",
+      fr: "Cacher les"
+    },
+
+    details: {
+      en: "details",
+      fr: "détails"
+    },
+
+  };
+
   var names = {
 
     enforces: {
@@ -138,10 +159,16 @@ $(function () {
 
     if (number > 1) {
       var csv = "/data/hosts/" + base_domain + "/https.csv";
-      //var discoveryLink = l("/https/guidance/#subdomains", "publicly discoverable services");
-      var link = "Showing data for " + number + " publicly discoverable services within " + base_domain + ".&nbsp;&nbsp;";
-      link += l(csv, "Download all " + base_domain + " data as a CSV") + ".";
-      link += " Email " + l("mailto:zzTBSCybers@tbs-sct.gc.ca", "zzTBSCybers@tbs-sct.gc.ca") + " with questions.";
+
+      if (language == 'en') {
+        var link = "Showing data for " + number + " publicly discoverable services within " + base_domain + ".&nbsp;&nbsp;";
+        link += l(csv, "Download all " + base_domain + " data as a CSV") + ".";
+      }
+      else {
+        var link = "Afficher les données pour " + number + " services publiquement repérables dans " + base_domain + ".&nbsp;&nbsp;";
+        link += l(csv, "Télécharger toutes les données " + base_domain + " sous forme de fichier CSV.") + ".";
+      }
+
       var download = $("<tr></tr>").addClass("subdomain").html("<td class=\"link\" colspan=6>" + link + "</td>");
       all.push(download);
     }
@@ -186,9 +213,9 @@ $(function () {
 
   var showHideText = function(show, row) {
     if (loneDomain(row))
-      return (show ? "show" : "hide") + " details";
+      return (show ? text.show[language] : text.hide[language]) + " " + text.details[language];
     else
-      return (show ? "show" : "hide") + " " + row.totals.https.eligible + " services";
+      return (show ? text.show[language] : text.hide[language]) + " " + row.totals.https.eligible + " services";
   };
 
   var initExpansions = function() {
