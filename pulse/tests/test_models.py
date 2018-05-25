@@ -61,11 +61,6 @@ class TestReport():
             "report_date" : report_date
         }
 
-    def test_create_data(self, clean_model, report): # pylint: disable=no-self-use
-        clean_model.Report.create(report)
-        assert clean_model.db.db.reports.count() == 1
-        assert clean_model.db.db.reports.find_one()['https']['eligible'] == 29036
-
     def test_create_data_is_latest(self, clean_model, report): # pylint: disable=no-self-use
         clean_model.Report.create(report)
         assert clean_model.Report.latest() == report
@@ -128,12 +123,12 @@ class TestDomain():
 
     def test_create(self, clean_model, domain) -> None: # pylint: disable=no-self-use
         clean_model.Domain.create(domain)
-        assert clean_model.db.db.domains.count() == 1
+        assert len([document for document in clean_model.Domain.all()]) == 1
         assert clean_model.Domain.find('test.gc.ca')['agency_name'] == 'Department of Test'
 
     def test_create_all(self, clean_model, domain) -> None: # pylint: disable=no-self-use
         clean_model.Domain.create_all([domain.copy(), domain.copy(), domain.copy()])
-        assert clean_model.db.db.domains.count() == 3
+        assert len([document for document in clean_model.Domain.all()]) == 3
 
     def test_update(self, clean_model, domain) -> None: # pylint: disable=no-self-use
         clean_model.Domain.create(domain)
@@ -258,13 +253,13 @@ class TestAgencies():
 
     def test_create(self, clean_model, agency) -> None: # pylint: disable=no-self-use
         clean_model.Agency.create(agency)
-        assert clean_model.db.db.agencies.count() == 1
-        assert clean_model.db.db.agencies.find_one()['name'] == 'Test Organization'
+        assert len([document for document in clean_model.Agency.all()]) == 1
+        assert clean_model.Agency.find('test-organization')['name'] == 'Test Organization'
 
 
     def test_create_all(self, clean_model, agency) -> None: # pylint: disable=no-self-use
         clean_model.Agency.create_all([agency.copy(), agency.copy(), agency.copy()])
-        assert clean_model.db.db.agencies.count() == 3
+        assert len([document for document in clean_model.Agency.all()]) == 3
 
 
     def test_eligible(self, clean_model, agency) -> None: # pylint: disable=no-self-use
