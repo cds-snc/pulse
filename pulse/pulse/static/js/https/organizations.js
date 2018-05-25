@@ -6,6 +6,8 @@ $(document).ready(function () {
 
       csv: "/data/hosts/https.csv",
 
+      prefix: getLanguage(),
+
       columns: [
         {
           className: 'control',
@@ -52,10 +54,14 @@ $(document).ready(function () {
     var domains = row.total_domains;
     var language = getLanguage();
 
-    if(language == 'en') 
+    if(language == 'en') {
       var name = row.name_en;
-    else
+      var link_text = "Show";
+    }
+    else {
       var name = row.name_fr;
+      var link_text = "Montrer";
+    }
 
     var services_text = "service";
     if (type == "sort") return name;
@@ -65,13 +71,14 @@ $(document).ready(function () {
 
     var link = function(text) {
       return "" +
-        "<a href=\"/en/domains/#" +
-          QueryString.stringify({q: row["name_en"]}) + "\">" +
+        "<a href=\"/" + language + "/domains/#" +
+          QueryString.stringify({q: row["name_" + language]}) + "\">" +
            text +
         "</a>";
     }
 
-    return "<div class=\"mb-2\">" + name + "</div>" + link("Show " + services + " " + services_text);
+
+    return "<div class=\"mb-2\">" + name + "</div>" + link(link_text + " " + services + " " + services_text);
 
   };
 
