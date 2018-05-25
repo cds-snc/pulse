@@ -53,7 +53,7 @@ $(document).ready(function () {
     var link = function(text) {
       return "" +
         "<a href=\"/en/domains/#" +
-          QueryString.stringify({q: row["name"]}) + "\">" +
+          QueryString.stringify({q: row["name_en"]}) + "\">" +
            text +
         "</a>";
     }
