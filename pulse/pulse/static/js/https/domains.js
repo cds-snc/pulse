@@ -177,7 +177,7 @@ $(function () {
         2: "<strong>Yes</strong>"  // Yes
       },
       fr: {
-        0: "Oui", 
+        0: "Non", 
         1: "Prêt", 
         2: "<strong>Yes</strong>"
       }
