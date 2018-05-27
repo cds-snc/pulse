@@ -53,7 +53,7 @@ $(function () {
         },
         {
           data: "https.preloaded",
-          render: display(names.preloaded)
+          render: display(names.preloaded[language])
         },
         {
           data: "",
@@ -95,36 +95,92 @@ $(function () {
       fr: "détails"
     },
 
+    preloaded: {
+      en: "No, uses",
+      fr: "Non, utilise"
+    },
+
+    link_1: {
+      en: "Showing data for ",
+      fr: "Afficher les données pour "
+    },
+
+    link_2: {
+      en: " publicly discoverable services within ",
+      fr: " services publiquement repérables dans "
+    },
+
+    link_3: {
+      en: "Download all ",
+      fr: "Télécharger toutes les données "
+    },
+
+    link_4: {
+      en: " data as a CSV",
+      fr: " sous forme de fichier CSV."
+    },
+
   };
 
   var names = {
 
     enforces: {
-      0: "No", // No (no HTTPS)
-      1: "No", // Present, not default
-      2: "Yes", // Defaults eventually to HTTPS
-      3: "Yes" // Defaults eventually + redirects immediately
+      en: {
+        0: "No", // No (no HTTPS)
+        1: "No", // Present, not default
+        2: "Yes", // Defaults eventually to HTTPS
+        3: "Yes" // Defaults eventually + redirects immediately
+      },
+      fr: {
+        0: "Non", 
+        1: "Non", 
+        2: "Oui", 
+        3: "Oui" 
+      },
     },
 
     hsts: {
-      "-1": "No", // No (no HTTPS)
-      0: "No",  // No
-      1: "No", // No, HSTS with short max-age (for canonical endpoint)
-      2: "Yes", // Yes, HSTS for >= 1 year (for canonical endpoint)
-      3: "Preloaded" // Yes, via preloading (subdomains only)
+      en: {
+        "-1": "No", // No (no HTTPS)
+        0: "No",  // No
+        1: "No", // No, HSTS with short max-age (for canonical endpoint)
+        2: "Yes", // Yes, HSTS for >= 1 year (for canonical endpoint)
+        3: "Preloaded" // Yes, via preloading (subdomains only)
+      },
+      fr: {
+        "-1": "Non", 
+        0: "Non",
+        1: "Non",
+        2: "Oui",
+        3: "Préchargé"
+      }
     },
 
     bod_crypto: {
-      "-1": "--", // No HTTPS
-      0: "No",
-      1: "Yes"
+      en: {
+        "-1": "--", // No HTTPS
+        0: "No",
+        1: "Yes"
+      },
+      fr: {
+        "-1": "--",
+        0: "Non",
+        1: "Oui"
+      }
     },
 
     // Parent domains only
     preloaded: {
-      0: "No",  // No
-      1: "Ready",  // Preload-ready
-      2: "<strong>Yes</strong>"  // Yes
+      en: {
+        0: "No",  // No
+        1: "Ready",  // Preload-ready
+        2: "<strong>Yes</strong>"  // Yes
+      },
+      fr: {
+        0: "Oui", 
+        1: "Prêt", 
+        2: "<strong>Yes</strong>"
+      }
     },
 
   };
@@ -141,7 +197,7 @@ $(function () {
   var displayCrypto = function(row) {
     // if it's all good, then great
     if (row.https.bod_crypto != 0)
-      return names.bod_crypto[row.https.bod_crypto];
+      return names.bod_crypto[language][row.https.bod_crypto];
 
     var problems = [];
     // if not, what are the problems?
@@ -150,7 +206,7 @@ $(function () {
     if (row.https.sslv2) problems.push("SSLv2");
     if (row.https.sslv3) problems.push("SSLv3");
 
-    return "No, uses " + problems.join(", ");
+    return text.preloaded[language] + problems.join(", ");
   };
 
   var loadHostData = function(tr, base_domain, hosts) {
@@ -160,14 +216,8 @@ $(function () {
     if (number > 1) {
       var csv = "/data/hosts/" + base_domain + "/https.csv";
 
-      if (language == 'en') {
-        var link = "Showing data for " + number + " publicly discoverable services within " + base_domain + ".&nbsp;&nbsp;";
-        link += l(csv, "Download all " + base_domain + " data as a CSV") + ".";
-      }
-      else {
-        var link = "Afficher les données pour " + number + " services publiquement repérables dans " + base_domain + ".&nbsp;&nbsp;";
-        link += l(csv, "Télécharger toutes les données " + base_domain + " sous forme de fichier CSV.") + ".";
-      }
+      var link = text.link_1[language] + number + text.link_2[language] + base_domain + ".&nbsp;&nbsp;";
+      link += l(csv, text.link_3[language] + base_domain + text.link_4[language]) + ".";
 
       var download = $("<tr></tr>").addClass("subdomain").html("<td class=\"link\" colspan=6>" + link + "</td>");
       all.push(download);
@@ -180,10 +230,10 @@ $(function () {
       var link = "<a href=\"" + host.canonical + "\" target=\"blank\">" + Utils.truncate(host.domain, 35) + "</a>";
       details.append($("<td/>").addClass("link").html(link));
 
-      var https = names.enforces[host.https.enforces];
+      var https = names.enforces[language][host.https.enforces];
       details.append($("<td class=\"compliant\"/>").html(https));
 
-      var hsts = names.hsts[host.https.hsts];
+      var hsts = names.hsts[language][host.https.hsts];
       details.append($("<td/>").html(hsts));
 
       var crypto = displayCrypto(host);
