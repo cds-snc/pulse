@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/cds-snc/pulse.svg?style=svg)](https://circleci.com/gh/cds-snc/pulse)
+CircleCI Status: [![CircleCI](https://circleci.com/gh/cds-snc/pulse.svg?style=svg)](https://circleci.com/gh/cds-snc/pulse)
 
 ## Check whether a Government of Canada domain is adhering to good security practices
 
@@ -7,9 +7,10 @@ How the GC domain space is doing at best practices and federal requirements.
 ## Development Setup
 
 For development purposes it is recommended that you install [mongodb](https://www.mongodb.com/) and run the database locally.
+
 This dashboard is a [Flask](http://flask.pocoo.org/) app written for **Python 3.5 and up**. We recommend [pyenv](https://github.com/yyuu/pyenv) for easy Python version management.
 
-To setup local python dependencies from the root of the repository you can run `make setup`. We recommend that this is done from within a virtual environment
+To setup local python dependencies you can run `make setup` from the root of the repository. We recommend that this is done from within a virtual environment
 
 ### Pulse website
 
@@ -45,7 +46,10 @@ make debug
 ```
 
 This will run the app with `DEBUG` mode on, showing full error messages in-browser when they occur.
-When running in development mode it is expected that you have a database running locally, accessable via `localhost:27017`
+
+When running in development mode it is expected that you have a database running locally, accessable via `localhost:27017`.
+
+To produce some data for the flask app to display, follow the instructions in the following section.
 
 ### Domain scanner
 
@@ -88,7 +92,7 @@ pulse run --scan here
 
 This will kick off the `domain-scan` scanning process for HTTP/HTTPS and DAP participation, using the domain lists as specified in `pulse_update/data/data_meta.yml` for the base set of domains to scan.
 
-Then it will run the scan data through post-processing to produce some JSON and CSV files as scan artifacts and finally upload the results into the database that the frontend uses to render the information (by default if not further specified `localhost:21017/pulse`).
+Then it will run the scan data through post-processing producing some JSON and CSV files as scan artifacts and finally uploading the results into the database that the frontend uses to render the information (by default if not further specified `localhost:21017/pulse`).
 
 
 #### Scanner CLI
@@ -100,7 +104,7 @@ As you may have guesed from the command in the previous section, the CLI command
 Help on how to use the CLI can be output via the command `pulse --help`
 
 
-### Public domain
+## Public domain
 
 This project is in the worldwide [public domain](LICENSE.md). As stated in [CONTRIBUTING](CONTRIBUTING.md):
 
