@@ -6,9 +6,9 @@ How the GC domain space is doing at best practices and federal requirements.
 
 | Documentation  | 
 |---|---|
-| [Development Setup Instructions](#development-setup) |  
+| [Development Setup Instructions](#development-setup) |
 | [Local Deploy Step-by-step](docs/local-instructions.md) |
-| [Deployment Docs](docs/deploy.md)  |  |
+| [Deployment Docs](docs/deploy.md) |
 
 ## Development Setup
 
