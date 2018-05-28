@@ -1,4 +1,3 @@
-[![Code Climate](https://codeclimate.com/github/18F/pulse/badges/gpa.svg)](https://codeclimate.com/github/18F/pulse) [![Dependency Status](https://gemnasium.com/badges/github.com/18F/pulse.svg)](https://gemnasium.com/github.com/18F/pulse)
 [![CircleCI](https://circleci.com/gh/cds-snc/pulse.svg?style=svg)](https://circleci.com/gh/cds-snc/pulse)
 
 ## Check whether a Government of Canada domain is adhering to good security practices
@@ -65,7 +64,7 @@ Download and set up `domain-scan` [from GitHub](https://github.com/18F/domain-sc
 
 `domain-scan` in turn requires [`pshtt`](https://github.com/dhs-ncats/pshtt) and [`sslyze`](https://github.com/nabla-c0d3/sslyze). These can be installed directly via `pip`.
 
-Pulse requires you to set one environment variable:
+The app requires you to set one environment variable:
 
 * `DOMAIN_SCAN_PATH`: A path to `domain-scan`'s `scan` binary.
 
@@ -89,7 +88,7 @@ And link it to AWS credentials that allow authorized write access to the `pulse.
 From the root directory:
 
 ```
-pulse run
+tracker run --scan here
 ```
 
 This will kick off the `domain-scan` scanning process for HTTP/HTTPS and DAP participation, using the `.gov` domain list as specified in `meta.yml` for the base set of domains to scan.
