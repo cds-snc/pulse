@@ -1,8 +1,14 @@
 CircleCI Status: [![CircleCI](https://circleci.com/gh/cds-snc/pulse.svg?style=svg)](https://circleci.com/gh/cds-snc/pulse)
 
-## Check whether a Government of Canada domain is adhering to good security practices
+## Track Government of Canada domains's adherance to digital security practices
 
 How the GC domain space is doing at best practices and federal requirements.
+
+| Documentation  | 
+|---|---|
+| [Development Setup Instructions](#development-setup) |  
+| [Local Deploy Step-by-step](docs/local-instructions.md) |
+| [Deployment Docs](docs/deploy.md)  |  |
 
 ## Development Setup
 
