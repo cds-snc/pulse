@@ -32,7 +32,7 @@ pip-delete-this-directory.txt
 pip-selfcheck.json
 .coverage
 
-pulse_update/csv/
+tracker/csv/
 *.csv
 
 todo.txt
