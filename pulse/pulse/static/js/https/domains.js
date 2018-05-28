@@ -120,6 +120,21 @@ $(function () {
       fr: " sous forme de fichier CSV."
     },
 
+    fetch: {
+      en: "Fetching data for ",
+      fr: "Récupération des données de "
+    },
+
+    loading: {
+      en: "Loading ",
+      fr: "Téléchargement des "
+    },
+
+    error: {
+      en: "Error loading data for ",
+      fr: "Erreur dans le téléchargement des données de "
+    }
+
   };
 
   var names = {
@@ -289,8 +304,8 @@ $(function () {
         var fetch = link.data("fetch");
 
         if (fetch) {
-          console.log("Fetching data for " + base_domain + "...");
-          link.addClass("loading").html("Loading " + base_domain + " services...");
+          console.log(text.fetch[language] + base_domain + "...");
+          link.addClass("loading").html(text.loading[language] + base_domain + " services...");
 
           $.ajax({
             url: "/data/hosts/" + base_domain + "/https.json" + Utils.cacheBust(),
@@ -310,7 +325,7 @@ $(function () {
               link.html(showHideText(false, data));
             },
             error: function() {
-              console.log("Error loading data for " + base_domain);
+              console.log(text.error[language] + base_domain);
             }
           });
         } else {
