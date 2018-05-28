@@ -17,4 +17,4 @@ class DevelopmentConfig(Config):
 
 class TestingConfig(Config):
     TESTING = True
-    MONGO_URI = f'mongodb://localhost:27017/track_{random.randint(0, 1000)}'
+    MONGO_URI = f'mongodb://localhost:27017/tracker_{random.randint(0, 1000)}'
