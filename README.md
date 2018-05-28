@@ -4,11 +4,11 @@ CircleCI Status: [![CircleCI](https://circleci.com/gh/cds-snc/pulse.svg?style=sv
 
 How the GC domain space is doing at best practices and federal requirements.
 
-| Documentation  | 
-|---|---|
-| [Development Setup Instructions](#development-setup) |
+| Documentation                                           |
+| ------------------------------------------------------- |
+| [Development Setup Instructions](#development-setup)    |
 | [Local Deploy Step-by-step](docs/local-instructions.md) |
-| [Deployment Docs](docs/deploy.md) |
+| [Deployment Docs](docs/deploy.md)                       |
 
 ## Development Setup
 
@@ -18,7 +18,7 @@ This dashboard is a [Flask](http://flask.pocoo.org/) app written for **Python 3.
 
 To setup local python dependencies you can run `make setup` from the root of the repository. We recommend that this is done from within a virtual environment
 
-### Pulse website
+### Web app
 
 From the `pulse` subdirectory
 
