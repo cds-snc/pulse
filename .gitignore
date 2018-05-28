@@ -1,7 +1,7 @@
-/pulse_update/data/output
-/pulse_update/data/backup
-/pulse_update/data/*.json
-/pulse_update/data/*.env
+/tracker/data/output
+/tracker/data/backup
+/tracker/data/*.json
+/tracker/data/*.env
 db.json
 .env
 
@@ -37,4 +37,4 @@ pulse_update/csv/
 
 todo.txt
 node_modules
-pulse/instance
+track_digital/instance
