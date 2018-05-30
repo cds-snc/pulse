@@ -4,7 +4,7 @@ css ?= track/static/css/main.css
 all: styles
 
 debug:
-	TRACK_ENV=development DEBUG=true python track/wsgi.py
+	TRACKER_ENV=development DEBUG=true python track/wsgi.py
 
 styles:
 	sass $(scss):$(css)
