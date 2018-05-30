@@ -1,0 +1,2 @@
+-e ./tracker/.
+-e ./track_digital/.
