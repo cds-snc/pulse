@@ -7,7 +7,9 @@ This document is meant to show in unambiguious manner how to deploy a instance o
 #### Required Software
 
 For development purposes it is recommended that you install [mongodb](https://www.mongodb.com/) and run the database locally.  
+
 This dashboard is a [Flask](http://flask.pocoo.org/) app written for **Python 3.5 and up**. We recommend [pyenv](https://github.com/pyenv/pyenv) for easy Python version management. Regardless of the manner you choose to do so, you will need an instalation of Python 3.5+ to continue.  
+
 The project uses [mongodb](https://www.mongodb.com/) as it's datastore. Depending on your platform installation will be different, please follow the installation instructions found on their site for installing the MongoDB Community Server.
 
 Once MongoDB has been installed, we will have to run an instance of the database locally.  
