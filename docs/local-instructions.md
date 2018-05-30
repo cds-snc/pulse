@@ -107,6 +107,5 @@ python track/wsgi.py
  * Restarting with stat
  * Debugger is active!
  * Debugger PIN: 258-029-594
-
-And that should be it! Visit `http://127.0.0.1:5000/` in your browser to see the locally deployed site.
 ```
+And that should be it! Visit `http://127.0.0.1:5000/` in your browser to see the locally deployed site.
