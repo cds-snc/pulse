@@ -11,7 +11,7 @@ then
     LAMBDA=1
 fi 
 
-cd $PULSE_HOME
+cd $TRACKER_HOME
 tracker preprocess
 if [[ $LAMBDA -eq 1 ]]
 then

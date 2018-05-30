@@ -22,7 +22,7 @@ from data import logger
 LOGGER = logger.get_logger(__name__)
 
 
-# Orchestrate the overall regular Pulse update process.
+# Orchestrate the overall regular Tracker update process.
 #
 # Steps:
 #

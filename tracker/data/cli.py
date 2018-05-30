@@ -54,7 +54,7 @@ def transform_args(args: typing.List[str]) -> typing.Dict[str, typing.Union[str,
 
 
 @click.group()
-@click.option("--connection", type=str, default="mongodb://localhost:21017/tracker", envvar="PULSE_MONGO_URI")
+@click.option("--connection", type=str, default="mongodb://localhost:21017/tracker", envvar="TRACKER_MONGO_URI")
 @click.pass_context
 def main(ctx: click.core.Context, connection: str) -> None:
     ctx.obj = {
@@ -138,9 +138,9 @@ def process(ctx: click.core.Context, date: str) -> None:
         LOGGER.info("No scan metadata downloaded, aborting.")
         return
 
-    LOGGER.info(f"[{date}] Loading data into Pulse.")
+    LOGGER.info(f"[{date}] Loading data into track-digital.")
     processing.run(date, ctx.obj.get('connection_string'))
-    LOGGER.info(f"[{date}] Data now loaded into Pulse.")
+    LOGGER.info(f"[{date}] Data now loaded into track-digital.")
 
 
 @main.command(help="Populate DB with domains")
