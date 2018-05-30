@@ -55,7 +55,7 @@ cd ../..
 
 The components of this project make use of a number of environment variables, but there are four that are the most common. They are as follows...  
 * **DOMAIN_SCAN_PATH** (required for scanning) - This is the path to the location the `scan` file in the directory created when you [downloaded domain-scan](#Acquiring the source)
-* **DOMAON_GATHER_PATH** (required for scanning) - This is the path to the location the `gather` file in the directory created when you [downloaded domain-scan](#Acquiring the source)
+* **DOMAIN_GATHER_PATH** (required for scanning) - This is the path to the location the `gather` file in the directory created when you [downloaded domain-scan](#Acquiring the source)
 * **TRACKER_ENV** - This is an indicator of what mode the site should run in (which affects how it is configured). It has three possible values
   * **testing** - Attempts to connect to a local DB running on the default port with a randomized database name. This is intended to only be used when testing the application (and is used automatically)
   * **development** (default) - Attempts to connect to a local DB running on the default port
