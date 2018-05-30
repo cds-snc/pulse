@@ -100,10 +100,6 @@ This will kick off the `domain-scan` scanning process for HTTP/HTTPS and DAP par
 
 Then it will run the scan data through post-processing producing some JSON and CSV files as scan artifacts and finally uploading the results into the database that the frontend uses to render the information (by default if not further specified `localhost:21017/tracker`).
 
-```
-tracker run --scan here
-```
-
 #### Scanner CLI
 
 The scanner portion has a CLI that can be used to perform individual parts of the scanning in isolation of the other steps.
