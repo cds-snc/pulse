@@ -38,3 +38,8 @@ tracker/csv/
 todo.txt
 node_modules
 track_digital/instance
+
+# Documentation
+_build
+_static
+_templates
