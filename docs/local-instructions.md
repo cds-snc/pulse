@@ -102,4 +102,10 @@ Nearing the finish line now, all that is left is to spin up the site.
 cd ../track_digital
 . .env/bin/activate
 python track/wsgi.py
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 258-029-594
+
+And that should be it! Visit `http://127.0.0.1:5000/` in your browser to see the locally deployed site.
 ```
