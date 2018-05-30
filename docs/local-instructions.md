@@ -44,7 +44,7 @@ cd tracker
 . .env/bin/activate
 pip install -e .
 pip install -r ../../domain-scan/requirements.txt
-pip install -r ../../domain-scan/requirements-scanner.txt
+pip install -r ../../domain-scan/requirements-scanners.txt
 deactivate
 cd ../track_digital
 . .env/bin/activate
@@ -74,6 +74,7 @@ export TRACKER_MONGO_URI=mongodb://localhost:27017/tracker
 To initalize mongodb with some data for the dashboard to display, we must run a scan on some domains. This will require two lists, one of parent domains (second level domains) and one of subdomains. Run the following commands to generate a very small example set.
 ```bash
 cd pulse/tracker
+mkdir csv
 cat > ./csv/domains.csv  << EOF
 domain,filler,organization_en,organization_fr
 canada.ca,,Government of Canada,Gouvernement du Canada
@@ -90,7 +91,7 @@ EOF
 Once those lists are in place, we can run a scan.
 ```bash
 . .env/bin/activate
-tracker scan --run here
+tracker run --scan here
 deactivate
 ```
 This will run a scan on the contents of the `domains.csv` and `subdomains.csv` files in the `csv` directory, dumping some scan artifacts to the `data/output` directory, then load the results into the database.
