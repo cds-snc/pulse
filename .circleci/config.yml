@@ -103,10 +103,16 @@ jobs:
       - run:
           command: |
               docker build -t track-run -f Dockerfile.run .
-              docker run -e TRACKER_ENV=production -e TRACKER_MONGO_URI="mongodb://127.0.0.1:27017" track-run
+              docker run -d --name trackerdb mongodb:3.6.2
+              docker run -e TRACKER_ENV=production -e TRACKER_MONGO_URI="mongodb://mongo" --link trackerdb:mongo track-run
+              docker exec trackerdb mongoexport --db tracker --collection meta --out /output
               mkdir -p workspace
-              mongoexport --db tracker --collection meta --out workspace/mongo_dump
+              docker cp trackerdb:/output /workspace/mongo_dump
           name: "Creating scan results"
+      - persist_to_workspace:
+          paths:
+            - mongo_dump
+          root: workspace
     working_directory: ~/repo/tracker
   deploy_site:
     docker:
