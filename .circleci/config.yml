@@ -128,6 +128,8 @@ jobs:
           path: ~/repo
       - restore_cache:
           key: "deps1-{{ .Branch }}-{{ checksum \"requirements.txt\" }}"
+      - attach_workspace:
+          at: /tmp/workspace
       - run:
           command: |
               python3 -m venv .env
@@ -152,8 +154,6 @@ jobs:
           key: "deps1-{{ .Branch }}-{{ checksum \"requirements.txt\" }}"
           paths:
             - .env
-    - attach_workspace:
-          at: /tmp/workspace
     working_directory: ~/repo/track_digital
   deploy_site:
     docker:
@@ -170,7 +170,6 @@ jobs:
               docker push "${DOCKER_REGISTRY}/${DOCKER_NAMESPACE}/${CIRCLE_PROJECT_REPONAME}:latest"
           name: "Build and Deploy Website Docker Image"
     working_directory: ~/repo/track_digital
-
 workflows:
   version: 2
   tracker:
