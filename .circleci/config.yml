@@ -176,10 +176,10 @@ workflows:
     jobs:
       - track_digital 
       - tracker
-      - tracker_integration
+      - tracker_integration:
           requires:
             - tracker
-      - track_digital_integration
+      - track_digital_integration:
           requires:
             - track_digital
             - tracker_integration
