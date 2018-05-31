@@ -13,7 +13,7 @@ The project uses [mongodb](https://www.mongodb.com/) as it's datastore. Dependin
 Once MongoDB has been installed, we will have to run an instance of the database locally.  
 To do so open a terminal window and run the following command:
 ```bash
-mongod
+mongod &
 ```
 
 If you get an error related to the directory `/data/db`, usually that means you have to create that directory. If you already have created the directory and are still recieving an error, it is likely due to the fact that the user that runs the `mongod` command must be the owner of that directory.
@@ -35,20 +35,26 @@ Keep the terminal you ran these commands in around for the following steps.
 
 #### Environment
 
+First, verify that you have the correct version of python.
+```bash
+python3 --version
+```
+It should print out something like `Python 3.6.3`. You will need a version 3.5+.
+
 We recommend that the python packages that comprise this project be installed into virtual environments. To do so execute the following commands.
 ```bash
 cd pulse
-python -m venv tracker/.env
-python -m venv track_digital/.env
+python3 -m venv tracker/.env
+python3 -m venv track_digital/.env
 cd tracker
 . .env/bin/activate
-pip install -e .
-pip install -r ../../domain-scan/requirements.txt
-pip install -r ../../domain-scan/requirements-scanners.txt
+pip3 install -e .
+pip3 install -r ../../domain-scan/requirements.txt
+pip3 install -r ../../domain-scan/requirements-scanners.txt
 deactivate
 cd ../track_digital
 . .env/bin/activate
-pip install -e .
+pip3 install -e .
 deactivate
 cd ../..
 ```
@@ -102,7 +108,7 @@ Nearing the finish line now, all that is left is to spin up the site.
 ```bash
 cd ../track_digital
 . .env/bin/activate
-python track/wsgi.py
+python3 track/wsgi.py
  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
  * Restarting with stat
  * Debugger is active!
