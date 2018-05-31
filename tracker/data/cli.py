@@ -54,7 +54,7 @@ def transform_args(args: typing.List[str]) -> typing.Dict[str, typing.Union[str,
 
 
 @click.group()
-@click.option("--connection", type=str, default="mongodb://localhost:21017/tracker", envvar="TRACKER_MONGO_URI")
+@click.option("--connection", type=str, default="mongodb://localhost:27017/track", envvar="TRACKER_MONGO_URI")
 @click.pass_context
 def main(ctx: click.core.Context, connection: str) -> None:
     ctx.obj = {
@@ -94,9 +94,7 @@ def run(
 def preprocess(ctx: click.core.Context, output: typing.Optional[str]) -> None:
     if not output:
         output = os.path.join(os.getcwd(), 'csv')
-
-    with models.Connection(ctx.obj.get('connection_string')) as connection:
-        pull_data(output, connection)
+    pull_data(output, ctx.obj.get('connection_string'))
 
 
 @main.command(
