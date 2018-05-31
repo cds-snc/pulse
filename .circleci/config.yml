@@ -69,6 +69,7 @@ jobs:
               python3 -m venv .env
               . .env/bin/activate
               pip install -r requirements.txt
+              mkdir -p domain-scan && wget -q -O - https://api.github.com/repos/cds-snc/domain-scan/tarball | tar xz --strip-components=1 -C domain-scan
           name: "Installing dependencies"
       - save_cache:
           key: "deps1-{{ .Branch }}-{{ checksum \"requirements.txt\" }}"
@@ -103,6 +104,8 @@ jobs:
           command: |
               . .env/bin/activate
               tracker preprocess
+              export DOMAIN_SCAN_PATH=$(pwd)/domain-scan/scan
+              export DOMAIN_GATHER_PATH=$(pwd)/domain-scan/gather
               tracker run --scan here
           name: "Creating scan results"
       - run: "mkdir -p workspace"
