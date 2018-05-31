@@ -119,6 +119,38 @@ jobs:
             - mongo_dump
           root: workspace
     working_directory: ~/repo/tracker
+  track_digital_integration:
+      - checkout:
+          path: ~/repo
+      - restore_cache:
+          key: "deps1-{{ .Branch }}-{{ checksum \"requirements.txt\" }}"
+      - run:
+          command: |
+              python3 -m venv .env
+              . .env/bin/activate
+              pip install -r requirements.txt
+          name: "Installing dependencies"
+      - run:
+          command: |
+              sudo apt-get install apt-transport-https
+              sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
+              echo "deb http://repo.mongodb.org/apt/debian jessie/mongodb-org/3.6 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
+              sudo apt-get update
+              sudo apt-get install -y mongodb-org-tools=3.6.2
+          name: "Installing packages"
+      - run:
+          command: "mongoimport --db track --collection meta --file /tmp/workspace/mongo_dump"
+          name: "Importing database"
+      - run:
+          command: |
+              echo "Run integration tests"
+      - save_cache:
+          key: "deps1-{{ .Branch }}-{{ checksum \"requirements.txt\" }}"
+          paths:
+            - .env
+    - attach_workspace:
+          at: /tmp/workspace
+    working_directory: ~/repo/track_digital
   deploy_site:
     docker:
       - image: docker:17.12.1-ce-git
@@ -142,6 +174,12 @@ workflows:
       - track_digital 
       - tracker
       - tracker_integration
+          requires:
+            - tracker
+      - track_digital_integration
+          requires:
+            - track_digital
+            - tracker_integration
       - deploy_site:
           filters:
             branches:
@@ -150,3 +188,5 @@ workflows:
           requires:
             - track_digital
             - tracker
+            - tracker_integration
+            - track_digital_integration
