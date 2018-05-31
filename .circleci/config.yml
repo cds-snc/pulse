@@ -62,7 +62,6 @@ jobs:
     steps:
       - checkout:
           path: ~/repo
-      - setup_remote_docker
       - restore_cache:
           key: "deps1-{{ .Branch }}-{{ checksum \"requirements.txt\" }}"
       - run:
@@ -102,13 +101,13 @@ jobs:
           name: "Populating domains"
       - run:
           command: |
-              docker build -t track-run -f Dockerfile.run .
-              docker run -d --name trackerdb mongodb:3.6.2
-              docker run -e TRACKER_ENV=production -e TRACKER_MONGO_URI="mongodb://mongo" --link trackerdb:mongo track-run
-              docker exec trackerdb mongoexport --db tracker --collection meta --out /output
-              mkdir -p workspace
-              docker cp trackerdb:/output /workspace/mongo_dump
+              tracker preprocess
+              tracker run --scan here
           name: "Creating scan results"
+      - run: "mkdir -p workspace"
+      - run:
+          command: "mongoexport --db track --collection meta --out workspace/mongo_dump"
+          name: "Exporting database"
       - persist_to_workspace:
           paths:
             - mongo_dump
