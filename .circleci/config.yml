@@ -120,6 +120,10 @@ jobs:
           root: workspace
     working_directory: ~/repo/tracker
   track_digital_integration:
+    docker:
+      - image: "circleci/python:3.6.1"
+      - image: "mongo:3.6.2"
+    steps:
       - checkout:
           path: ~/repo
       - restore_cache:
