@@ -101,6 +101,7 @@ jobs:
           name: "Populating domains"
       - run:
           command: |
+              . .env/bin/activate
               tracker preprocess
               tracker run --scan here
           name: "Creating scan results"
