@@ -22,8 +22,6 @@ def test_run_all_args(
     ) -> None:
     monkeypatch.setattr(update, 'update', noop)
     monkeypatch.setattr(processing, 'run', noop)
-    monkeypatch.setattr(update, 'download_s3', noop)
-    monkeypatch.setattr(update, 'upload_s3', noop)
 
     date, exit_code = date_result
 
@@ -31,9 +29,10 @@ def test_run_all_args(
     result = runner.invoke(cli.main, args=[
         'run',
         '--date', date,
-        '--scan', 'here',
-        '--gather', 'here',
-        '--upload'
+        '--scanner', 'pshtt',
+        '--scanner', 'sslyze',
+        '--domains', 'not.a.real.file',
+        '--output', '.'
     ])
     assert result.exit_code == exit_code
 
@@ -44,8 +43,10 @@ def test_update(monkeypatch: _pytest.monkeypatch.MonkeyPatch) -> None:
     runner = CliRunner()
     result = runner.invoke(cli.main, args=[
         'update',
-        '--scan', 'here',
-        '--gather', 'here',
+        '--scanner', 'pshtt',
+        '--scanner', 'sslyze',
+        '--domains', 'not.a.real.file',
+        '--output', '.'
     ])
     assert result.exit_code == 0
 
@@ -63,30 +64,5 @@ def test_process(
     result = runner.invoke(cli.main, args=[
         'process',
         '--date', date,
-    ])
-    assert result.exit_code == exit_code
-
-
-def test_download(monkeypatch: _pytest.monkeypatch.MonkeyPatch) -> None:
-    monkeypatch.setattr(update, 'download_s3', noop)
-
-    runner = CliRunner()
-    result = runner.invoke(cli.main, args=[
-        'download',
-    ])
-    assert result.exit_code == 0
-
-
-def test_upload(
-        date_result,
-        monkeypatch: _pytest.monkeypatch.MonkeyPatch) -> None:
-
-    date, exit_code = date_result
-    monkeypatch.setattr(update, 'upload_s3', noop)
-
-    runner = CliRunner()
-    result = runner.invoke(cli.main, args=[
-        'upload',
-        '--date', date
     ])
     assert result.exit_code == exit_code
