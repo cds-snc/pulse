@@ -204,7 +204,7 @@ def load_scan_data(domains: typing.Set[str]) -> typing.Dict:
     for domain_name in domains:
         parent_scan_data[domain_name] = {}
 
-    with open(os.path.join(env.SCAN_OUTPUT, "pshtt.csv"), newline="") as csvfile:
+    with open(os.path.join(env.SCAN_RESULTS, "pshtt.csv"), newline="") as csvfile:
         for row in csv.DictReader(csvfile):
             domain = row['Domain'].lower()
             if domain not in domains:
@@ -213,7 +213,7 @@ def load_scan_data(domains: typing.Set[str]) -> typing.Dict:
 
             parent_scan_data[domain]["pshtt"] = row
 
-    with open(os.path.join(SCAN_OUTPUT, "sslyze.csv"), newline="") as csvfile:
+    with open(os.path.join(env.SCAN_RESULTS, "sslyze.csv"), newline="") as csvfile:
         for row in csv.DictReader(csvfile):
             domain = row['Domain'].lower()
             if domain not in domains:
@@ -250,7 +250,6 @@ def map_subdomains(scan_data, domain_map):
             if scan_data[parent].get("subdomains") is None:
                 scan_data[parent]["subdomains"] = []
             scan_data[parent]["subdomains"].append(domain)
-            import pdb; pdb.set_trace()
             domain_map[domain].update({
                 "base_domain": parent,
                 "organization_slug": domain_map[parent]["organization_slug"],

@@ -69,7 +69,7 @@ def main(ctx: click.core.Context, connection: str) -> None:
 @click.option("--date", type=DATE)
 @click.option('--scanner', type=str, multiple=True, default=['pshtt', 'sslyze'], envvar='SCANNERS')
 @click.option('--domains', type=click.Path(), default=env.DOMAINS, envvar='DOMAINS')
-@click.option('--output', type=click.Path(), default=env.SCAN_OUTPUT, envvar='SCAN_OUTPUT')
+@click.option('--output', type=click.Path(), default=env.SCAN_DATA, envvar='SCAN_DATA')
 @click.argument("scan_args", nargs=-1, type=click.UNPROCESSED)
 @click.pass_context
 def run(
@@ -100,7 +100,7 @@ def preprocess(ctx: click.core.Context, output: typing.Optional[str]) -> None:
 )
 @click.option('--scanner', type=str, multiple=True, default=['pshtt', 'sslyze'], envvar='SCANNERS')
 @click.option('--domains', type=click.Path(), default=env.DOMAINS, envvar='DOMAINS')
-@click.option('--output', type=click.Path(), default=env.SCAN_OUTPUT, envvar='SCAN_OUTPUT')
+@click.option('--output', type=click.Path(), default=env.SCAN_DATA, envvar='SCAN_DATA')
 @click.argument("scan_args", nargs=-1, type=click.UNPROCESSED)
 def update(scanner: typing.List[str], domains: str, output: str, scan_args: typing.List[str]) -> None:
     LOGGER.info("Starting update")
@@ -113,7 +113,7 @@ def update(scanner: typing.List[str], domains: str, output: str, scan_args: typi
 @click.pass_context
 def process(ctx: click.core.Context, date: str) -> None:
     # Sanity check to make sure we have what we need.
-    if not os.path.exists(os.path.join(env.SCAN_OUTPUT, "meta.json")):
+    if not os.path.exists(os.path.join(env.SCAN_RESULTS, "meta.json")):
         LOGGER.info("No scan metadata downloaded, aborting.")
         return
 
@@ -123,25 +123,13 @@ def process(ctx: click.core.Context, date: str) -> None:
 
 
 @main.command(help="Populate DB with domains")
-@click.option('--parents', type=click.File('r'))
-@click.option('--subdomains', type=click.File('r'))
+@click.argument('owners', type=click.File('r'))
+@click.argument('domains', type=click.File('r'))
 @click.pass_context
-def insert(ctx: click.core.Context, parents: typing.IO[str], subdomains: typing.IO[str]) -> None:
-    parents_reader = csv.DictReader(parents)
-    subdomain_reader = csv.DictReader(subdomains)
-
-    def relevant_parent(document: typing.Dict) -> typing.Dict:
-        return {
-            'domain': document.get('domain'),
-            'organization_en': document.get('organization_en'),
-            'organization_fr': document.get('organization_fr'),
-        }
-
-    def relevant_domain(document: typing.Dict) -> typing.Dict:
-        return {
-            'domain': document.get('domain'),
-        }
+def insert(ctx: click.core.Context, owners: typing.IO[str], domains: typing.IO[str]) -> None:
+    owners_reader = csv.DictReader(owners)
+    domains_reader = csv.DictReader(domains)
 
     with models.Connection(ctx.obj.get('connection_string')) as connection:
-        connection.parents.create_all(relevant_parent(document) for document in parents_reader)
-        connection.subdomains.create_all(relevant_domain(document) for document in subdomain_reader)
+        connection.owners.create_all(document for document in owners_reader)
+        connection.input_domains.create_all(document for document in domains_reader)

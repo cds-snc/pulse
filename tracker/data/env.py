@@ -18,7 +18,7 @@ SCAN_COMMAND = os.environ.get("DOMAIN_SCAN_PATH", './domain-scan/scan')
 
 # post-processing and uploading information
 SCAN_DATA = os.path.join(DATA_DIR, "output/domains")
-SCAN_OUTPUT = os.path.join(SCAN_DATA, "results")
+SCAN_RESULTS = os.path.join(SCAN_DATA, 'results')
 
 ### Parent domain scanning information
 # Run these scanners over *all* (which is a lot) discovered subdomains.
