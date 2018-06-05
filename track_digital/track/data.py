@@ -64,6 +64,8 @@ CSV_FIELDS = {
         "rc4",
         "sslv2",
         "sslv3",
+        "tlsv1.0",
+        "tlsv1.1",
         "preloaded",
     ],
 }
