@@ -23,7 +23,7 @@ def local_mongo_is_running() -> bool:
 
 
 def connection_string() -> str:
-    database = f'tracker_{random.randint(0, 1000)}'
+    database = f'track_{random.randint(0, 1000)}'
     connection = f'mongodb://localhost:27017/{database}'
 
     return connection
@@ -42,4 +42,4 @@ def connection(request: _pytest.fixtures.SubRequest) -> typing.Iterator[models.C
         try:
             client.drop_database(client.get_database())
         except pymongo.errors.ConfigurationError:
-            client.drop_database('tracker')
+            client.drop_database('track')
