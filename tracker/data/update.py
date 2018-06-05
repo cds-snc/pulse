@@ -41,7 +41,12 @@ LOGGER = logger.get_logger(__name__)
 
 
 # Options:
-<<<<<<< HEAD
+# scanners
+#     list of scanners to use
+# domains
+#     location of domain list to scan
+# output
+#     location to store scan output
 # options
 #     options to pass along to scan and gather operations
 
