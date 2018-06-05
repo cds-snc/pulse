@@ -8,5 +8,3 @@ data:
   # Some other websites
   ownership_url: "./csv/owners.csv"
 
-bucket: cg-4adefb86-dadb-4ecf-be3e-f1c7b4f6d084
-aws_region: us-gov-west-1

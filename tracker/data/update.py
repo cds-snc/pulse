@@ -41,6 +41,7 @@ LOGGER = logger.get_logger(__name__)
 
 
 # Options:
+<<<<<<< HEAD
 # options
 #     options to pass along to scan and gather operations
 
