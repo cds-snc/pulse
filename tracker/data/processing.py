@@ -51,7 +51,7 @@ def run(date: typing.Optional[str], connection_string: str):
     # Returns dicts of values ready for saving as Domain and Agency objects.
     #
     # Also returns gathered subdomains, which need more filtering to be useful.
-    domains, domain_map, organizations = load_domain_data()
+    domains, domain_map = load_domain_data()
 
     # Read in domain-scan CSV data.
     scan_data = load_scan_data(domains)
@@ -73,12 +73,12 @@ def run(date: typing.Optional[str], connection_string: str):
             domain_map[domain_name]["live"] = boolean_for(pshtt["Live"])
             domain_map[domain_name]["redirect"] = boolean_for(pshtt["Redirect"])
             domain_map[domain_name]["canonical"] = pshtt["Canonical URL"]
-        else:
+        elif boolean_for(pshtt['Live']):
             domain_map[domain_name] = {
                 "domain": domain_name,
-                "is_parent": False,
+                "is_owner": False,
                 "sources": ["canada-gov"],
-                "live": boolean_for(pshtt["Live"]),
+                "live": True,
                 "redirect": boolean_for(pshtt["Redirect"]),
                 "canonical": pshtt["Canonical URL"],
                 "exclude": {},
@@ -86,6 +86,7 @@ def run(date: typing.Optional[str], connection_string: str):
 
 
     map_subdomains(scan_data, domain_map)
+    organizations = extract_orgs(domain_map)
 
     # Save what we've got to the database so far.
     sorted_domains = list(domain_map.keys())
@@ -127,10 +128,9 @@ def run(date: typing.Optional[str], connection_string: str):
 
 
 # Reads in input CSVs (domain list).
-def load_domain_data() -> typing.Tuple[typing.Set, typing.Dict, typing.Dict]:
+def load_domain_data() -> typing.Tuple[typing.Set, typing.Dict]:
 
     domain_map: typing.Dict = {}
-    organization_map: typing.Dict = {}
     domains: typing.Set[str] = set()
 
     # if domains.csv wasn't cached, download it anew
@@ -172,18 +172,9 @@ def load_domain_data() -> typing.Tuple[typing.Set, typing.Dict, typing.Dict]:
                     "organization_slug": organization_slug,
                     "sources": ["canada-gov"],
                     "is_parent": True,
+                    "is_owner": True,
                     "exclude": {},
                 }
-
-            if organization_slug not in organization_map:
-                organization_map[organization_slug] = {
-                    "name_en": organization_name_en,
-                    "name_fr": organization_name_fr,
-                    "slug": organization_slug,
-                    "total_domains": 1,
-                }
-            else:
-                organization_map[organization_slug]["total_domains"] += 1
 
     with open(SCAN_DOMAINS_CSV, newline="") as csvfile:
         for row in csv.reader(csvfile):
@@ -194,8 +185,23 @@ def load_domain_data() -> typing.Tuple[typing.Set, typing.Dict, typing.Dict]:
             domains.add(domain)
 
 
-    return domains, domain_map, organization_map
+    return domains, domain_map
 
+
+def extract_orgs(domain_map: typing.Dict) -> typing.Dict:
+    organization_map: typing.Dict = {}
+    for doc in domain_map.values():
+        slug = doc['organization_slug']
+        if slug in organization_map:
+            organization_map[slug]['total_domains'] += 1
+        else:
+            organization_map[slug] = {
+                "name_en": doc['organization_name_en'],
+                "name_fr": doc['organization_name_fr'],
+                "slug": slug,
+                "total_domains": 1,
+            }
+    return organization_map
 
 # Load in data from the CSVs produced by domain-scan.
 # The 'domains' map is used to ignore any untracked domains.
@@ -208,7 +214,7 @@ def load_scan_data(domains: typing.Set[str]) -> typing.Dict:
         for row in csv.DictReader(csvfile):
             domain = row['Domain'].lower()
             if domain not in domains:
-                LOGGER.info("[pshtt] Skipping %s, not a federal domain from domains.csv.", domain)
+                LOGGER.info("[pshtt] Skipping pshtt data for %s, not in domains.csv.", domain)
                 continue
 
             parent_scan_data[domain]["pshtt"] = row
@@ -217,13 +223,13 @@ def load_scan_data(domains: typing.Set[str]) -> typing.Dict:
         for row in csv.DictReader(csvfile):
             domain = row['Domain'].lower()
             if domain not in domains:
-                LOGGER.info("[sslyze] Skipping %s, not a in domains.csv.", domain)
+                LOGGER.info("[sslyze] Skipping sslyze data for %s, not in domains.csv.", domain)
                 continue
 
             # If the scan was invalid, most fields will be empty strings.
             # It'd be nice to make this more semantic on the domain-scan side.
             if row["SSLv2"] == "":
-                LOGGER.info("[%s] Skipping, scan data was invalid.", domain)
+                LOGGER.info("[sslyze] Skipping sslyze data for %s, scan data was invalid.", domain)
                 continue
 
             parent_scan_data[domain]["sslyze"] = row
@@ -233,16 +239,17 @@ def load_scan_data(domains: typing.Set[str]) -> typing.Dict:
 
 def map_subdomains(scan_data, domain_map):
     for domain in scan_data:
-        if boolean_for(scan_data[domain]['pshtt']["Live"]) and not domain_map[domain]["is_parent"]:
+        if boolean_for(scan_data[domain]['pshtt']["Live"]) and not domain_map[domain]["is_owner"]:
             parts = domain.split('.')
             subdomain = domain
-            while parts and (subdomain not in domain_map or not domain_map[subdomain]["is_parent"]):
+            while parts and (subdomain not in domain_map or not domain_map[subdomain]["is_owner"]):
                 parts = parts[1:]
                 subdomain = '.'.join(parts)
 
             if not parts:
                 domain_map[domain].update({
                     "base_domain": domain,
+                    "is_parent": True,
                     "organization_name_en": 'Government of Canada',
                     "organization_name_fr": 'Gouvernement du Canada',
                     "organization_slug": 'government-of-canada',
@@ -255,6 +262,7 @@ def map_subdomains(scan_data, domain_map):
             scan_data[parent]["subdomains"].append(domain)
             domain_map[domain].update({
                 "base_domain": parent,
+                "is_parent": False,
                 "organization_slug": domain_map[parent]["organization_slug"],
                 "organization_name_en": domain_map[parent]["organization_name_en"],
                 "organization_name_fr": domain_map[parent]["organization_name_fr"],
@@ -269,7 +277,7 @@ def process_domains(
 
     # For each domain, determine eligibility and, if eligible,
     # use the scan data to draw conclusions.
-    for domain_name in scan_data.keys():
+    for domain_name in domains.keys():
 
         ### HTTPS
         #
@@ -376,13 +384,16 @@ def update_organization_totals(organizations, domains):
 
         # Separate report for crypto, for sslyze-scanned domains.
         # LOGGER.info("[%s][%s] Totalling report." % (organization['slug'], 'crypto'))
-        eligible = [
-            domain["https"]
-            for name, domain in domains.items()
-            if (domain["organization_slug"] == organization["slug"])
-            and domain.get("https")
-            and (domain["https"].get("rc4") is not None)
-        ]
+        try:
+            eligible = [
+                domain["https"]
+                for name, domain in domains.items()
+                if (domain["organization_slug"] == organization["slug"])
+                and domain.get("https")
+                and (domain["https"].get("rc4") is not None)
+            ]
+        except:
+            import pdb; pdb.set_trace()
         organization["crypto"] = total_crypto_report(eligible)
 
         # Special separate report for preloaded parent domains.
