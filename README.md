@@ -93,7 +93,7 @@ However, if you don't have `pshtt` and `sslyze` on your PATH, then `domain-scan`
 From the `tracker` subdirectory:
 
 ```
-tracker run --scan here
+tracker run
 ```
 
 This will kick off the `domain-scan` scanning process for HTTP/HTTPS and DAP participation, using the domain lists as specified in `tracker/data/data_meta.yml` for the base set of domains to scan.
