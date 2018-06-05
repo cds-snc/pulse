@@ -123,8 +123,8 @@ def process(ctx: click.core.Context, date: str) -> None:
 
 
 @main.command(help="Populate DB with domains")
-@click.argument('owners', type=click.File('r'))
-@click.argument('domains', type=click.File('r'))
+@click.argument('owners', type=click.File('r', encoding='utf-8-sig'))
+@click.argument('domains', type=click.File('r', encoding='utf-8-sig'))
 @click.pass_context
 def insert(ctx: click.core.Context, owners: typing.IO[str], domains: typing.IO[str]) -> None:
     owners_reader = csv.DictReader(owners)

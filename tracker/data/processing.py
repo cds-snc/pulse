@@ -67,7 +67,7 @@ def run(date: typing.Optional[str], connection_string: str):
 
             # Remove the domain from further consideration.
             # Destructive, so have this done last.
-            domains.discard(domain_name)
+            del domain_map[domain_name]
         elif domain_name in domain_map:
             # LOGGER.info("[%s] Updating with pshtt metadata." % domain_name)
             domain_map[domain_name]["live"] = boolean_for(pshtt["Live"])
@@ -235,8 +235,11 @@ def map_subdomains(scan_data, domain_map):
     for domain in scan_data:
         if boolean_for(scan_data[domain]['pshtt']["Live"]) and not domain_map[domain]["is_parent"]:
             parts = domain.split('.')
-            while parts and not domain_map['.'.join(parts)]['is_parent']:
+            subdomain = domain
+            while parts and (subdomain not in domain_map or not domain_map[subdomain]["is_parent"]):
                 parts = parts[1:]
+                subdomain = '.'.join(parts)
+
             if not parts:
                 domain_map[domain].update({
                     "base_domain": domain,
