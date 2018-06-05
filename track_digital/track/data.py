@@ -23,6 +23,8 @@ LABELS = {
         "rc4": "RC4",
         "sslv2": "SSLv2",
         "sslv3": "SSLv3",
+        "tlsv10": "TLSv1.0",
+        "tlsv11": "TLSv1.1",
     },
 }
 
@@ -64,8 +66,8 @@ CSV_FIELDS = {
         "rc4",
         "sslv2",
         "sslv3",
-        "tlsv1.0",
-        "tlsv1.1",
+        "tlsv10",
+        "tlsv11",
         "preloaded",
     ],
 }
