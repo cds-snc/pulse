@@ -3,7 +3,7 @@
 
 <head>
 	
-	<title>404</title>
+	<title>Page not found / Page non trouvée</title>
 	
 	{% include 'includes/head.html' %}
 	
@@ -29,19 +29,19 @@
 	<main class="flex-1">
 
 		<section id="main-content">
-			<div class="container mx-auto items-center sm:w-4/5 xl:w-3/5 mt-6 mb-6">
-			  <h1>404</h1>
+			<div class="container mx-auto items-center sm:w-4/5 xl:w-3/5 mt-8 mb-6">
+			  <h1 class="sr-only">Page not found / Page non trouvée</h1>
 
-			  <div class="flex flex-row">
-			  	<div>
-			  		<h2 class="mb-4">We couldn't find that Web page</h2>
-			  		<p class="mr-4">If you think you've found an error, please send an email to TBS Cyber Security &lt;<a href="mailto:zzTBSCybers@tbs-sct.gc.ca" class="text-blue hover:text-blue-darker font-bold">zzTBSCybers@tbs-sct.gc.c</a>&gt;.</p>
-			  		<p class="mr-4">Return to the <a href="/en/organizations/" class="text-blue hover:text-blue-darker font-bold">home page</a>.</p>
+			  <div class="flex flex-col md:flex-row">
+			  	<div class="mb-6 md:mb-0">
+			  		<h2 class="mb-4 text-3xl">Page not found</h2>
+			  		<p class="md:mr-4 font-bold">Sorry, the page you are looking for doesn’t exist.</p>
+			  		<p class="md:mr-4"><a href="/en/organizations/" class="text-blue hover:text-blue-darker font-bold">← Home</a></p>
 			  	</div>
 			  	<div lang="fr">
-			  		<h2 class="mb-4 ml-4">Nous ne pouvons trouver cette page Web</h2>
-			  		<p class="ml-4">Si vous pensez avoir trouvé une erreur, veuillez en informer par courriel la Cybersécurité du SCT &lt;<a href="mailto:zzTBSCybers@tbs-sct.gc.ca" class="text-blue hover:text-blue-darker font-bold">zzTBSCybers@tbs-sct.gc.c</a>&gt;.</p>
-			  		<p class="ml-4">Retournez à la <a href="/fr/organizations/" class="text-blue hover:text-blue-darker font-bold">page d’accueil</a>.</p>
+			  		<h2 class="mb-4 md:ml-4 text-3xl">Page non trouvée</h2>
+			  		<p class="md:ml-4 font-bold">Désolé, la page que vous recherchez n'existe pas.</p>
+			  		<p class="md:ml-4"><a href="/fr/organizations/" class="text-blue hover:text-blue-darker font-bold">← Accueil</a></p>
 			  	</div>
 			  </div>
 
