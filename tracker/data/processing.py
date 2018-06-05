@@ -384,16 +384,13 @@ def update_organization_totals(organizations, domains):
 
         # Separate report for crypto, for sslyze-scanned domains.
         # LOGGER.info("[%s][%s] Totalling report." % (organization['slug'], 'crypto'))
-        try:
-            eligible = [
-                domain["https"]
-                for name, domain in domains.items()
-                if (domain["organization_slug"] == organization["slug"])
-                and domain.get("https")
-                and (domain["https"].get("rc4") is not None)
-            ]
-        except:
-            import pdb; pdb.set_trace()
+        eligible = [
+            domain["https"]
+            for name, domain in domains.items()
+            if (domain["organization_slug"] == organization["slug"])
+            and domain.get("https")
+            and (domain["https"].get("rc4") is not None)
+        ]
         organization["crypto"] = total_crypto_report(eligible)
 
         # Special separate report for preloaded parent domains.
