@@ -585,8 +585,8 @@ def https_behavior_for(name, pshtt, sslyze, parent_preloaded=None):
     report["3des"] = any_3des
     report["sslv2"] = sslv2
     report["sslv3"] = sslv3
-    report["tlsv1.0"] = tlsv10
-    report["tlsv1.1"] = tlsv11
+    report["tlsv10"] = tlsv10
+    report["tlsv11"] = tlsv11
 
 
     # Final calculation: is the service compliant with all of M-15-13
@@ -660,6 +660,8 @@ def total_crypto_report(eligible):
         "3des": 0,
         "sslv2": 0,
         "sslv3": 0,
+        "tlsv10": 0,
+        "tlsv11": 0,
     }
 
     for report in eligible:
@@ -679,6 +681,10 @@ def total_crypto_report(eligible):
             total_report["sslv2"] += 1
         if report["sslv3"]:
             total_report["sslv3"] += 1
+        if report["tlsv10"]:
+            total_report["tlsv10"] += 1
+        if report["tlsv11"]:
+            total_report["tlsv11"] += 1
 
     return total_report
 
