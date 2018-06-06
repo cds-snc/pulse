@@ -36,6 +36,51 @@ LOGGER = logger.get_logger(__name__)
 SCAN_CACHE = os.path.join(env.SCAN_DATA, "cache")
 SCAN_DOMAINS_CSV = os.path.join(SCAN_CACHE, "domains.csv")
 
+ACCEPTED_CIPHERS = {
+    "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256",
+    "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
+    "TLS_ECDHE_ECDSA_WITH_AES_128_CCM",
+    "TLS_ECDHE_ECDSA_WITH_AES_256_CCM",
+    "TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256",
+    "TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384",
+    "TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA",
+    "TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA",
+    "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+    "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+    "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
+    "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384",
+    "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA",
+    "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA",
+    "TLS_DHE_RSA_WITH_AES_128_GCM_SHA256",
+    "TLS_DHE_DSS_WITH_AES_128_GCM_SHA256",
+    "TLS_DHE_RSA_WITH_AES_256_GCM_SHA384",
+    "TLS_DHE_DSS_WITH_AES_256_GCM_SHA384",
+    "TLS_DHE_RSA_WITH_AES_128_CCM",
+    "TLS_DHE_RSA_WITH_AES_256_CCM",
+    "TLS_DHE_DSS_WITH_AES_128_CBC_SHA256",
+    "TLS_DHE_RSA_WITH_AES_128_CBC_SHA256",
+    "TLS_DHE_DSS_WITH_AES_256_CBC_SHA256",
+    "TLS_DHE_RSA_WITH_AES_256_CBC_SHA256",
+    "TLS_DHE_DSS_WITH_AES_128_CBC_SHA",
+    "TLS_DHE_RSA_WITH_AES_128_CBC_SHA",
+    "TLS_DHE_DSS_WITH_AES_256_CBC_SHA",
+    "TLS_DHE_RSA_WITH_AES_256_CBC_SHA",
+    "TLS_RSA_WITH_AES_128_GCM_SHA256",
+    "TLS_RSA_WITH_AES_256_GCM_SHA384",
+    "TLS_RSA_WITH_AES_128_CCM",
+    "TLS_RSA_WITH_AES_256_CCM",
+    "TLS_RSA_WITH_AES_128_CBC_SHA256",
+    "TLS_RSA_WITH_AES_256_CBC_SHA256",
+    "TLS_RSA_WITH_AES_128_CBC_SHA",
+    "TLS_RSA_WITH_AES_256_CBC_SHA",
+    "TLS_RSA_WITH_3DES_EDE_CBC_SHA",
+    "TLS_ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHA",
+    "TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA",
+    "TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA",
+    "TLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA.",
+    "TLS_FALLBACK_SCSV",
+}
+
 ###
 # Main task flow.
 
@@ -545,6 +590,7 @@ def https_behavior_for(name, pshtt, sslyze, parent_preloaded=None):
     sslv3 = None
     any_rc4 = None
     any_3des = None
+    uses_accepted_ciphers = None
 
     # values: unknown or N/A (-1), No (0), Yes (1)
     bod_crypto = None
@@ -573,11 +619,15 @@ def https_behavior_for(name, pshtt, sslyze, parent_preloaded=None):
         else:
             bod_crypto = 1
 
+
+        uses_accepted_ciphers = all(cipher in ACCEPTED_CIPHERS for cipher in sslyze.get("Accepted Ciphers").split(', '))
+
     report["bod_crypto"] = bod_crypto
     report["rc4"] = any_rc4
     report["3des"] = any_3des
     report["sslv2"] = sslv2
     report["sslv3"] = sslv3
+    report["accepted_ciphers"] = uses_accepted_ciphers
 
     # Final calculation: is the service compliant with all of M-15-13
     # (HTTPS+HSTS) and BOD 18-01 (that + RC4/3DES/SSLv2/SSLv3)?

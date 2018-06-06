@@ -23,6 +23,7 @@ LABELS = {
         "rc4": "RC4",
         "sslv2": "SSLv2",
         "sslv3": "SSLv3",
+        "accepted_ciphers": "Ciphers",
     },
 }
 
@@ -64,6 +65,7 @@ CSV_FIELDS = {
         "rc4",
         "sslv2",
         "sslv3",
+        "accepted_ciphers",
         "preloaded",
     ],
 }
