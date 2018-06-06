@@ -575,10 +575,10 @@ def https_behavior_for(name, pshtt, sslyze, parent_preloaded=None):
         else:
             bod_crypto = 1
 
-       ###
-       # ITPIN cares about usage of TLS 1.0 and TLS 1.1
-       tlsv10 = boolean_for(sslyze["TLSv1.0"])
-       tlsv11 = boolean_for(sslyze["TLSv1.1"])
+        ###
+        # ITPIN cares about usage of TLS 1.0 and TLS 1.1
+        tlsv10 = boolean_for(sslyze["TLSv1.0"])
+        tlsv11 = boolean_for(sslyze["TLSv1.1"])
 
     report["bod_crypto"] = bod_crypto
     report["rc4"] = any_rc4
