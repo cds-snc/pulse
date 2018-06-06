@@ -719,6 +719,8 @@ def total_crypto_report(eligible):
             total_report["sslv2"] += 1
         if report["sslv3"]:
             total_report["sslv3"] += 1
+        if report["accepted_ciphers"]:
+            total_report["accepted_ciphers"] += 1
 
     return total_report
 
