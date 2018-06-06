@@ -47,7 +47,8 @@ class TestReport():
                 "rc4" : 1055,
                 "3des" : 3091,
                 "sslv2" : 45,
-                "sslv3" : 576
+                "sslv3" : 576,
+                "accepted_ciphers": 351,
             },
             "preloading" : {
                 "eligible" : 1277,
@@ -97,6 +98,7 @@ class TestDomain():
                 'rc4': False,
                 'sslv2': False,
                 'sslv3': False,
+                'accepted_ciphers': True,
                 'uses': 2
             },
             'is_parent': True,
@@ -110,8 +112,9 @@ class TestDomain():
                     'eligible': 1,
                     'rc4': 0,
                     'sslv2': 0,
-                    'sslv3': 0},
-                'https': {
+                    'sslv3': 0,
+                    'accepted_ciphers': 1,
+                }, 'https': {
                     'compliant': 0,
                     'eligible': 1,
                     'enforces': 0,
@@ -198,6 +201,7 @@ class TestDomain():
                 'RC4',
                 'SSLv2',
                 'SSLv3',
+                'Ciphers',
                 'Preloaded'
             ]
             assert next(reader) == {
@@ -214,6 +218,7 @@ class TestDomain():
                 'RC4': 'No',
                 'SSLv2': 'No',
                 'SSLv3': 'No',
+                'Ciphers': 'Yes',
                 'Preloaded': 'No'
             }
 
@@ -242,7 +247,8 @@ class TestOrganizations():
                 "rc4" : 0,
                 "3des" : 1,
                 "sslv2" : 0,
-                "sslv3" : 0
+                "sslv3" : 0,
+                "accepted_ciphers": 1,
             },
             "preloading" : {
                 "eligible" : 3,
