@@ -62,8 +62,6 @@ jobs:
     steps:
       - checkout:
           path: ~/repo
-      - restore_cache:
-          key: "deps1-{{ .Branch }}-{{ checksum \"requirements.txt\" }}"
       - run:
           command: |
               python3 -m venv .env
@@ -73,10 +71,6 @@ jobs:
               pip install -r domain-scan/requirements.txt
               pip install -r domain-scan/requirements-scanners.txt
           name: "Installing dependencies"
-      - save_cache:
-          key: "deps1-{{ .Branch }}-{{ checksum \"requirements.txt\" }}"
-          paths:
-            - .env
       - run:
           command: |
               sudo apt-get install -y apt-transport-https
@@ -94,6 +88,7 @@ jobs:
               EOF
               cat > ./csv/domains.csv  << EOF
               domain
+              canada.ca
               digital.canada.ca
               numerique.canada.ca
               open.canada.ca
@@ -126,8 +121,6 @@ jobs:
     steps:
       - checkout:
           path: ~/repo
-      - restore_cache:
-          key: "deps1-{{ .Branch }}-{{ checksum \"requirements.txt\" }}"
       - attach_workspace:
           at: /tmp/workspace
       - run:
@@ -150,10 +143,6 @@ jobs:
       - run:
           command: |
               echo "Run integration tests"
-      - save_cache:
-          key: "deps1-{{ .Branch }}-{{ checksum \"requirements.txt\" }}"
-          paths:
-            - .env
     working_directory: ~/repo/track_digital
   deploy_site:
     docker:
