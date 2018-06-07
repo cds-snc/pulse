@@ -25,4 +25,4 @@ SCAN_RESULTS = os.path.join(SCAN_DATA, 'results')
 SCANNERS = ["pshtt", "sslyze"]
 
 # Used if --lambda is enabled during the scan.
-LAMBDA_WORKERS = 500
+LAMBDA_WORKERS = 700
