@@ -99,6 +99,8 @@ class TestDomain():
                 'sslv2': False,
                 'sslv3': False,
                 'accepted_ciphers': True,
+                'tlsv10': False,
+                'tlsv11': False,
                 'uses': 2
             },
             'is_parent': True,
@@ -114,6 +116,8 @@ class TestDomain():
                     'sslv2': 0,
                     'sslv3': 0,
                     'accepted_ciphers': 1,
+                    'tlsv10': 0,
+                    'tlsv11': 0,
                 }, 'https': {
                     'compliant': 0,
                     'eligible': 1,
@@ -202,6 +206,8 @@ class TestDomain():
                 'SSLv2',
                 'SSLv3',
                 'Ciphers',
+                'TLSv1.0',
+                'TLSv1.1',
                 'Preloaded'
             ]
             assert next(reader) == {
@@ -219,6 +225,8 @@ class TestDomain():
                 'SSLv2': 'No',
                 'SSLv3': 'No',
                 'Ciphers': 'Yes',
+                'TLSv1.0': 'No',
+                'TLSv1.1': 'No',
                 'Preloaded': 'No'
             }
 
@@ -249,6 +257,8 @@ class TestOrganizations():
                 "sslv2" : 0,
                 "sslv3" : 0,
                 "accepted_ciphers": 1,
+                "tlsv10": 0,
+                "tlsv11": 0
             },
             "preloading" : {
                 "eligible" : 3,

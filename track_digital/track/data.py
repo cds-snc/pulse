@@ -24,6 +24,8 @@ LABELS = {
         "sslv2": "SSLv2",
         "sslv3": "SSLv3",
         "accepted_ciphers": "Ciphers",
+        "tlsv10": "TLSv1.0",
+        "tlsv11": "TLSv1.1",
     },
 }
 
@@ -66,6 +68,8 @@ CSV_FIELDS = {
         "sslv2",
         "sslv3",
         "accepted_ciphers",
+        "tlsv10",
+        "tlsv11",
         "preloaded",
     ],
 }
