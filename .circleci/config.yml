@@ -88,11 +88,11 @@ jobs:
       - run:
           command: |
               mkdir csv
-              cat > ./csv/domains.csv  << EOF
+              cat > ./csv/owners.csv  << EOF
               domain,filler,organization_en,organization_fr
               canada.ca,,Government of Canada,Gouvernement du Canada
               EOF
-              cat > ./csv/subdomains.csv  << EOF
+              cat > ./csv/domains.csv  << EOF
               domain
               digital.canada.ca
               numerique.canada.ca
@@ -100,7 +100,7 @@ jobs:
               ouvert.canada.ca
               EOF
               . .env/bin/activate
-              tracker insert --parents ./csv/domains.csv --subdomains ./csv/subdomains.csv
+              tracker insert ./csv/owners.csv ./csv/domains.csv
           name: "Populating domains"
       - run:
           command: |
@@ -108,7 +108,7 @@ jobs:
               tracker preprocess
               export DOMAIN_SCAN_PATH=$(pwd)/domain-scan/scan
               export DOMAIN_GATHER_PATH=$(pwd)/domain-scan/gather
-              tracker run --scan here
+              tracker run
           name: "Creating scan results"
       - run: "mkdir -p workspace"
       - run:
