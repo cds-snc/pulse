@@ -96,5 +96,3 @@ class Connection():
 
     def close(self) -> None:
         self._client.close()
-
-
