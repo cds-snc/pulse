@@ -84,7 +84,9 @@ jobs:
               mkdir csv
               cat > ./csv/owners.csv  << EOF
               domain,filler,organization_en,organization_fr
-              canada.ca,,Government of Canada,Gouvernement du Canada
+              canada.ca,,Shared Services Canada,Services partagés Canada
+              digital.canada.ca,,Treasury Board Secretariat,Secrétariat du Conseil du Trésor
+              numerique.canada.ca,,Treasury Board Secretariat,Secrétariat du Conseil du Trésor
               EOF
               cat > ./csv/domains.csv  << EOF
               domain
@@ -93,6 +95,7 @@ jobs:
               numerique.canada.ca
               open.canada.ca
               ouvert.canada.ca
+              cra-arc.gc.ca
               EOF
               cat > ./csv/ciphers.csv << EOF
               cipher
