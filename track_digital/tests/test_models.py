@@ -99,6 +99,7 @@ class TestDomain():
                 'sslv2': False,
                 'sslv3': False,
                 'accepted_ciphers': True,
+                'bad_ciphers': [],
                 'tlsv10': False,
                 'tlsv11': False,
                 'uses': 2
