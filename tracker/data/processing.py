@@ -175,7 +175,7 @@ def load_domain_data() -> typing.Tuple[typing.Set, typing.Dict]:
 
     # if domains.csv wasn't cached, download it anew
     if not os.path.exists(SCAN_DOMAINS_CSV):
-        cache_file(SCAN_DOMAINS_CSV)
+        cache_file(env.DOMAINS)
 
     owner_path = cache_file(env.OWNERSHIP)
 
