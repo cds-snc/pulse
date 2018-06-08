@@ -345,7 +345,6 @@ def process_domains(domains, scan_data, acceptable_ciphers):
 
         # ** syntax merges dicts, available in 3.5+
         if eligible_for_https(domains[domain_name]):
-            import pdb; pdb.set_trace()
             https_parent = {
                 **https_parent,
                 **https_behavior_for(
