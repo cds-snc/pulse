@@ -815,4 +815,3 @@ def boolean_for(string):
     if string == "False":
         return False
     return True
-
