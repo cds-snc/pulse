@@ -19,6 +19,7 @@ import datetime
 import logging
 import pathlib
 import os
+import re
 import subprocess
 import typing
 from shutil import copyfile
@@ -471,7 +472,7 @@ def eligible_for_https(domain):
 
 # Given a pshtt report and (optional) sslyze report,
 # fill in a dict with the conclusions.
-def https_behavior_for(pshtt, sslyze, accepted_ciphers, accepted_algos, parent_preloaded=None):
+def https_behavior_for(pshtt, sslyze, accepted_ciphers, parent_preloaded=None):
     report = {"eligible": True}
 
     # assumes that HTTPS would be technically present, with or without issues
@@ -607,11 +608,6 @@ def https_behavior_for(pshtt, sslyze, accepted_ciphers, accepted_algos, parent_p
         sslv2 = boolean_for(sslyze["SSLv2"])
         sslv3 = boolean_for(sslyze["SSLv3"])
 
-        if any_rc4 or any_3des or sslv2 or sslv3:
-            bod_crypto = 0
-        else:
-            bod_crypto = 1
-
         ###
         # ITPIN cares about usage of TLS 1.0 and TLS 1.1
         tlsv10 = boolean_for(sslyze["TLSv1.0"])
@@ -621,9 +617,17 @@ def https_behavior_for(pshtt, sslyze, accepted_ciphers, accepted_algos, parent_p
         bad_ciphers = list(used_ciphers - accepted_ciphers)
         signature_algorithm = sslyze.get("Signature Algorithm", "sha1")
 
-        good_cert = signature_algorithm in accepted_algos
+        match = re.match(r"sha(?:3-)?(\d+)(?:-\d+)?$", signature_algorithm)
+        if match:
+            good_cert = int(match.group(1)) >= 256 #TODO: is this unreliable? - check with Damian
+        else:
+            LOGGER.error("Could not decipher %s algorithm", signature_algorithm)
         acceptable_ciphers = not bad_ciphers
 
+        if any([any_rc4, any_3des, sslv2, sslv3, tlsv10, tlsv11]):
+            bod_crypto = 0
+        else:
+            bod_crypto = 1
 
     report["bod_crypto"] = bod_crypto
     report["rc4"] = any_rc4
@@ -637,21 +641,16 @@ def https_behavior_for(pshtt, sslyze, accepted_ciphers, accepted_algos, parent_p
     report["tlsv10"] = tlsv10
     report["tlsv11"] = tlsv11
 
-    # Final calculation: is the service compliant with all of M-15-13
-    # (HTTPS+HSTS) and BOD 18-01 (that + RC4/3DES/SSLv2/SSLv3)?
+    https_compliant = (behavior >= 2) and (hsts >= 2)
 
-    # For M-15-13 compliance, the service has to enforce HTTPS,
-    # and has to have strong HSTS in place (can be via preloading).
-    m1513 = (behavior >= 2) and (hsts >= 2)
+    # Very specific and intentional checks on bod_crypto and good_cert
+    #   - bod_crypto != 0 means it could be -1, which is an indication that we did not get results
+    #     and so are giving them the benifit of the doubt
+    #   - good_cert is not False means it can be None, which has the same meaning as above
+    itpin_compliant = https_compliant and bod_crypto != 0 and good_cert is not False
 
-    # For BOD compliance, only ding if we have scan data:
-    # * If our scanner dropped, give benefit of the doubt.
-    # * If they have no HTTPS, this will fix itself once HTTPS comes on.
-    bod1801 = m1513 and (bod_crypto != 0)
+    report["compliant"] = itpin_compliant
 
-    # Phew!
-    report["m1513"] = m1513
-    report["compliant"] = bod1801  # equivalent, since BOD is a superset
 
     return report
 
@@ -672,7 +671,6 @@ def total_https_report(eligible):
         "enforces": 0,
         "hsts": 0,
         # compliance roll-ups
-        "m1513": 0,
         "compliant": 0,
     }
 
@@ -692,9 +690,8 @@ def total_https_report(eligible):
             total_report["hsts"] += 1
 
         # Factors in crypto score, but treats ineligible services as passing.
-        for field in ["m1513", "compliant"]:
-            if report[field]:
-                total_report[field] += 1
+        if report["compliant"]:
+            total_report["compliant"] += 1
 
     return total_report
 

@@ -128,23 +128,19 @@ def process(ctx: click.core.Context, date: str) -> None:
 @click.argument('owners', type=click.File('r', encoding='utf-8-sig'))
 @click.argument('domains', type=click.File('r', encoding='utf-8-sig'))
 @click.argument('ciphers', type=click.File('r', encoding='utf-8-sig'))
-@click.argument('algorithms', type=click.File('r', encoding='utf-8-sig'))
 @click.pass_context
 def insert(
         ctx: click.core.Context,
         owners: typing.IO[str],
         domains: typing.IO[str],
         ciphers: typing.IO[str],
-        algorithms: typing.IO[str],
     ) -> None:
 
     owners_reader = csv.DictReader(owners)
     domains_reader = csv.DictReader(domains)
     ciphers_reader = csv.DictReader(ciphers)
-    algorithms_reader = csv.DictReader(algorithms)
 
     with models.Connection(ctx.obj.get('connection_string')) as connection:
         connection.owners.create_all(document for document in owners_reader)
         connection.input_domains.create_all(document for document in domains_reader)
         connection.ciphers.create_all(document for document in ciphers_reader)
-        connection.algorithms.create_all(document for document in algorithms_reader)

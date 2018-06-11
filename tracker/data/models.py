@@ -94,9 +94,5 @@ class Connection():
     def ciphers(self) -> _Collection:
         return _Collection(self._client, 'ciphers')
 
-    @property
-    def algorithms(self) -> _Collection:
-        return _Collection(self._client, 'algorithms')
-
     def close(self) -> None:
         self._client.close()
