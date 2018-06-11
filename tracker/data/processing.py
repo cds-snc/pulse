@@ -674,6 +674,7 @@ def total_https_report(eligible):
         "enforces": 0,
         "hsts": 0,
         # compliance roll-ups
+        "m1513": 0,
         "compliant": 0,
     }
 
