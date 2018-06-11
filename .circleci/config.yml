@@ -137,6 +137,7 @@ jobs:
               TLS_RSA_WITH_AES_256_CBC_SHA
               EOF
               cat > ./csv/algorithms.csv << EOF
+              algorithm
               sha224
               sha256
               sha512
