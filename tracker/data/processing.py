@@ -20,6 +20,7 @@ import logging
 import pathlib
 import os
 import subprocess
+import re
 import typing
 from shutil import copyfile
 import slugify
@@ -52,7 +53,7 @@ def run(date: typing.Optional[str], connection_string: str):
     #
     # Also returns gathered subdomains, which need more filtering to be useful.
     domains, domain_map = load_domain_data()
-    acceptable_ciphers = load_cipher_data()
+    acceptable_ciphers, accepted_algos = load_compliance_data()
 
     # Read in domain-scan CSV data.
     scan_data = load_scan_data(domains)
@@ -85,7 +86,6 @@ def run(date: typing.Optional[str], connection_string: str):
                 "exclude": {},
             }
 
-
     map_subdomains(scan_data, domain_map)
     organizations = extract_orgs(domain_map)
 
@@ -98,7 +98,7 @@ def run(date: typing.Optional[str], connection_string: str):
     # Calculate high-level per-domain conclusions for each report.
     # Overwrites `domains` and `subdomains` in-place.
     process_domains(
-        domain_map, scan_data, acceptable_ciphers
+        domain_map, scan_data, acceptable_ciphers, accepted_algos
     )
 
     # Reset the database.
@@ -150,22 +150,22 @@ def in_cache(path: str) -> bool:
     return cache_path.exists()
 
 
-def load_cipher_data() -> typing.Set[str]:
-    path = cache_file(env.CIPHER)
-
-    if not path.exists():
-        LOGGER.critical("Couldn't download cipher csv")
-        exit(1)
-
-    ciphers = set()
+def _load_data(path: pathlib.Path) -> typing.Set[str]:
+    data = set()
     with path.open('r', encoding='utf-8-sig', newline='') as cipherfile:
-        reader = csv.DictReader(cipherfile)
+        reader = csv.reader(cipherfile)
+        next(reader) # assume csv has header column
         for row in reader:
-            cipher = row.get('cipher')
-            if cipher:
-                ciphers.add(cipher)
+            try:
+                data.add(row[0])
+            except IndexError:
+                # csv had an empty row, not really a big deal
+                continue
+    return data
 
-    return ciphers
+
+def load_compliance_data() -> typing.Tuple[typing.Set[str], typing.Set[str]]:
+    return _load_data(cache_file(env.CIPHER)), _load_data(cache_file(env.ALGORITHMS))
 
 
 # Reads in input CSVs (domain list).
@@ -309,7 +309,7 @@ def map_subdomains(scan_data, domain_map):
 
 # Given the domain data loaded in from CSVs, draw conclusions,
 # and filter/transform data into form needed for display.
-def process_domains(domains, scan_data, acceptable_ciphers):
+def process_domains(domains, scan_data, acceptable_ciphers, accepted_algos):
     # For each domain, determine eligibility and, if eligible,
     # use the scan data to draw conclusions.
     for domain_name in domains.keys():
@@ -340,6 +340,7 @@ def process_domains(domains, scan_data, acceptable_ciphers):
                     scan_data[subdomain_name]["pshtt"],
                     scan_data[subdomain_name].get("sslyze", None),
                     acceptable_ciphers,
+                    accepted_algos,
                     parent_preloaded=https_parent["preloaded"],
                 )
 
@@ -351,6 +352,7 @@ def process_domains(domains, scan_data, acceptable_ciphers):
                     scan_data[domain_name]["pshtt"],
                     scan_data[domain_name].get("sslyze", None),
                     acceptable_ciphers,
+                    accepted_algos
                 ),
             }
             https_parent["eligible_zone"] = True
@@ -470,7 +472,7 @@ def eligible_for_https(domain):
 
 # Given a pshtt report and (optional) sslyze report,
 # fill in a dict with the conclusions.
-def https_behavior_for(pshtt, sslyze, accepted_ciphers, parent_preloaded=None):
+def https_behavior_for(pshtt, sslyze, accepted_ciphers, accepted_algos, parent_preloaded=None):
     report = {"eligible": True}
 
     # assumes that HTTPS would be technically present, with or without issues
@@ -553,7 +555,6 @@ def https_behavior_for(pshtt, sslyze, accepted_ciphers, parent_preloaded=None):
                 hsts = 2  # Yes, directly
             else:
                 hsts = 1  # No
-
         else:
             hsts = 0  # No
 
@@ -580,6 +581,9 @@ def https_behavior_for(pshtt, sslyze, accepted_ciphers, parent_preloaded=None):
     any_rc4 = None
     any_3des = None
     bad_ciphers = []
+    acceptable_ciphers = None
+    signature_algorithm = None
+    good_cert = None
     tlsv10 = None
     tlsv11 = None
 
@@ -613,8 +617,13 @@ def https_behavior_for(pshtt, sslyze, accepted_ciphers, parent_preloaded=None):
         # ITPIN cares about usage of TLS 1.0 and TLS 1.1
         tlsv10 = boolean_for(sslyze["TLSv1.0"])
         tlsv11 = boolean_for(sslyze["TLSv1.1"])
+
         used_ciphers = {cipher for cipher in sslyze.get("Accepted Ciphers").split(', ')}
         bad_ciphers = list(used_ciphers - accepted_ciphers)
+        signature_algorithm = sslyze.get("Signature Algorithm", "sha1")
+
+        good_cert = signature_algorithm in accepted_algos
+        acceptable_ciphers = not bad_ciphers
 
 
     report["bod_crypto"] = bod_crypto
@@ -622,8 +631,10 @@ def https_behavior_for(pshtt, sslyze, accepted_ciphers, parent_preloaded=None):
     report["3des"] = any_3des
     report["sslv2"] = sslv2
     report["sslv3"] = sslv3
-    report["accepted_ciphers"] = not bad_ciphers
+    report["accepted_ciphers"] = acceptable_ciphers
     report["bad_ciphers"] = bad_ciphers
+    report["good_cert"] = good_cert
+    report["signature_algorithm"] = signature_algorithm
     report["tlsv10"] = tlsv10
     report["tlsv11"] = tlsv11
 
@@ -700,6 +711,7 @@ def total_crypto_report(eligible):
         "accepted_ciphers": 0,
         "tlsv10": 0,
         "tlsv11": 0,
+        "good_cert": 0,
     }
 
     for report in eligible:
@@ -725,6 +737,8 @@ def total_crypto_report(eligible):
             total_report["tlsv10"] += 1
         if report["tlsv11"]:
             total_report["tlsv11"] += 1
+        if report["good_cert"]:
+            total_report["good_cert"] += 1
 
     return total_report
 

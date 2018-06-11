@@ -136,6 +136,17 @@ jobs:
               TLS_RSA_WITH_AES_128_CBC_SHA
               TLS_RSA_WITH_AES_256_CBC_SHA
               EOF
+              cat > ./csv/algorithms.csv << EOF
+              sha224
+              sha256
+              sha512
+              sha512-224
+              sha512-256
+              sha3-224
+              sha3-256
+              sha3-384
+              sha3-512
+              EOF
               . .env/bin/activate
               tracker insert ./csv/owners.csv ./csv/domains.csv ./csv/ciphers.csv
           name: "Populating domains"

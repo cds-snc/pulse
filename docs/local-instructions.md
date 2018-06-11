@@ -95,6 +95,17 @@ numerique.canada.ca
 open.canada.ca
 ouvert.canada.ca
 EOF
+cat > ./csv/algorithms.csv << EOF
+sha224
+sha256
+sha512
+sha512-224
+sha512-256
+sha3-224
+sha3-256
+sha3-384
+sha3-512
+EOF
 ```
 
 Once those lists are in place, we can run a scan.

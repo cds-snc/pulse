@@ -11,3 +11,6 @@ data:
   # Supported Ciphers
   ciphers_url: "./csv/ciphers.csv"
 
+  # Supported Hashing Algorithms
+  algorithms_url: "./csv/algorithms.csv"
+
