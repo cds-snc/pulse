@@ -639,6 +639,7 @@ def https_behavior_for(pshtt, sslyze, accepted_ciphers, parent_preloaded=None):
     report["tlsv10"] = tlsv10
     report["tlsv11"] = tlsv11
 
+    https_compliant = (behavior >= 2) and (hsts >= 2)
     # Very specific and intentional checks on bod_crypto and good_cert
     #   - bod_crypto != 0 means it could be -1, which is an indication that we did not get results
     #     and so are giving them the benifit of the doubt
