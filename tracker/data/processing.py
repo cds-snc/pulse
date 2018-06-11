@@ -20,7 +20,6 @@ import logging
 import pathlib
 import os
 import subprocess
-import re
 import typing
 from shutil import copyfile
 import slugify
