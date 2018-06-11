@@ -53,7 +53,7 @@ def run(date: typing.Optional[str], connection_string: str):
     #
     # Also returns gathered subdomains, which need more filtering to be useful.
     domains, domain_map = load_domain_data()
-    acceptable_ciphers, accepted_algos = load_compliance_data()
+    acceptable_ciphers = load_compliance_data()
 
     # Read in domain-scan CSV data.
     scan_data = load_scan_data(domains)
@@ -98,7 +98,7 @@ def run(date: typing.Optional[str], connection_string: str):
     # Calculate high-level per-domain conclusions for each report.
     # Overwrites `domains` and `subdomains` in-place.
     process_domains(
-        domain_map, scan_data, acceptable_ciphers, accepted_algos
+        domain_map, scan_data, acceptable_ciphers
     )
 
     # Reset the database.
@@ -164,8 +164,8 @@ def _load_data(path: pathlib.Path) -> typing.Set[str]:
     return data
 
 
-def load_compliance_data() -> typing.Tuple[typing.Set[str], typing.Set[str]]:
-    return _load_data(cache_file(env.CIPHER)), _load_data(cache_file(env.ALGORITHMS))
+def load_compliance_data() -> typing.Set[str]:
+    return _load_data(cache_file(env.CIPHER))
 
 
 # Reads in input CSVs (domain list).
@@ -309,7 +309,7 @@ def map_subdomains(scan_data, domain_map):
 
 # Given the domain data loaded in from CSVs, draw conclusions,
 # and filter/transform data into form needed for display.
-def process_domains(domains, scan_data, acceptable_ciphers, accepted_algos):
+def process_domains(domains, scan_data, acceptable_ciphers):
     # For each domain, determine eligibility and, if eligible,
     # use the scan data to draw conclusions.
     for domain_name in domains.keys():
@@ -340,7 +340,6 @@ def process_domains(domains, scan_data, acceptable_ciphers, accepted_algos):
                     scan_data[subdomain_name]["pshtt"],
                     scan_data[subdomain_name].get("sslyze", None),
                     acceptable_ciphers,
-                    accepted_algos,
                     parent_preloaded=https_parent["preloaded"],
                 )
 
@@ -352,7 +351,6 @@ def process_domains(domains, scan_data, acceptable_ciphers, accepted_algos):
                     scan_data[domain_name]["pshtt"],
                     scan_data[domain_name].get("sslyze", None),
                     acceptable_ciphers,
-                    accepted_algos
                 ),
             }
             https_parent["eligible_zone"] = True
