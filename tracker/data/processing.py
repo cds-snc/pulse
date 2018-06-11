@@ -693,8 +693,9 @@ def total_https_report(eligible):
             total_report["hsts"] += 1
 
         # Factors in crypto score, but treats ineligible services as passing.
-        if report["compliant"]:
-            total_report["compliant"] += 1
+        for field in ["m1513", "compliant"]:
+            if report[field]:
+                total_report[field] += 1
 
     return total_report
 
