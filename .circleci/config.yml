@@ -148,7 +148,7 @@ jobs:
               sha3-512
               EOF
               . .env/bin/activate
-              tracker insert ./csv/owners.csv ./csv/domains.csv ./csv/ciphers.csv
+              tracker insert ./csv/owners.csv ./csv/domains.csv ./csv/ciphers.csv ./csv/algorithms.csv
           name: "Populating domains"
       - run:
           command: |
