@@ -10,10 +10,3 @@
 	height: 80%;
 }
 
-.close-symbol {
-	font-size: 5rem;
-
-	@include media($small) {
-		font-size: 3rem;
-	}
-}
