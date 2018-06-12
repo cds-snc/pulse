@@ -1,4 +1,4 @@
-
+import typing
 # Mapping report/domain/organization field names to display names.
 LABELS = {
     # used in export CSVs
@@ -30,7 +30,7 @@ LABELS = {
 }
 
 
-FIELD_MAPPING = {
+FIELD_MAPPING: typing.Dict[str, typing.Dict] = {
     "common": {},
     "https": {
         "uses": {
