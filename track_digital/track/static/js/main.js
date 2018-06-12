@@ -2,7 +2,7 @@ $(function(){
 
   var KEYCODE_ESC = 27;
 
-  //Mobile menu
+  // Mobile menu
 
   $('#menu-btn, .overlay, .sliding-panel-close').on('click touchstart',function (e) {
     $('#menu-content, .overlay').toggleClass('is-visible');
@@ -17,7 +17,7 @@ $(function(){
     e.preventDefault();
   });
 
-  //Modal
+  // Modal
 
   $('#modal-btn').on('click touchstart', function (e) {
     if ($('#modal').hasClass('hidden')) toggleModal('show');
@@ -47,15 +47,12 @@ $(function(){
 
   });
 
-  //function handler to toggle modal
   var toggleModal = function(sh){ 
     if(sh == "show") {
       $('#modal').toggleClass('hidden flex');
 
-      //focus the header of the modal
-      $('#modal-content').focus();
+      $('#modal-header').focus();
 
-      //deactivate header/maincontent/footer
       $('#header, #main-content, #goc-footer').attr('aria-hidden', 'true');
       
     }
@@ -63,7 +60,9 @@ $(function(){
     else {
       $('#modal').toggleClass('hidden flex');
 
-      //set focus back to modal btn
+      $('#header, #main-content, #goc-footer').attr('aria-hidden', 'false');
+
+      $('#close-btn').focus();
     }
 
   };

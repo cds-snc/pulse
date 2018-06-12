@@ -5,6 +5,8 @@
 
 {% block content %}
 
+{% include 'includes/en/modal.html' %}
+
 <section id="main-content" class="flex-1">
 
 	<header class="bg-grey-lighter py-6">
@@ -36,8 +38,6 @@
   	</div>
 
 </section>
-
-{% include 'includes/en/modal.html' %}
 
 <script src="/static/js/https/organizations.js?{{ now() | date("%Y%m%j%H%M%S") }}"></script>
 {% endblock %}
