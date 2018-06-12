@@ -12,4 +12,8 @@
 
 .close-symbol {
 	font-size: 5rem;
+
+	@include media($small) {
+		font-size: 3rem;
+	}
 }

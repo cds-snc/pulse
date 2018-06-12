@@ -37,6 +37,9 @@ th {
 
 .close-symbol {
   font-size: 5rem; }
+  @media screen and (max-width: 480px) {
+    .close-symbol {
+      font-size: 3rem; } }
 
 table caption {
   left: -10000px;

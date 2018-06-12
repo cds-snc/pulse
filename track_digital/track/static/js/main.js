@@ -39,7 +39,7 @@ $(function(){
 
   $(document).focusin(function(e) {
     var modal = document.getElementById("modal");
-
+    
     if($('#modal').hasClass('flex') && !$.contains(modal, e.target)) {
       e.stopPropagation();
       $('#modal-content').focus();
