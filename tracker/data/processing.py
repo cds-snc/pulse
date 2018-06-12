@@ -617,7 +617,7 @@ def https_behavior_for(pshtt, sslyze, accepted_ciphers, parent_preloaded=None):
 
         match = re.match(r"sha(?:3-)?(\d+)(?:-\d+)?$", signature_algorithm)
         if match:
-            good_cert = int(match.group(1)) >= 256 #TODO: is this unreliable? - check with Damian
+            good_cert = int(match.group(1)) >= 256
         else:
             LOGGER.error("Could not decipher %s algorithm", signature_algorithm)
         acceptable_ciphers = not bad_ciphers
