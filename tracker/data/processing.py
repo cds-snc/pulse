@@ -622,7 +622,11 @@ def https_behavior_for(pshtt, sslyze, accepted_ciphers, parent_preloaded=None):
         else:
             LOGGER.error("Could not decipher %s algorithm", signature_algorithm)
 
-        bod_crypto = not any([any_rc4, any_3des, sslv2, sslv3, tlsv10, tlsv11, not acceptable_ciphers])
+
+        if any([any_rc4, any_3des, sslv2, sslv3, tlsv10, tlsv11, not acceptable_ciphers]):
+            bod_crypto = 0
+        else:
+            bod_crypto = 1
 
     report["bod_crypto"] = bod_crypto
     report["rc4"] = any_rc4
