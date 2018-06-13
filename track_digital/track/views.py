@@ -20,8 +20,10 @@ def register(app):
         prefix = request.path[1:3]
         return render_template(generate_path(prefix, "index"))
 
-    @app.route("/<prefix>/organizations/")
-    def organizations(prefix):
+    @app.route("/en/organizations/")
+    @app.route("/fr/organizations/")
+    def organizations():
+        prefix = request.path[1:3]
         return render_template(generate_path(prefix, "organizations"))
 
     @app.route("/en/domains/")
