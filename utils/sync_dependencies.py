@@ -6,7 +6,6 @@ import typing
 import distutils
 
 
-
 def extract_setup_requires(setup_path: pathlib.Path) -> typing.Set[str]:
     with setup_path.open('r', encoding='utf-8-sig') as setup:
         content = setup.read()
@@ -19,11 +18,13 @@ def extract_setup_requires(setup_path: pathlib.Path) -> typing.Set[str]:
 
     return set(distutils.core._setup_distribution.install_requires) # pylint: disable
 
+
 def extract_txt_requires(requirements_path: pathlib.Path) -> typing.Set[str]:
     with requirements_path.open('r', encoding='utf-8-sig') as req:
         requirements = set(line.rstrip('\n') for line in req.readlines())
         requirements.discard('-e .')
         return requirements
+
 
 def are_syncd(*paths: pathlib.Path) -> bool:
     '''Verifies that dependencies in the `paths` are synced
