@@ -24,7 +24,7 @@ LABELS = {
         "rc4": "RC4",
         "sslv2": "SSLv2",
         "sslv3": "SSLv3",
-        "accepted_ciphers": "Ciphers",
+        "accepted_ciphers": "Only Uses Supported Ciphers",
         "tlsv10": "TLSv1.0",
         "tlsv11": "TLSv1.1",
         "good_cert": "Approved Certificate",
