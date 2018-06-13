@@ -1,4 +1,5 @@
 import csv
+from itertools import zip_longest
 import os
 import typing
 import datetime
@@ -24,7 +25,7 @@ class DateType(click.ParamType):
             datetime.datetime.strptime(value, "%Y-%m-%d")
             return value
         except ValueError:
-            self.fail(f"{value} is not a valid date")
+            self.fail("{value} is not a valid date".format(value=value))
 DATE = DateType()
 
 
@@ -46,10 +47,10 @@ def get_date(
 # Convert ["--option", "value", ... ] to {"option": "value", ...}
 def transform_args(args: typing.List[str]) -> typing.Dict[str, typing.Union[str, bool]]:
     transformed = {}
-    for option, value in zip(args, args[1:]):
+    for option, value in zip_longest(args, args[1:], fillvalue=''):
         if option.startswith("--"):
             name = option.strip("--")
-            transformed[name] = value if not value.startswith("--") else True
+            transformed[name] = value if value and not value.startswith("--") else True
     return transformed
 
 
@@ -119,9 +120,9 @@ def process(ctx: click.core.Context, date: str) -> None:
         LOGGER.info("No scan metadata downloaded, aborting.")
         return
 
-    LOGGER.info(f"[{date}] Loading data into track-digital.")
+    LOGGER.info("[%s] Loading data into track-digital.", date)
     processing.run(date, ctx.obj.get('connection_string'))
-    LOGGER.info(f"[{date}] Data now loaded into track-digital.")
+    LOGGER.info("[%s] Data now loaded into track-digital.", date)
 
 
 @main.command(help="Populate DB with domains")
@@ -129,7 +130,13 @@ def process(ctx: click.core.Context, date: str) -> None:
 @click.argument('domains', type=click.File('r', encoding='utf-8-sig'))
 @click.argument('ciphers', type=click.File('r', encoding='utf-8-sig'))
 @click.pass_context
-def insert(ctx: click.core.Context, owners: typing.IO[str], domains: typing.IO[str], ciphers: typing.IO[str]) -> None:
+def insert(
+        ctx: click.core.Context,
+        owners: typing.IO[str],
+        domains: typing.IO[str],
+        ciphers: typing.IO[str],
+    ) -> None:
+
     owners_reader = csv.DictReader(owners)
     domains_reader = csv.DictReader(domains)
     ciphers_reader = csv.DictReader(ciphers)

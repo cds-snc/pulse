@@ -38,7 +38,6 @@ class TestReport():
                 "uses" : 23788,
                 "enforces" : 21932,
                 "hsts" : 18583,
-                "m1513" : 17784,
                 "compliant" : 16940
             },
             "crypto" : {
@@ -49,6 +48,7 @@ class TestReport():
                 "sslv2" : 45,
                 "sslv3" : 576,
                 "accepted_ciphers": 351,
+                "good_cert": 351,
             },
             "preloading" : {
                 "eligible" : 1277,
@@ -93,7 +93,6 @@ class TestDomain():
                 'enforces': 1,
                 'hsts': 0,
                 'hsts_age': None,
-                'm1513': False,
                 'preloaded': 0,
                 'rc4': False,
                 'sslv2': False,
@@ -102,6 +101,7 @@ class TestDomain():
                 'bad_ciphers': [],
                 'tlsv10': False,
                 'tlsv11': False,
+                'good_cert': True,
                 'uses': 2
             },
             'is_parent': True,
@@ -124,7 +124,6 @@ class TestDomain():
                     'eligible': 1,
                     'enforces': 0,
                     'hsts': 0,
-                    'm1513': 0,
                     'uses': 1
                 }
             }
@@ -201,7 +200,7 @@ class TestDomain():
                 'Sources',
                 'Enforces HTTPS',
                 'Strict Transport Security (HSTS)',
-                'Free of RC4/3DES and SSLv2/SSLv3',
+                'Free of known weak protocols and ciphers',
                 '3DES',
                 'RC4',
                 'SSLv2',
@@ -209,6 +208,7 @@ class TestDomain():
                 'Ciphers',
                 'TLSv1.0',
                 'TLSv1.1',
+                'Approved Certificate',
                 'Preloaded'
             ]
             assert next(reader) == {
@@ -220,7 +220,7 @@ class TestDomain():
                 'Sources': 'canada-gov',
                 'Enforces HTTPS': 'No',
                 'Strict Transport Security (HSTS)': 'No',
-                'Free of RC4/3DES and SSLv2/SSLv3': 'Yes',
+                'Free of known weak protocols and ciphers': 'Yes',
                 '3DES': 'No',
                 'RC4': 'No',
                 'SSLv2': 'No',
@@ -228,6 +228,7 @@ class TestDomain():
                 'Ciphers': 'Yes',
                 'TLSv1.0': 'No',
                 'TLSv1.1': 'No',
+                'Approved Certificate': 'Yes',
                 'Preloaded': 'No'
             }
 
@@ -247,7 +248,6 @@ class TestOrganizations():
                 "uses" : 2,
                 "enforces" : 1,
                 "hsts" : 2,
-                "m1513" : 1,
                 "compliant" : 0
             },
             "crypto" : {
@@ -259,7 +259,8 @@ class TestOrganizations():
                 "sslv3" : 0,
                 "accepted_ciphers": 1,
                 "tlsv10": 0,
-                "tlsv11": 0
+                "tlsv11": 0,
+                'good_cert': 2,
             },
             "preloading" : {
                 "eligible" : 3,

@@ -1,4 +1,4 @@
-
+import typing
 # Mapping report/domain/organization field names to display names.
 LABELS = {
     # used in export CSVs
@@ -16,9 +16,9 @@ LABELS = {
         "enforces": "Enforces HTTPS",
         "hsts": "Strict Transport Security (HSTS)",
         "preloaded": "Preloaded",
-        "bod_crypto": "Free of RC4/3DES and SSLv2/SSLv3",
+        "bod_crypto": "Free of known weak protocols and ciphers",
         "hsts_age": "HSTS max-age",
-        "bod_organizations": "Free of RC4/3DES and SSLv2/SSLv3",
+        "bod_organizations": "Free of known weak protocols and ciphers",
         "3des": "3DES",
         "rc4": "RC4",
         "sslv2": "SSLv2",
@@ -26,11 +26,12 @@ LABELS = {
         "accepted_ciphers": "Ciphers",
         "tlsv10": "TLSv1.0",
         "tlsv11": "TLSv1.1",
+        "good_cert": "Approved Certificate",
     },
 }
 
 
-FIELD_MAPPING = {
+FIELD_MAPPING: typing.Dict[str, typing.Dict] = {
     "common": {},
     "https": {
         "uses": {
@@ -70,6 +71,7 @@ CSV_FIELDS = {
         "accepted_ciphers",
         "tlsv10",
         "tlsv11",
+        "good_cert",
         "preloaded",
     ],
 }
