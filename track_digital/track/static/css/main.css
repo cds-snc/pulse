@@ -28,6 +28,9 @@ td,
 th {
   vertical-align: middle; }
 
+#goc-footer {
+  margin-top: 0rem !important; }
+
 table caption {
   left: -10000px;
   height: 1px;
