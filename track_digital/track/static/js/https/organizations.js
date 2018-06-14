@@ -23,6 +23,10 @@ $(document).ready(function () {
           createdCell: function (td) {td.scope = "row";}
         },
         {
+          data: "https.compliant",
+          render: Tables.percent("https", "compliant")
+        },
+        {
           data: "https.enforces",
           render: Tables.percent("https", "enforces")
         },
@@ -35,8 +39,8 @@ $(document).ready(function () {
           render: Tables.percent("crypto", "bod_crypto")
         },
         {
-          data: "preloading.preloaded",
-          render: Tables.percent("preloading", "preloaded")
+          data: "crypto.good_cert",
+          render: Tables.percent("crypto", "good_cert")
         },
       ]
 
@@ -74,11 +78,11 @@ $(document).ready(function () {
 
     if (type == "sort") return name;
 
-    var link = function(text) {
+    var link = function(link_text) {
       return "" +
-        "<a href=\"/" + language + "/domains/#" +
+        "<a href=\"/" + language + "/" + text.domains[language] + "/#" +
           QueryString.stringify({q: row["name_" + language]}) + "\">" +
-           text +
+           link_text +
         "</a>";
     }
 
