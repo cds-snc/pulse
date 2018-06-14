@@ -1,9 +1,12 @@
 {% extends "fr/layout-fr.html" %}
 
 {% block title %}Consulter la conformité liée à la sécurité numérique{% endblock %}
-{% block pageid %}domains{% endblock %}
+{% block pageid_en %}domains{% endblock %}
+{% block pageid_fr %}domaines{% endblock %}
 
 {% block content %}
+
+{% include 'includes/fr/modal.html' %}
 
 <section id="main-content" class="flex-1">
 
@@ -18,7 +21,7 @@
 	</header>
 
 	<div id="tab-panel" class="container mx-auto" role="tabpanel" aria-hidden="false">
-	    <table id="data-table" language="fr" class="domain responsive https">
+	    <table language="fr" class="domain responsive https">
 	      <caption class="sr-only">HTTP(S) sécurisé par domaine. Le tableau peut être trié par en-tête de tableau de première ligne. Chaque ligne contient un domaine et les attributs connexes.</caption>
 	      <thead>
 	        <tr>
