@@ -818,6 +818,6 @@ def write(content, destination, binary=False):
 
 
 def boolean_for(string):
-    if string == "False":
+    if not string or string == "False":
         return False
     return True
