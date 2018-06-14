@@ -822,5 +822,4 @@ def boolean_for(string):
         return False
     elif string == "True":
         return True
-    else:
-        return None
+    return None
