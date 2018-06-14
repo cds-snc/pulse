@@ -1,9 +1,9 @@
-
-from flask import render_template, Response, abort, request
-from track import models
-from track.data import FIELD_MAPPING
 import os
 import ujson
+from flask import render_template, Response, abort, request
+from track import models
+from track.cache import cache
+from track.data import FIELD_MAPPING
 
 def register(app):
 
@@ -55,12 +55,14 @@ def register(app):
 
     # High-level %'s, used to power the donuts.
     @app.route("/data/reports/<report_name>.json")
+    @cache.cached()
     def report(report_name):
         response = Response(ujson.dumps(models.Report.latest().get(report_name, {})))
         response.headers['Content-Type'] = 'application/json'
         return response
 
     # Detailed data per-parent-domain.
+    @cache.cached()
     @app.route("/data/domains/<report_name>.<ext>")
     def domain_report(report_name, ext):
         domains = models.Domain.eligible_parents(report_name)
@@ -75,6 +77,7 @@ def register(app):
         return response
 
     # Detailed data per-host for a given report.
+    @cache.cached()
     @app.route("/data/hosts/<report_name>.<ext>")
     def hostname_report(report_name, ext):
         domains = models.Domain.eligible(report_name)
@@ -92,6 +95,7 @@ def register(app):
         return response
 
     # Detailed data for all subdomains of a given parent domain, for a given report.
+    @cache.cached()
     @app.route("/data/hosts/<domain>/<report_name>.<ext>")
     def hostname_report_for_domain(domain, report_name, ext):
         domains = models.Domain.eligible_for_domain(domain, report_name)
@@ -108,6 +112,7 @@ def register(app):
             response.headers['Content-Type'] = 'text/csv'
         return response
 
+    @cache.cached()
     @app.route("/data/organizations/<report_name>.json")
     def organization_report(report_name):
         domains = models.Organization.eligible(report_name)

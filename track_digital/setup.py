@@ -28,6 +28,7 @@ setuptools.setup(
         'click==6.7',
         'gevent==1.2.2',
         'Babel==2.6.0',
+        'Flask-Cache==0.13.1',
     ],
     extras_require={
         'development': [
